@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Free Google Play Points Instantly</title>
+    <style>
+        /* --- CSS STYLING --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400&display=swap');
+
+        :root {
+            --gp-blue: #4285F4;
+            --gp-red: #EA4335;
+            --gp-yellow: #FBBC04;
+            --gp-green: #34A853;
+            --bg-color: #0b0b0d;
+            --card-bg: #161618;
+            --text-dim: #8a8a8e;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at top right, rgba(66,133,244,0.05), transparent),
+                              radial-gradient(circle at bottom left, rgba(52,168,83,0.05), transparent);
+        }
+
+        .container { max-width: 450px; width: 90%; text-align: center; }
+
+        .logo-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; }
+        .logo-section img { width: 32px; margin-bottom: 10px; }
+        .logo-section span { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+
+        h1 { font-size: 2.6rem; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+        .glow-text { text-shadow: 0 0 20px rgba(66,133,244,0.3); }
+        .highlight { background: linear-gradient(90deg, var(--gp-blue), var(--gp-red), var(--gp-yellow), var(--gp-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .description { color: var(--text-dim); margin: 20px 0 25px 0; font-size: 1rem; line-height: 1.5; }
+
+        .badges { display: flex; justify-content: center; gap: 8px; margin-bottom: 30px; }
+        .badge { font-size: 0.75rem; padding: 6px 14px; border-radius: 50px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 5px; }
+
+        .claim-box {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid #2d2d30;
+            min-height: 300px;
+        }
+
+        .field-label { font-size: 0.7rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px; display: block; }
+
+        .input-group {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+        .input-group:focus-within { border-color: var(--gp-blue); }
+
+        input, select { background: transparent; border: none; color: white; width: 100%; outline: none; font-size: 1rem; margin-left: 10px; }
+
+        .btn-claim {
+            width: 100%;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .btn-claim:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+
+        /* --- OVERLAYS --- */
+        #terminal, #verification-screen {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            border-radius: 20px;
+            padding: 25px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        #terminal { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--gp-green); }
+
+        #verification-screen {
+            background: var(--card-bg);
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            display: none; /* Controlled by JS */
+        }
+
+        .btn-verify {
+            background: var(--gp-green);
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: 800;
+            width: 100%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg">
+            <span>Official Faucet System</span>
+        </div>
+
+        <h1 class="glow-text">Claim Free Points <br><span class="highlight">Instantly</span></h1>
+        <p class="description">Enter your account details below and generate Google Play rewards sent directly to your account.</p>
+
+        <div class="badges">
+            <div class="badge" style="color:#4ade80;">🛡️ Secure</div>
+            <div class="badge" style="color:#60a5fa;">⚡ Fast Payout</div>
+            <div class="badge" style="color:#c084fc;">🏛️ No KYC</div>
+        </div>
+
+        <div class="claim-box">
+            <div id="ui-main">
+                <label class="field-label">Google Account Email</label>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="e.g. example@gmail.com">
+                </div>
+
+                <label class="field-label">Select Reward Tier</label>
+                <div class="input-group">
+                    <select id="reward">
+                        <option value="500">500 Points (Standard)</option>
+                        <option value="1200">1,200 Points (Premium)</option>
+                        <option value="5000">5,000 Points (Ultimate)</option>
+                    </select>
+                </div>
+
+                <button class="btn-claim" onclick="process()">Start Claim →</button>
+            </div>
+
+            <div id="terminal"></div>
+
+            <div id="verification-screen">
+                <h2 style="margin: 0; font-size: 1.5rem;">Manual Verification</h2>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin: 15px 0;">
+                    To complete the transfer of <b id="pt-show"></b> points to <b id="em-show"></b>, please verify you are not a bot.
+                </p>
+                <div style="padding: 15px; background: rgba(255,255,255,0.03); border: 1px dashed #444; border-radius: 10px; margin-bottom: 20px;">
+                    <span style="color: var(--gp-yellow); font-size: 0.8rem;">Status: Waiting for User</span>
+                </div>
+                <button class="btn-verify" onclick="openLocker()">Verify Now</button>
+            </div>
+        </div>
+
+        <p style="font-size: 0.7rem; color: #444; margin-top: 25px;">Server Load: <span style="color:var(--gp-green)">Normal (12ms)</span></p>
+    </div>
+
+    <script>
+        const logs = [
+            "Connecting to Google Play API...",
+            "Searching for account hash...",
+            "Account found: [SYNC_SUCCESS]",
+            "Preparing points injection...",
+            "Bypassing security protocols...",
+            "Validating transaction on server...",
+            "Points ready for deployment...",
+            "Manual Verification Required [!] "
+        ];
+
+        function process() {
+            const email = document.getElementById('email').value;
+            const reward = document.getElementById('reward').value;
+            if(!email.includes("@")) return alert("Invalid Email");
+
+            document.getElementById('em-show').innerText = email;
+            document.getElementById('pt-show').innerText = reward;
+            document.getElementById('terminal').style.display = 'block';
+
+            let i = 0;
+            function run() {
+                if(i < logs.length) {
+                    let d = document.createElement('div');
+                    d.innerHTML = `> ${logs[i]}`;
+                    d.style.marginBottom = "8px";
+                    document.getElementById('terminal').appendChild(d);
+                    i++;
+                    setTimeout(run, 600);
+                } else {
+                    document.getElementById('verification-screen').style.display = 'flex';
+                }
+            }
+            run();
+        }
+
+        function openLocker() {
+            // Updated with your quikfun.info link
+            window.location.href = 'https://quikfun.info/cl/i/5nngk3';
+        }
+    </script>
+</body>
+</html>
