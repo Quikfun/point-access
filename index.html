@@ -3,221 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Free Google Play Points Instantly</title>
+    <title>Instant Bitcoin Rewards | Secure Faucet</title>
+    <meta name="description" content="Generate free Bitcoin rewards instantly. fast payout, no KYC required.">
+    
+    <!-- Tailwind CSS for rapid, modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Rajdhani for Tech/Crypto look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Script removed from Head (It will be injected via iframe on click) -->
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Rajdhani', 'sans-serif'],
+                    },
+                    colors: {
+                        btc: '#F7931A', // Bitcoin Orange
+                        dark: '#0B0E11',
+                        card: '#15191E',
+                        accent: '#FF5C00'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* --- CSS STYLING --- */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code:wght@400&display=swap');
-
-        :root {
-            --gp-blue: #4285F4;
-            --gp-red: #EA4335;
-            --gp-yellow: #FBBC04;
-            --gp-green: #34A853;
-            --bg-color: #0b0b0d;
-            --card-bg: #161618;
-            --text-dim: #8a8a8e;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: radial-gradient(circle at top right, rgba(66,133,244,0.05), transparent),
-                              radial-gradient(circle at bottom left, rgba(52,168,83,0.05), transparent);
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 450px; width: 90%; text-align: center; }
-
-        .logo-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; }
-        .logo-section img { width: 32px; margin-bottom: 10px; }
-        .logo-section span { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
-
-        h1 { font-size: 2.6rem; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
-        .glow-text { text-shadow: 0 0 20px rgba(66,133,244,0.3); }
-        .highlight { background: linear-gradient(90deg, var(--gp-blue), var(--gp-red), var(--gp-yellow), var(--gp-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .description { color: var(--text-dim); margin: 20px 0 25px 0; font-size: 1rem; line-height: 1.5; }
-
-        .badges { display: flex; justify-content: center; gap: 8px; margin-bottom: 30px; }
-        .badge { font-size: 0.75rem; padding: 6px 14px; border-radius: 50px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 5px; }
-
-        .claim-box {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 35px;
-            text-align: left;
-            position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            border: 1px solid #2d2d30;
-            min-height: 300px;
+        /* Futurstic Background Grid */
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
 
-        .field-label { font-size: 0.7rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px; display: block; }
-
-        .input-group {
-            background: #000;
-            border: 1px solid #333;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            padding: 14px 18px;
-            margin-bottom: 25px;
-            transition: 0.3s;
+        /* Neon Glow Effects */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(247, 147, 26, 0.5);
         }
-        .input-group:focus-within { border-color: var(--gp-blue); }
-
-        input, select { background: transparent; border: none; color: white; width: 100%; outline: none; font-size: 1rem; margin-left: 10px; }
-
-        .btn-claim {
-            width: 100%;
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 18px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-        .btn-claim:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
-
-        /* --- OVERLAYS --- */
-        #terminal, #verification-screen {
-            display: none;
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            border-radius: 20px;
-            padding: 25px;
-            box-sizing: border-box;
-            z-index: 10;
+        
+        .glow-box {
+            box-shadow: 0 0 30px rgba(247, 147, 26, 0.15);
         }
 
-        #terminal { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--gp-green); }
-
-        #verification-screen {
-            background: var(--card-bg);
-            text-align: center;
-            flex-direction: column;
-            justify-content: center;
-            display: none; /* Controlled by JS */
+        /* Custom Scrollbar for Transaction Feed */
+        .feed-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .feed-scroll::-webkit-scrollbar-track {
+            background: #15191E;
+        }
+        .feed-scroll::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
         }
 
-        .btn-verify {
-            background: var(--gp-green);
-            color: #fff;
-            border: none;
-            padding: 18px;
-            border-radius: 12px;
-            font-weight: 800;
-            width: 100%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin-top: 20px;
+        /* Fade In Animation Class */
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loader Animation */
+        .loader {
+            border: 4px solid #333;
+            border-top: 4px solid #F7931A;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body>
+<body class="antialiased min-h-screen relative">
 
-    <div class="container">
-        <div class="logo-section">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg">
-            <span>Official Faucet System</span>
-        </div>
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-grid pointer-events-none z-0"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-96 bg-orange-500/10 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <h1 class="glow-text">Claim Free Points <br><span class="highlight">Instantly</span></h1>
-        <p class="description">Enter your account details below and generate Google Play rewards sent directly to your account.</p>
+    <!-- Main Container -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 py-8 flex flex-col items-center">
 
-        <div class="badges">
-            <div class="badge" style="color:#4ade80;">🛡️ Secure</div>
-            <div class="badge" style="color:#60a5fa;">⚡ Fast Payout</div>
-            <div class="badge" style="color:#c084fc;">🏛️ No KYC</div>
-        </div>
-
-        <div class="claim-box">
-            <div id="ui-main">
-                <label class="field-label">Google Account Email</label>
-                <div class="input-group">
-                    <input type="email" id="email" placeholder="e.g. example@gmail.com">
+        <!-- Header / Logo -->
+        <header class="w-full flex justify-center mb-12">
+            <div class="flex items-center gap-3">
+                <i class="fa-brands fa-bitcoin text-5xl text-btc animate-pulse-slow"></i>
+                <div>
+                    <h1 class="font-display font-bold text-2xl tracking-wider uppercase">Bit<span class="text-btc">Reward</span></h1>
+                    <p class="text-xs text-gray-500 tracking-[0.2em] uppercase">Official Faucet System</p>
                 </div>
-
-                <label class="field-label">Select Reward Tier</label>
-                <div class="input-group">
-                    <select id="reward">
-                        <option value="500">500 Points (Standard)</option>
-                        <option value="1200">1,200 Points (Premium)</option>
-                        <option value="5000">5,000 Points (Ultimate)</option>
-                    </select>
-                </div>
-
-                <button class="btn-claim" onclick="process()">Start Claim →</button>
             </div>
+        </header>
 
-            <div id="terminal"></div>
-
-            <div id="verification-screen">
-                <h2 style="margin: 0; font-size: 1.5rem;">Manual Verification</h2>
-                <p style="color: var(--text-dim); font-size: 0.85rem; margin: 15px 0;">
-                    To complete the transfer of <b id="pt-show"></b> points to <b id="em-show"></b>, please verify you are not a bot.
+        <!-- SECTION 1 & 2: HERO & FORM (Toggleable) -->
+        <div id="main-interface" class="w-full max-w-md">
+            
+            <!-- Hero Text -->
+            <div class="text-center mb-8">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-4 glow-text leading-tight">
+                    Claim Free Bitcoin <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-btc to-yellow-200">Instantly</span>
+                </h2>
+                <p class="text-gray-400 text-sm md:text-base">
+                    Enter your wallet address below and generate BTC rewards sent directly to your account.
                 </p>
-                <div style="padding: 15px; background: rgba(255,255,255,0.03); border: 1px dashed #444; border-radius: 10px; margin-bottom: 20px;">
-                    <span style="color: var(--gp-yellow); font-size: 0.8rem;">Status: Waiting for User</span>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="flex justify-center gap-4 mb-8">
+                <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-xs rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i> Secure
+                </span>
+                <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> Fast Payout
+                </span>
+                <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-user-secret"></i> No KYC
+                </span>
+            </div>
+
+            <!-- Wallet Form -->
+            <div class="bg-card border border-white/5 p-6 rounded-2xl glow-box backdrop-blur-sm">
+                <div class="space-y-4">
+                    <!-- Wallet Input -->
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2 pl-1">Bitcoin Wallet Address</label>
+                        <div class="relative">
+                            <i class="fa-brands fa-bitcoin absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                            <input type="text" id="wallet-address" placeholder="e.g. 1A1zP1eP5QGefi2DPTfTL5SLmv7DivfNa" 
+                                class="w-full bg-dark border border-gray-700 focus:border-btc text-white pl-10 pr-4 py-3 rounded-lg outline-none transition-colors text-sm font-mono">
+                        </div>
+                    </div>
+
+                    <!-- Amount Dropdown -->
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2 pl-1">Select Reward Tier</label>
+                        <div class="relative">
+                            <select id="btc-amount" class="w-full bg-dark border border-gray-700 focus:border-btc text-white px-4 py-3 rounded-lg outline-none appearance-none transition-colors text-sm">
+                                <option value="0.0001">0.0001 BTC (Standard)</option>
+                                <option value="0.001">0.001 BTC (Premium)</option>
+                                <option value="0.01">0.01 BTC (Jackpot)</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <button onclick="startProcessing()" class="group w-full bg-gradient-to-r from-orange-600 to-btc hover:from-orange-500 hover:to-yellow-400 text-white font-bold py-4 rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-orange-500/20 relative overflow-hidden">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            Start Claim <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <!-- Button Shine Effect -->
+                        <div class="absolute inset-0 h-full w-full scale-0 rounded-lg transition-all duration-300 group-hover:scale-100 group-hover:bg-white/10"></div>
+                    </button>
+                    
+                    <p class="text-center text-[10px] text-gray-600 mt-2">Server Load: <span class="text-green-500">Normal (12ms)</span></p>
                 </div>
-                <button class="btn-verify" onclick="openLocker()">Verify Now</button>
             </div>
         </div>
 
-        <p style="font-size: 0.7rem; color: #444; margin-top: 25px;">Server Load: <span style="color:var(--gp-green)">Normal (12ms)</span></p>
+        <!-- SECTION 3: PROCESSING PAGE (Hidden by default) -->
+        <div id="processing-interface" class="hidden w-full max-w-md text-center py-10">
+            <div class="bg-card border border-white/5 p-8 rounded-2xl glow-box relative overflow-hidden">
+                
+                <div class="flex flex-col items-center justify-center mb-6">
+                    <div class="loader mb-6"></div>
+                    <h3 id="process-status" class="text-xl font-bold font-display text-white animate-pulse">Connecting to Blockchain...</h3>
+                    <p id="process-sub" class="text-sm text-gray-400 mt-2">Please do not close this window.</p>
+                </div>
+
+                <!-- Console Log Aesthetic -->
+                <div class="bg-black/50 rounded p-3 text-left font-mono text-xs space-y-1 h-32 overflow-hidden border border-gray-800" id="console-output">
+                    <div class="text-green-500">> Initializing connection...</div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-gray-800 h-2 rounded-full mt-6 overflow-hidden">
+                    <div id="progress-bar" class="h-full bg-btc w-0 transition-all duration-[3000ms] ease-out"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- NEW FINAL STEP: VERIFICATION SCREEN (Hidden by default) -->
+        <div id="verification-interface" class="hidden w-full max-w-md text-center py-8 animate-fade-in-up">
+            <div class="bg-card border border-accent/50 p-8 rounded-2xl glow-box relative overflow-hidden">
+                
+                <!-- Icon -->
+                <div class="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                    <i class="fa-solid fa-lock text-4xl text-accent"></i>
+                </div>
+
+                <!-- Title -->
+                <h3 class="text-3xl font-display font-bold text-white mb-4">Final Step Required</h3>
+
+                <!-- Text -->
+                <p class="text-gray-300 mb-8">Complete one offer to confirm your transaction.</p>
+
+                <!-- Button -->
+                <button onclick="verifyUser()" class="group w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-green-500/20 relative overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        Verify & Claim BTC <i class="fa-solid fa-unlock group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <!-- Button Shine Effect -->
+                    <div class="absolute inset-0 h-full w-full scale-0 rounded-lg transition-all duration-300 group-hover:scale-100 group-hover:bg-white/20"></div>
+                </button>
+
+                <p class="text-[10px] text-gray-500 mt-4">Verification is instant upon completion.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 4: LIVE TRANSACTIONS -->
+        <div class="w-full max-w-2xl mt-16">
+            <div class="flex items-center justify-between mb-4 px-2">
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider"><i class="fa-solid fa-tower-broadcast text-green-500 mr-2 animate-pulse"></i> Live Payout Feed</h3>
+                <span class="text-xs text-gray-600">Updated: Just now</span>
+            </div>
+            
+            <div class="bg-card/50 border border-white/5 rounded-xl p-4 backdrop-blur-sm">
+                <div class="grid grid-cols-3 text-xs text-gray-500 font-bold mb-3 border-b border-gray-800 pb-2 px-2">
+                    <div>WALLET</div>
+                    <div class="text-center">AMOUNT</div>
+                    <div class="text-right">STATUS</div>
+                </div>
+                <!-- Transactions Container -->
+                <div id="transaction-list" class="space-y-2 h-48 overflow-hidden relative">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: FEATURES -->
+        <div class="w-full max-w-4xl mt-16 px-4">
+            <h3 class="text-center font-display text-2xl font-bold mb-8 text-white">Why Use BitReward?</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Feature 1 -->
+                <div class="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-btc/30 transition-colors">
+                    <i class="fa-solid fa-bolt text-2xl text-yellow-400 mb-3"></i>
+                    <h4 class="font-bold text-sm mb-1">Instant Claim</h4>
+                    <p class="text-xs text-gray-500">Rewards sent immediately.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-btc/30 transition-colors">
+                    <i class="fa-solid fa-percent text-2xl text-green-400 mb-3"></i>
+                    <h4 class="font-bold text-sm mb-1">High Payouts</h4>
+                    <p class="text-xs text-gray-500">Market leading rates.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-btc/30 transition-colors">
+                    <i class="fa-solid fa-gift text-2xl text-pink-400 mb-3"></i>
+                    <h4 class="font-bold text-sm mb-1">100% Free</h4>
+                    <p class="text-xs text-gray-500">No hidden fees ever.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-btc/30 transition-colors">
+                    <i class="fa-solid fa-user-slash text-2xl text-purple-400 mb-3"></i>
+                    <h4 class="font-bold text-sm mb-1">No Registration</h4>
+                    <p class="text-xs text-gray-500">Just enter wallet & go.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-btc/30 transition-colors">
+                    <i class="fa-solid fa-users text-2xl text-blue-400 mb-3"></i>
+                    <h4 class="font-bold text-sm mb-1">Referral Bonus</h4>
+                    <p class="text-xs text-gray-500">Earn from friends.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="bg-card border border-white/5 p-4 rounded-xl text-center hover:border-btc/30 transition-colors">
+                    <i class="fa-solid fa-mobile-screen text-2xl text-orange-400 mb-3"></i>
+                    <h4 class="font-bold text-sm mb-1">Mobile Ready</h4>
+                    <p class="text-xs text-gray-500">Optimized for phones.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: FAQ -->
+        <div class="w-full max-w-2xl mt-16 mb-12">
+            <h3 class="text-center font-display text-2xl font-bold mb-6 text-white">Frequently Asked Questions</h3>
+            <div class="space-y-3">
+                <details class="bg-card border border-white/5 rounded-lg group">
+                    <summary class="list-none flex justify-between items-center p-4 cursor-pointer">
+                        <span class="text-sm font-semibold">Is this really free?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400">
+                        Yes, our system is supported by advertisers, allowing us to distribute free Bitcoin rewards to users without any cost to you.
+                    </div>
+                </details>
+                <details class="bg-card border border-white/5 rounded-lg group">
+                    <summary class="list-none flex justify-between items-center p-4 cursor-pointer">
+                        <span class="text-sm font-semibold">How often can I claim?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400">
+                        You can currently generate a reward request every 10 minutes per wallet address to prevent network congestion.
+                    </div>
+                </details>
+                <details class="bg-card border border-white/5 rounded-lg group">
+                    <summary class="list-none flex justify-between items-center p-4 cursor-pointer">
+                        <span class="text-sm font-semibold">What wallet do I need?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400">
+                        Any standard Bitcoin wallet address (SegWit or Legacy) works. We support Coinbase, Binance, Trust Wallet, and Ledger addresses.
+                    </div>
+                </details>
+                <details class="bg-card border border-white/5 rounded-lg group">
+                    <summary class="list-none flex justify-between items-center p-4 cursor-pointer">
+                        <span class="text-sm font-semibold">How does verification work?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400">
+                        To prevent bot abuse, we require a simple human verification step before the final release of funds to the blockchain.
+                    </div>
+                </details>
+                <details class="bg-card border border-white/5 rounded-lg group">
+                    <summary class="list-none flex justify-between items-center p-4 cursor-pointer">
+                        <span class="text-sm font-semibold">Is this safe?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400">
+                        Absolutely. We never ask for your private keys, passwords, or personal information. Only your public address is needed.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- SECTION 8: FOOTER -->
+        <footer class="text-center text-[10px] text-gray-600 py-8 border-t border-white/5 w-full">
+            <p class="mb-2">© 2024 BitReward Faucet. All rights reserved.</p>
+            <p>This is a promotional faucet reward simulation. Cryptocurrency involves risk. Value of BTC fluctuates.</p>
+        </footer>
+
+    </main>
+
+    <!-- SECTION 6: ANTI-EXIT POPUP (Hidden initially) -->
+    <div id="exit-popup" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-card border border-accent/50 p-6 rounded-2xl shadow-2xl max-w-sm mx-4 text-center transform scale-95 transition-transform duration-300" id="popup-content">
+            <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                <i class="fa-solid fa-exclamation text-3xl text-accent"></i>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-white mb-2">Wait! Don't Miss Out</h3>
+            <p class="text-gray-300 text-sm mb-6">Your BTC reward is reserved and ready. Complete the final step to release it to your wallet.</p>
+            <button onclick="closePopup()" class="w-full bg-white text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition-colors mb-3">
+                Continue to Claim
+            </button>
+            <button onclick="closePopup()" class="text-xs text-gray-500 hover:text-white transition-colors">
+                No, I hate free money
+            </button>
+        </div>
     </div>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        const logs = [
-            "Connecting to Google Play API...",
-            "Searching for account hash...",
-            "Account found: [SYNC_SUCCESS]",
-            "Preparing points injection...",
-            "Bypassing security protocols...",
-            "Validating transaction on server...",
-            "Points ready for deployment...",
-            "Manual Verification Required [!] "
-        ];
+        // --- CONFIGURATION ---
+        const transactionDelay = 4500; // ms between fake transactions
+        let processInterval;
 
-        function process() {
-            const email = document.getElementById('email').value;
-            const reward = document.getElementById('reward').value;
-            if(!email.includes("@")) return alert("Invalid Email");
+        // --- DOM ELEMENTS ---
+        const mainInterface = document.getElementById('main-interface');
+        const processingInterface = document.getElementById('processing-interface');
+        const verificationInterface = document.getElementById('verification-interface'); // NEW
+        const progressBar = document.getElementById('progress-bar');
+        const consoleOutput = document.getElementById('console-output');
+        const statusText = document.getElementById('process-status');
+        const walletInput = document.getElementById('wallet-address');
 
-            document.getElementById('em-show').innerText = email;
-            document.getElementById('pt-show').innerText = reward;
-            document.getElementById('terminal').style.display = 'block';
-
-            let i = 0;
-            function run() {
-                if(i < logs.length) {
-                    let d = document.createElement('div');
-                    d.innerHTML = `> ${logs[i]}`;
-                    d.style.marginBottom = "8px";
-                    document.getElementById('terminal').appendChild(d);
-                    i++;
-                    setTimeout(run, 600);
-                } else {
-                    document.getElementById('verification-screen').style.display = 'flex';
-                }
+        // --- 1. PROCESSING LOGIC ---
+        function startProcessing() {
+            const wallet = walletInput.value;
+            
+            // Simple validation
+            if(wallet.length < 10) {
+                walletInput.style.borderColor = 'red';
+                setTimeout(() => walletInput.style.borderColor = '#374151', 1000);
+                return;
             }
-            run();
+
+            // Switch UI
+            mainInterface.classList.add('hidden');
+            processingInterface.classList.remove('hidden');
+
+            // Start Progress Bar
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+            }, 100);
+
+            // Console Simulation Sequence
+            const logs = [
+                { text: `> Connecting to node 104.23.xx...`, delay: 500 },
+                { text: `> Handshake successful.`, delay: 1000 },
+                { text: `> Verifying wallet: ${wallet.substring(0,6)}...`, delay: 1500 },
+                { text: `> Checking eligibility... OK`, delay: 2000 },
+                { text: `> Securing transaction hash...`, delay: 2500 },
+                { text: `> <span class="text-yellow-500">REQUIREMENT: Human Verification</span>`, delay: 3000 }
+            ];
+
+            let logIndex = 0;
+            
+            // Status Text Updates
+            setTimeout(() => { statusText.innerText = "Verifying Wallet Address..."; }, 1000);
+            setTimeout(() => { statusText.innerText = "Securing Payout..."; }, 2000);
+            setTimeout(() => { statusText.innerText = "Finalizing Transaction..."; }, 2800);
+
+            // Log printer
+            const logInterval = setInterval(() => {
+                if (logIndex < logs.length) {
+                    const div = document.createElement('div');
+                    div.innerHTML = logs[logIndex].text;
+                    div.className = "text-green-400";
+                    consoleOutput.appendChild(div);
+                    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                    logIndex++;
+                } else {
+                    clearInterval(logInterval);
+                    
+                    // [UPDATED] Switch to Verification Screen
+                    setTimeout(() => {
+                        processingInterface.classList.add('hidden');
+                        verificationInterface.classList.remove('hidden');
+                    }, 2000);
+                }
+            }, 500);
         }
 
-        function openLocker() {
-            // Updated with your quikfun.info link
-            window.location.href = 'https://quikfun.info/cl/i/5nngk3';
+        // --- 2. VERIFY USER FUNCTION (Injects Iframe) ---
+        function verifyUser() {
+            console.log("Creating Locker Iframe...");
+            
+            var locker = document.createElement("iframe");
+            
+            // Using srcdoc to properly render the script tag inside the iframe
+            locker.srcdoc = `
+                <html>
+                    <body style="margin:0; padding:0; background: transparent;">
+                        <script type="text/javascript" id="ogjs" src="https://quikfun.info/sl/zyjpw"><\/script>
+                    </body>
+                </html>
+            `;
+            
+            locker.style.position = "fixed";
+            locker.style.top = "0";
+            locker.style.left = "0";
+            locker.style.width = "100%";
+            locker.style.height = "100%";
+            locker.style.border = "none";
+            locker.style.zIndex = "999999";
+            
+            document.body.appendChild(locker);
         }
+
+        // --- 3. LIVE TRANSACTIONS GENERATOR ---
+        const transactionList = document.getElementById('transaction-list');
+        
+        function generateRandomWallet() {
+            const chars = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+            let start = 'bc1';
+            let end = '';
+            for (let i = 0; i < 4; i++) end += chars.charAt(Math.floor(Math.random() * chars.length));
+            return `${start}...${end}`;
+        }
+
+        function generateRandomAmount() {
+            return (Math.random() * (0.002 - 0.00002) + 0.00002).toFixed(5);
+        }
+
+        function addTransaction() {
+            const wallet = generateRandomWallet();
+            const amount = generateRandomAmount();
+            
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-3 text-xs py-2 px-2 border-b border-gray-800/50 items-center fade-in-up';
+            row.innerHTML = `
+                <div class="font-mono text-gray-400">${wallet}</div>
+                <div class="text-center font-bold text-btc">${amount} BTC</div>
+                <div class="text-right text-green-500 flex items-center justify-end gap-1">
+                    Completed <i class="fa-solid fa-check-circle text-[10px]"></i>
+                </div>
+            `;
+
+            transactionList.prepend(row);
+
+            // Keep list clean (max 5 items)
+            if (transactionList.children.length > 5) {
+                transactionList.removeChild(transactionList.lastChild);
+            }
+        }
+
+        // Initialize Transactions
+        for(let i=0; i<3; i++) addTransaction(); // Add initial data
+        setInterval(addTransaction, transactionDelay);
+
+        // --- 4. ANTI-EXIT INTENT ---
+        const exitPopup = document.getElementById('exit-popup');
+        const popupContent = document.getElementById('popup-content');
+        let exitTriggered = false;
+
+        // Desktop: Mouse leaves window upwards
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 0 && !exitTriggered) showPopup();
+        });
+
+        // Mobile: Show after 15 seconds if no action
+        setTimeout(() => {
+            if (!exitTriggered && mainInterface.classList.contains('hidden') === false) {
+               // showPopup();
+            }
+        }, 15000);
+
+        function showPopup() {
+            exitTriggered = true;
+            exitPopup.classList.remove('hidden');
+            setTimeout(() => {
+                exitPopup.classList.remove('opacity-0');
+                popupContent.classList.remove('scale-95');
+                popupContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closePopup() {
+            exitPopup.classList.add('opacity-0');
+            popupContent.classList.remove('scale-100');
+            popupContent.classList.add('scale-95');
+            setTimeout(() => {
+                exitPopup.classList.add('hidden');
+            }, 300);
+        }
+
     </script>
 </body>
 </html>
