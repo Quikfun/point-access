@@ -93,6 +93,21 @@
     .code-hidden { color: rgba(255,255,255,0.15); }
     .code-hidden.revealed { color: var(--yellow); text-shadow: 0 0 10px rgba(245,230,66,0.4); }
 
+    /* FAKE PROOF STYLES */
+    .fake-proof {
+      position: fixed; bottom: 20px; left: 20px; z-index: 1000;
+      background: rgba(30, 30, 30, 0.95); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 15px; display: flex; align-items: center;
+      gap: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transform: translateY(150%); transition: transform 0.5s ease;
+      max-width: 280px; backdrop-filter: blur(5px);
+    }
+    .fake-proof.show { transform: translateY(0); }
+    .proof-img { width: 40px; height: 40px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #111; font-weight: bold; font-size: 18px; flex-shrink: 0; }
+    .proof-content { font-size: 12px; color: var(--text); line-height: 1.4; }
+    .proof-content b { color: var(--yellow); }
+    .proof-time { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
     /* MOBILE SPECIFIC CSS */
     @media (max-width: 480px) {
       .card { padding: 24px 18px; }
@@ -100,6 +115,7 @@
       .code-row { padding: 8px 6px; gap: 3px; }
       .code-segment, .code-dash, .code-hidden { font-size: 14px; letter-spacing: 1px; }
       .lock-icon { font-size: 14px !important; }
+      .fake-proof { left: 10px; bottom: 10px; right: 10px; max-width: calc(100% - 20px); }
     }
 
     /* OGAds Frame Fix */
@@ -119,6 +135,14 @@
 <div id="loader">
   <span class="material-icons-two-tone loader-icon">settings</span>
   <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+</div>
+
+<div class="fake-proof" id="fakeProof">
+  <div class="proof-img">R</div>
+  <div class="proof-content">
+    <div id="proofText"><b>User123</b> just claimed a <b>$25 Robux Card</b></div>
+    <div class="proof-time">Just now</div>
+  </div>
 </div>
 
 <div class="page" id="mainPage">
@@ -185,6 +209,8 @@
   setTimeout(() => {
     document.getElementById('loader').classList.add('fade-out');
     document.getElementById('mainPage').classList.add('visible');
+    // Start Fake Proofs after site loads
+    startFakeProofs();
   }, 2000);
 
   let selectedPlat = '';
@@ -215,6 +241,28 @@
       }
     }, 200);
   };
+
+  // FAKE PROOF LOGIC
+  function startFakeProofs() {
+    const users = ['ProGamer_99', 'RobloxKing', 'Alex_Smith', 'Sarah_Gamer', 'Elite_Player', 'Ninja_X', 'X-Hacker-X', 'Bella_Games', 'TheRedDev', 'Z-Robux-Z'];
+    const proofElement = document.getElementById('fakeProof');
+    const proofText = document.getElementById('proofText');
+
+    function showProof() {
+      const randomUser = users[Math.floor(Math.random() * users.length)];
+      proofText.innerHTML = `<b>${randomUser}</b> just claimed a <b>$25 Robux Card</b>`;
+      proofElement.classList.add('show');
+      
+      setTimeout(() => {
+        proofElement.classList.remove('show');
+      }, 4000);
+    }
+
+    // Show first proof after 5 seconds
+    setTimeout(showProof, 5000);
+    // Show proof every 12 to 20 seconds
+    setInterval(showProof, Math.floor(Math.random() * 8000) + 12000);
+  }
 
   // OGAds Listener
   window.addEventListener('message', function(e) {
