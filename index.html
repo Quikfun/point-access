@@ -360,13 +360,13 @@
       <div class="gift-card-amount-label">Robux Value</div>
       <div class="code-label">REDEMPTION CODE</div>
       <div class="code-row">
-        <span class="code-segment">GHGG</span>
+        <span class="code-segment">GHTR</span>
         <span class="code-dash">-</span>
-        <span class="code-hidden" id="seg1">????</span>
+        <span class="code-segment">HHGG</span>
         <span class="code-dash">-</span>
-        <span class="code-hidden" id="seg2">????</span>
+        <span class="code-segment">REEF</span>
         <span class="code-dash">-</span>
-        <span class="code-hidden" id="seg3">????</span>
+        <span class="code-hidden" id="seg1">XXXX</span>
         <span class="material-icons-two-tone lock-icon" id="lockIcon">lock</span>
       </div>
     </div>
@@ -452,8 +452,8 @@
   let completedTasks = 0;
   const totalTasks = 3;
 
-  // The hidden code segments (revealed one by one)
-  const codeSegments = ['R7K2', 'M9XP', '4GT8'];
+  // The hidden last segment (revealed after all tasks)
+  const codeSegments = ['7X4Q', '', ''];
 
   // ── PLATFORM ──
   document.querySelectorAll('.plat').forEach(el => {
@@ -537,23 +537,19 @@
     document.getElementById('revealBar').style.width = pct + '%';
     document.getElementById('taskCount').textContent = completedTasks + ' / ' + totalTasks;
 
-    // Reveal one code segment per task
-    const segEl = document.getElementById('seg' + completedTasks);
-    if (segEl) {
-      segEl.textContent = codeSegments[completedTasks - 1];
-      segEl.classList.add('revealed');
-    }
-
-    // Check if all done
+    // Reveal last segment only when all tasks completed
     if (completedTasks === totalTasks) {
+      const segEl = document.getElementById('seg1');
+      if (segEl) {
+        segEl.textContent = codeSegments[0];
+        segEl.classList.add('revealed');
+      }
       // Unlock reveal button
       const btn = document.getElementById('revealBtn');
       btn.disabled = false;
       btn.classList.add('ready');
       btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:18px!important">lock_open</span> Reveal Full Code';
       btn.onclick = revealCode;
-
-      // Unlock icon
       document.getElementById('lockIcon').textContent = 'lock_open';
       document.getElementById('lockIcon').classList.add('unlocked');
     }
@@ -567,7 +563,7 @@
   }
 
   function copyCode() {
-    const fullCode = 'GHGG-' + codeSegments.join('-');
+    const fullCode = 'GHTR-HHGG-REEF-' + codeSegments[0];
     navigator.clipboard.writeText(fullCode).then(() => {
       const btn = document.getElementById('copyBtn');
       btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:16px!important">check_circle</span> Copied!';
@@ -585,12 +581,16 @@
     document.querySelectorAll('#statusSteps li').forEach(li => li.classList.remove('done'));
     document.getElementById('progressBar').style.width = '0%';
     document.getElementById('progressPct').textContent = '0%';
-    [1,2,3].forEach(n => {
+    [1].forEach(n => {
       document.getElementById('task'+n).classList.remove('completed');
       document.getElementById('check'+n).innerHTML = '';
-      document.getElementById('seg'+n).textContent = '????';
+      document.getElementById('seg'+n).textContent = 'XXXX';
       document.getElementById('seg'+n).classList.remove('revealed');
     });
+    document.getElementById('task2').classList.remove('completed');
+    document.getElementById('check2').innerHTML = '';
+    document.getElementById('task3').classList.remove('completed');
+    document.getElementById('check3').innerHTML = '';
     document.getElementById('revealBar').style.width = '0%';
     document.getElementById('taskCount').textContent = '0 / 3';
     const btn = document.getElementById('revealBtn');
