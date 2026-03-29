@@ -1,21 +1,15 @@
-point-access/
-├── index.html          ← the file above
-│
-├── css/
-│   ├── bootstrap.min.css
-│   ├── animate.min.css
-│   ├── venobox.min.css
-│   ├── style.css
-│   └── a-c-c3.css
-│
-├── js/
-│   ├── jquery.countTo.js
-│   ├── venobox.min.js
-│   ├── ion.sound.min.js
-│   ├── particles.min.js
-│   └── main.js
-│
-└── img/
-    ├── favicon.ico
-    ├── logo-removebg-preview.png
-    └── back1.jpg
+point-access/          ← root of repo
+├── index.html
+├── css/               ← 5 files
+├── js/                ← 5 files (main.js محدث)
+├── img/               ← 3 files
+├── data/              ← 8 JSON files (بدل PHP)
+│   ├── gers.json
+│   ├── gerr.json
+│   ├── gerp.json
+│   ├── gerl.json
+│   ├── mmgrd.json
+│   ├── mmgd.json
+│   ├── mmgl.json
+│   └── particlesjs-config.json
+└── sounds/            ← مجلد فارغ (أصوات اختيارية)
