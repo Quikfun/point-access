@@ -1,0 +1,7 @@
+{
+  "ps1": "Connecting to [platform] servers...",
+  "ps2": "Account <strong>[username]</strong> found!",
+  "ps3": "Injecting <strong>[selected_amount]</strong> [resource_name]...",
+  "ps4": "Almost done...",
+  "ps5": "<strong>[selected_amount]</strong> [resource_name] ready!"
+}
