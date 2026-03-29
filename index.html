@@ -4,265 +4,267 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Update 2026</title>
-  <meta name="description" content="Most of players use this and they are really excited about it" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Exo+2:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" crossorigin="anonymous" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --yellow: #f5e642;
       --yellow-dark: #c9bc00;
       --bg: #1a1a1a;
-      --bg2: #222222;
-      --bg3: #2a2a2a;
       --text: #e8e8e8;
       --text-dim: #888;
       --border: #333;
       --card: #252525;
+      --red: #e74c3c;
     }
-
-    html, body {
-      height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Exo 2', sans-serif;
-      overflow-x: hidden;
-    }
+    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Exo 2', sans-serif; overflow-x: hidden; }
 
     /* BG */
-    .bg-layer {
-      position: fixed; inset: 0; z-index: 0;
-      background: linear-gradient(135deg, #0e0e0e 0%, #1c1c1c 40%, #141414 100%);
-      overflow: hidden;
-    }
-    .bg-layer::before {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px);
-    }
-    .bg-layer::after {
-      content: ''; position: absolute; top: -30%; left: -20%; width: 80%; height: 80%;
-      background: radial-gradient(ellipse, rgba(245,230,66,0.04) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .bg-glow {
-      position: absolute; bottom: -20%; right: -10%; width: 60%; height: 60%;
-      background: radial-gradient(ellipse, rgba(245,230,66,0.03) 0%, transparent 65%);
-      pointer-events: none;
-    }
+    .bg-layer { position: fixed; inset: 0; z-index: 0; background: linear-gradient(135deg, #0e0e0e 0%, #1c1c1c 40%, #141414 100%); overflow: hidden; }
+    .bg-layer::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px); }
+    .bg-glow { position: absolute; top: -30%; left: -20%; width: 80%; height: 80%; background: radial-gradient(ellipse, rgba(245,230,66,0.04) 0%, transparent 65%); pointer-events: none; }
+    .bg-glow2 { position: absolute; bottom: -20%; right: -10%; width: 60%; height: 60%; background: radial-gradient(ellipse, rgba(245,230,66,0.03) 0%, transparent 65%); pointer-events: none; }
     .bg-lines { position: absolute; inset: 0; overflow: hidden; opacity: 0.07; }
-    .bg-lines span {
-      position: absolute; display: block;
-      background: linear-gradient(90deg, transparent, rgba(245,230,66,0.5), transparent);
-      height: 1px; width: 250%; transform-origin: left center; left: -30%;
-    }
+    .bg-lines span { position: absolute; display: block; background: linear-gradient(90deg, transparent, rgba(245,230,66,0.5), transparent); height: 1px; width: 250%; transform-origin: left center; left: -30%; }
     .bg-lines span:nth-child(1) { top: 20%; transform: rotate(-15deg); }
     .bg-lines span:nth-child(2) { top: 45%; transform: rotate(-15deg); opacity: 0.5; }
     .bg-lines span:nth-child(3) { top: 70%; transform: rotate(-15deg); opacity: 0.3; }
 
     /* LOADER */
-    #loader {
-      position: fixed; inset: 0; z-index: 9999; background: var(--bg);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
-      transition: opacity 0.7s ease;
-    }
+    #loader { position: fixed; inset: 0; z-index: 9999; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; transition: opacity 0.7s ease; }
     #loader.fade-out { opacity: 0; pointer-events: none; }
-    .loader-icon {
-      font-size: 64px !important; color: var(--yellow);
-      animation: spin 2s linear infinite; display: block;
-      filter: drop-shadow(0 0 20px rgba(245,230,66,0.5));
-    }
+    .loader-icon { font-size: 64px !important; color: var(--yellow); animation: spin 2s linear infinite; display: block; filter: drop-shadow(0 0 20px rgba(245,230,66,0.5)); }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .loader-bar-wrap { width: 180px; height: 6px; background: #333; border-radius: 3px; overflow: hidden; }
-    .loader-bar {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, var(--yellow-dark), var(--yellow));
-      border-radius: 3px; transition: width 2s ease;
-      box-shadow: 0 0 10px var(--yellow);
-    }
+    .loader-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--yellow-dark), var(--yellow)); border-radius: 3px; transition: width 2s ease; box-shadow: 0 0 10px var(--yellow); }
 
     /* PAGE */
-    .page {
-      position: relative; z-index: 1; min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 30px 16px; opacity: 0; transition: opacity 0.5s ease 0.3s;
-    }
+    .page { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 16px; opacity: 0; transition: opacity 0.5s ease 0.3s; }
     .page.visible { opacity: 1; }
 
     /* HEADER */
     .site-header { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
     .site-header img { height: 54px; filter: drop-shadow(0 0 12px rgba(245,230,66,0.4)); }
-    .site-header h1 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(22px, 5vw, 34px); font-weight: 700;
-      color: var(--yellow); letter-spacing: 2px; text-transform: uppercase;
-      text-shadow: 0 0 20px rgba(245,230,66,0.3);
-    }
+    .site-header h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(22px, 5vw, 34px); font-weight: 700; color: var(--yellow); letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 20px rgba(245,230,66,0.3); }
 
     /* CARD */
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-      padding: 32px 28px; width: 100%; max-width: 480px; position: relative;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,230,66,0.06) inset;
-    }
-    .card::before {
-      content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(245,230,66,0.3), transparent);
-    }
-    .step-badge {
-      position: absolute; top: -16px; left: 28px;
-      background: var(--yellow); color: #111;
-      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 15px;
-      width: 32px; height: 32px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 14px rgba(245,230,66,0.5);
-    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; width: 100%; max-width: 480px; position: relative; box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,230,66,0.06) inset; }
+    .card::before { content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,230,66,0.3), transparent); }
+    .step-badge { position: absolute; top: -16px; left: 28px; background: var(--yellow); color: #111; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 15px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 14px rgba(245,230,66,0.5); }
     .card-title { font-size: 13px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px; margin-top: 8px; }
 
     /* INPUT */
-    .input-wrap {
-      display: flex; align-items: center; gap: 10px;
-      background: #1e1e1e; border: 1px solid var(--border); border-radius: 8px;
-      padding: 0 14px; margin-bottom: 8px; transition: border-color 0.2s, box-shadow 0.2s;
-    }
+    .input-wrap { display: flex; align-items: center; gap: 10px; background: #1e1e1e; border: 1px solid var(--border); border-radius: 8px; padding: 0 14px; margin-bottom: 8px; transition: border-color 0.2s, box-shadow 0.2s; }
     .input-wrap:focus-within { border-color: var(--yellow); box-shadow: 0 0 0 3px rgba(245,230,66,0.1); }
     .input-wrap .material-icons-two-tone { color: var(--yellow); font-size: 20px; opacity: 0.8; }
-    .input-wrap input {
-      flex: 1; background: none; border: none; outline: none;
-      color: var(--text); font-family: 'Exo 2', sans-serif; font-size: 14px; padding: 13px 0;
-    }
+    .input-wrap input { flex: 1; background: none; border: none; outline: none; color: var(--text); font-family: 'Exo 2', sans-serif; font-size: 14px; padding: 13px 0; }
     .input-wrap input::placeholder { color: #555; }
 
     /* ERROR */
-    .err-msg {
-      display: none; background: rgba(220,50,50,0.12); border: 1px solid rgba(220,50,50,0.3);
-      border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #e57373; margin-bottom: 16px;
-    }
+    .err-msg { display: none; background: rgba(220,50,50,0.12); border: 1px solid rgba(220,50,50,0.3); border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #e57373; margin-bottom: 12px; }
 
     /* PLATFORMS */
     .platforms-label { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; margin-top: 6px; }
     .platforms { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-    .plat-item { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 64px; }
-    .plat {
-      width: 100%; aspect-ratio: 1; background: #1e1e1e; border: 1px solid var(--border);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-size: 22px; color: #666; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden;
-    }
-    .plat::after {
-      content: ''; position: absolute; inset: 0; background: var(--yellow);
-      opacity: 0; transition: opacity 0.2s; border-radius: inherit;
-    }
+    .plat-item { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 60px; }
+    .plat { width: 100%; aspect-ratio: 1; background: #1e1e1e; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: #666; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
+    .plat::after { content: ''; position: absolute; inset: 0; background: var(--yellow); opacity: 0; transition: opacity 0.2s; }
     .plat i { position: relative; z-index: 1; transition: color 0.2s, transform 0.2s; }
     .plat:hover { border-color: #555; transform: translateY(-2px); }
     .plat:hover i { color: #999; transform: scale(1.1); }
     .plat.active { border-color: var(--yellow); box-shadow: 0 0 16px rgba(245,230,66,0.25), inset 0 0 20px rgba(245,230,66,0.08); }
     .plat.active::after { opacity: 0.08; }
     .plat.active i { color: var(--yellow); }
-    .plat-label { font-size: 9px; text-align: center; color: var(--text-dim); margin-top: 4px; letter-spacing: 0.5px; }
+    .plat-label { font-size: 9px; text-align: center; color: var(--text-dim); margin-top: 4px; }
 
     /* BUTTON */
-    .proceed-btn {
-      width: 100%; margin-top: 22px; padding: 14px;
-      background: linear-gradient(135deg, #d4c800, var(--yellow));
-      color: #111; font-family: 'Rajdhani', sans-serif; font-weight: 700;
-      font-size: 16px; letter-spacing: 2px; text-transform: uppercase;
-      border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s;
-      box-shadow: 0 4px 20px rgba(245,230,66,0.3); position: relative; overflow: hidden;
-    }
-    .proceed-btn::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.4s;
-    }
+    .proceed-btn { width: 100%; margin-top: 22px; padding: 14px; background: linear-gradient(135deg, #d4c800, var(--yellow)); color: #111; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 20px rgba(245,230,66,0.3); position: relative; overflow: hidden; }
+    .proceed-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.4s; }
     .proceed-btn:hover::before { left: 100%; }
     .proceed-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,230,66,0.4); }
-    .proceed-btn:active { transform: translateY(0); }
 
-    /* STEP 2 */
+    /* STEP 2 — VERIFY */
     #step2 { display: none; }
     .verify-header { text-align: center; margin-bottom: 24px; }
-    .verify-icon {
-      font-size: 48px !important; color: var(--yellow);
-      animation: spin 1.5s linear infinite; display: block; margin: 0 auto 12px;
-    }
+    .verify-icon { font-size: 48px !important; color: var(--yellow); animation: spin 1.5s linear infinite; display: block; margin: 0 auto 12px; }
     .verify-title { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; color: var(--yellow); letter-spacing: 1px; }
     .verify-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
-    .user-info-row {
-      display: flex; align-items: center; gap: 10px;
-      background: #1e1e1e; border: 1px solid var(--border); border-radius: 8px;
-      padding: 12px 16px; margin-bottom: 16px;
-    }
+    .user-info-row { display: flex; align-items: center; gap: 10px; background: #1e1e1e; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; }
     .user-info-row .material-icons-two-tone { color: var(--yellow); font-size: 20px; }
     .user-info-row .u-name { font-size: 14px; color: var(--text); font-weight: 600; }
     .user-info-row .plat-badge { margin-left: auto; color: var(--yellow); font-size: 18px; }
-
     .status-steps { list-style: none; margin-bottom: 20px; }
-    .status-steps li {
-      display: flex; align-items: center; gap: 10px; padding: 9px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--text-dim);
-      opacity: 0; transform: translateX(-10px); transition: opacity 0.4s, transform 0.4s, color 0.4s;
-    }
+    .status-steps li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--text-dim); opacity: 0; transform: translateX(-10px); transition: opacity 0.4s, transform 0.4s, color 0.4s; }
     .status-steps li.done { opacity: 1; transform: translateX(0); color: var(--text); }
     .status-steps li.done .step-dot { background: var(--yellow); box-shadow: 0 0 8px rgba(245,230,66,0.5); }
-    .step-dot { width: 8px; height: 8px; border-radius: 50%; background: #444; flex-shrink: 0; transition: background 0.3s, box-shadow 0.3s; }
-
+    .step-dot { width: 8px; height: 8px; border-radius: 50%; background: #444; flex-shrink: 0; transition: background 0.3s; }
     .progress-bar-wrap { background: #1e1e1e; border-radius: 6px; height: 8px; overflow: hidden; margin-bottom: 8px; }
-    .progress-bar {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, var(--yellow-dark), var(--yellow));
-      border-radius: 6px; transition: width 0.8s ease; box-shadow: 0 0 10px rgba(245,230,66,0.4);
-    }
-    .progress-pct { font-size: 11px; color: var(--text-dim); text-align: right; margin-bottom: 16px; }
+    .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--yellow-dark), var(--yellow)); border-radius: 6px; transition: width 0.8s ease; box-shadow: 0 0 10px rgba(245,230,66,0.4); }
+    .progress-pct { font-size: 11px; color: var(--text-dim); text-align: right; margin-bottom: 4px; }
 
-    /* STEP 3 */
-    #step3 { display: none; text-align: center; }
-    .success-icon-wrap {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: rgba(245,230,66,0.1); border: 2px solid var(--yellow);
+    /* ══════════════════════════════════
+       STEP 3 — GIFT CARD
+    ══════════════════════════════════ */
+    #step3 { display: none; }
+
+    .gift-header { text-align: center; margin-bottom: 24px; }
+    .gift-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,230,66,0.1); border: 1px solid rgba(245,230,66,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 14px;
+      font-size: 12px; color: var(--yellow); letter-spacing: 1px; text-transform: uppercase;
+    }
+    .gift-title { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .gift-sub { font-size: 12px; color: var(--text-dim); }
+
+    /* Gift Card Visual */
+    .gift-card-visual {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      border: 1px solid rgba(245,230,66,0.2);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .gift-card-visual::before {
+      content: '';
+      position: absolute; top: -40%; right: -20%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(245,230,66,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .gift-card-brand {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+    .roblox-icon {
+      width: 36px; height: 36px; background: var(--red);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px; color: white; font-family: 'Rajdhani', sans-serif;
+    }
+    .gift-card-brand-name { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+    .gift-card-brand-sub { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
+
+    .gift-card-amount { font-family: 'Rajdhani', sans-serif; font-size: 32px; font-weight: 700; color: var(--yellow); margin-bottom: 2px; text-shadow: 0 0 20px rgba(245,230,66,0.3); }
+    .gift-card-amount-label { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+
+    /* CODE DISPLAY */
+    .code-row {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 10px 14px;
+    }
+    .code-label { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .code-segment {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 18px; letter-spacing: 3px; color: #fff; font-weight: 400;
+    }
+    .code-dash { color: rgba(255,255,255,0.3); font-family: 'Share Tech Mono', monospace; font-size: 18px; margin: 0 2px; }
+    .code-hidden {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 18px; letter-spacing: 3px;
+      color: rgba(255,255,255,0.15);
+      position: relative;
+      user-select: none;
+    }
+    .code-hidden.revealed { color: var(--yellow); text-shadow: 0 0 10px rgba(245,230,66,0.4); animation: revealPop 0.4s ease; }
+    @keyframes revealPop { 0% { transform: scale(0.8); opacity: 0; } 60% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
+
+    .lock-icon { margin-left: auto; color: rgba(255,255,255,0.2); font-size: 16px !important; transition: all 0.3s; }
+    .lock-icon.unlocked { color: var(--yellow); }
+
+    /* TASK BOX */
+    .task-box {
+      background: rgba(245,230,66,0.05); border: 1px solid rgba(245,230,66,0.15);
+      border-radius: 10px; padding: 18px; margin-bottom: 16px;
+    }
+    .task-box-title {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
+      color: var(--yellow); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .task-box-title .material-icons-two-tone { font-size: 18px !important; }
+
+    .task-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px; color: var(--text-dim); cursor: pointer;
+      transition: color 0.2s;
+    }
+    .task-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .task-item:hover { color: var(--text); }
+    .task-item.completed { color: var(--text); }
+    .task-check {
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid var(--border); background: #1e1e1e;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px; box-shadow: 0 0 30px rgba(245,230,66,0.3);
+      flex-shrink: 0; transition: all 0.3s; font-size: 12px;
     }
-    .check-path {
-      stroke: var(--yellow); stroke-width: 3; fill: none;
-      stroke-dasharray: 50; stroke-dashoffset: 50;
-      animation: drawCheck 0.6s ease 0.2s forwards;
+    .task-item.completed .task-check { background: var(--yellow); border-color: var(--yellow); color: #111; }
+    .task-desc { flex: 1; line-height: 1.4; }
+    .task-pts { font-size: 11px; color: var(--yellow); font-weight: 600; white-space: nowrap; }
+
+    /* REVEAL PROGRESS */
+    .reveal-progress { margin-bottom: 16px; }
+    .reveal-progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 6px; }
+    .reveal-progress-bar-wrap { background: #1e1e1e; border-radius: 4px; height: 6px; overflow: hidden; }
+    .reveal-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--yellow-dark), var(--yellow)); border-radius: 4px; transition: width 0.5s ease; box-shadow: 0 0 8px rgba(245,230,66,0.3); }
+
+    /* REVEAL BUTTON */
+    .reveal-btn {
+      width: 100%; padding: 14px; background: #1e1e1e; color: var(--text-dim);
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 15px;
+      letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--border);
+      border-radius: 8px; cursor: not-allowed; transition: all 0.3s; display: flex;
+      align-items: center; justify-content: center; gap: 8px;
     }
+    .reveal-btn.ready {
+      background: linear-gradient(135deg, #d4c800, var(--yellow));
+      color: #111; border-color: transparent; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(245,230,66,0.3); animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse { 0%,100% { box-shadow: 0 4px 20px rgba(245,230,66,0.3); } 50% { box-shadow: 0 4px 30px rgba(245,230,66,0.6); } }
+    .reveal-btn.ready:hover { transform: translateY(-2px); }
+
+    /* COPY BTN */
+    .copy-btn {
+      width: 100%; padding: 12px; background: rgba(245,230,66,0.1);
+      border: 1px solid rgba(245,230,66,0.3); color: var(--yellow);
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px;
+      letter-spacing: 1px; text-transform: uppercase; border-radius: 8px;
+      cursor: pointer; transition: all 0.2s; display: none;
+      align-items: center; justify-content: center; gap: 8px; margin-top: 10px;
+    }
+    .copy-btn:hover { background: rgba(245,230,66,0.18); }
+    .copy-btn.show { display: flex; }
+
+    /* STEP 4 — SUCCESS */
+    #step4 { display: none; text-align: center; }
+    .success-icon-wrap { width: 72px; height: 72px; border-radius: 50%; background: rgba(245,230,66,0.1); border: 2px solid var(--yellow); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 0 30px rgba(245,230,66,0.3); }
+    .check-path { stroke: var(--yellow); stroke-width: 3; fill: none; stroke-dasharray: 50; stroke-dashoffset: 50; animation: drawCheck 0.6s ease 0.2s forwards; }
     @keyframes drawCheck { to { stroke-dashoffset: 0; } }
     .success-title { font-family: 'Rajdhani', sans-serif; font-size: 24px; font-weight: 700; color: var(--yellow); letter-spacing: 1px; margin-bottom: 8px; }
     .success-msg { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 24px; }
-    .restart-btn {
-      background: none; border: 1px solid var(--border); color: var(--text-dim);
-      font-family: 'Exo 2', sans-serif; font-size: 13px; padding: 10px 24px;
-      border-radius: 6px; cursor: pointer; transition: all 0.2s;
-    }
+    .restart-btn { background: none; border: 1px solid var(--border); color: var(--text-dim); font-family: 'Exo 2', sans-serif; font-size: 13px; padding: 10px 24px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
     .restart-btn:hover { border-color: var(--yellow); color: var(--yellow); }
 
     /* ANIMS */
-    @keyframes bounceIn {
-      0% { opacity: 0; transform: scale(0.75); }
-      60% { transform: scale(1.04); }
-      100% { opacity: 1; transform: scale(1); }
-    }
+    @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.75); } 60% { transform: scale(1.04); } 100% { opacity: 1; transform: scale(1); } }
     .bounce-in { animation: bounceIn 0.45s ease forwards; }
-    @keyframes bounceOut {
-      0% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(0.75); }
-    }
+    @keyframes bounceOut { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.75); } }
     .bounce-out { animation: bounceOut 0.35s ease forwards; }
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      20%,60% { transform: translateX(-6px); }
-      40%,80% { transform: translateX(6px); }
-    }
+    @keyframes shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-6px); } 40%,80% { transform: translateX(6px); } }
     .shake { animation: shake 0.4s ease; }
   </style>
 </head>
 <body>
 
 <div class="bg-layer">
-  <div class="bg-glow"></div>
+  <div class="bg-glow"></div><div class="bg-glow2"></div>
   <div class="bg-lines"><span></span><span></span><span></span></div>
 </div>
 
@@ -311,7 +313,7 @@
     <button class="proceed-btn" id="proceedBtn">Proceed</button>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- STEP 2 — VERIFY -->
   <div class="card" id="step2">
     <div class="step-badge">2</div>
     <div class="verify-header">
@@ -335,35 +337,125 @@
     <div class="progress-pct" id="progressPct">0%</div>
   </div>
 
-  <!-- STEP 3 -->
+  <!-- STEP 3 — GIFT CARD + TASKS -->
   <div class="card" id="step3">
-    <div class="step-badge">✓</div>
-    <div class="success-icon-wrap">
-      <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-        <path class="check-path" d="M14 27l7 7 17-17"/>
-      </svg>
+    <div class="step-badge">3</div>
+
+    <div class="gift-header">
+      <div class="gift-badge"><span class="material-icons-two-tone" style="font-size:14px!important">card_giftcard</span> Gift Card Ready</div>
+      <div class="gift-title">Your Roblox Gift Card</div>
+      <div class="gift-sub">Complete the tasks below to reveal your full code</div>
     </div>
-    <div class="success-title">Resources Added!</div>
-    <p class="success-msg" id="successMsg"></p>
-    <button class="restart-btn" id="restartBtn">← Try Again</button>
+
+    <!-- Card Visual -->
+    <div class="gift-card-visual">
+      <div class="gift-card-brand">
+        <div class="roblox-icon">R</div>
+        <div>
+          <div class="gift-card-brand-name">ROBLOX</div>
+          <div class="gift-card-brand-sub">Gift Card</div>
+        </div>
+      </div>
+      <div class="gift-card-amount">$25.00</div>
+      <div class="gift-card-amount-label">Robux Value</div>
+      <div class="code-label">REDEMPTION CODE</div>
+      <div class="code-row">
+        <span class="code-segment">GHGG</span>
+        <span class="code-dash">-</span>
+        <span class="code-hidden" id="seg1">????</span>
+        <span class="code-dash">-</span>
+        <span class="code-hidden" id="seg2">????</span>
+        <span class="code-dash">-</span>
+        <span class="code-hidden" id="seg3">????</span>
+        <span class="material-icons-two-tone lock-icon" id="lockIcon">lock</span>
+      </div>
+    </div>
+
+    <!-- Reveal Progress -->
+    <div class="reveal-progress">
+      <div class="reveal-progress-label">
+        <span>Tasks completed</span>
+        <span id="taskCount">0 / 3</span>
+      </div>
+      <div class="reveal-progress-bar-wrap">
+        <div class="reveal-progress-bar" id="revealBar"></div>
+      </div>
+    </div>
+
+    <!-- Tasks -->
+    <div class="task-box">
+      <div class="task-box-title">
+        <span class="material-icons-two-tone">assignment</span>
+        Complete to Unlock
+      </div>
+
+      <div class="task-item" id="task1" onclick="completeTask(1)">
+        <div class="task-check" id="check1"></div>
+        <div class="task-desc">Subscribe to our YouTube channel</div>
+        <div class="task-pts">+1 task</div>
+      </div>
+
+      <div class="task-item" id="task2" onclick="completeTask(2)">
+        <div class="task-check" id="check2"></div>
+        <div class="task-desc">Follow us on Instagram</div>
+        <div class="task-pts">+1 task</div>
+      </div>
+
+      <div class="task-item" id="task3" onclick="completeTask(3)">
+        <div class="task-check" id="check3"></div>
+        <div class="task-desc">Share this page with a friend</div>
+        <div class="task-pts">+1 task</div>
+      </div>
+    </div>
+
+    <!-- Reveal Button -->
+    <button class="reveal-btn" id="revealBtn" disabled>
+      <span class="material-icons-two-tone" style="font-size:18px!important">lock</span>
+      Complete Tasks to Reveal Code
+    </button>
+
+    <!-- Copy Button (hidden until revealed) -->
+    <button class="copy-btn" id="copyBtn" onclick="copyCode()">
+      <span class="material-icons-two-tone" style="font-size:16px!important">content_copy</span>
+      Copy Full Code
+    </button>
+  </div>
+
+  <!-- STEP 4 — DONE -->
+  <div class="card" id="step4">
+    <div class="step-badge">✓</div>
+    <div style="text-align:center">
+      <div class="success-icon-wrap">
+        <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <path class="check-path" d="M14 27l7 7 17-17"/>
+        </svg>
+      </div>
+      <div class="success-title">Code Revealed!</div>
+      <p class="success-msg" id="successMsg"></p>
+      <button class="restart-btn" id="restartBtn">← Start Again</button>
+    </div>
   </div>
 </div>
 
 <script>
-  // LOADER
-  const loaderBar = document.getElementById('loaderBar');
-  const loader = document.getElementById('loader');
-  const mainPage = document.getElementById('mainPage');
-  setTimeout(() => { loaderBar.style.width = '100%'; }, 80);
+  // ── LOADER ──
+  setTimeout(() => { document.getElementById('loaderBar').style.width = '100%'; }, 80);
   setTimeout(() => {
+    const loader = document.getElementById('loader');
     loader.classList.add('fade-out');
-    mainPage.classList.add('visible');
+    document.getElementById('mainPage').classList.add('visible');
     setTimeout(() => { loader.style.display = 'none'; }, 700);
   }, 2200);
 
+  // ── STATE ──
   let selectedPlatform = '', selectedIcon = '', username = '';
+  let completedTasks = 0;
+  const totalTasks = 3;
 
-  // PLATFORM
+  // The hidden code segments (revealed one by one)
+  const codeSegments = ['R7K2', 'M9XP', '4GT8'];
+
+  // ── PLATFORM ──
   document.querySelectorAll('.plat').forEach(el => {
     el.addEventListener('click', () => {
       document.querySelectorAll('.plat').forEach(p => p.classList.remove('active'));
@@ -374,7 +466,7 @@
     });
   });
 
-  // PROCEED
+  // ── PROCEED ──
   document.getElementById('proceedBtn').addEventListener('click', proceed);
   document.getElementById('usernameInput').addEventListener('keypress', e => { if (e.key === 'Enter') proceed(); });
 
@@ -403,15 +495,14 @@
     const f = document.getElementById(from);
     f.classList.add('bounce-out');
     setTimeout(() => {
-      f.style.display = 'none';
-      f.classList.remove('bounce-out');
+      f.style.display = 'none'; f.classList.remove('bounce-out');
       const t = document.getElementById(to);
-      t.style.display = 'block';
-      t.classList.add('bounce-in');
+      t.style.display = 'block'; t.classList.add('bounce-in');
       setTimeout(() => t.classList.remove('bounce-in'), 500);
     }, 350);
   }
 
+  // ── VERIFICATION ──
   function runVerification() {
     const steps = document.querySelectorAll('#statusSteps li');
     const bar = document.getElementById('progressBar');
@@ -427,24 +518,89 @@
     });
     setTimeout(() => {
       bar.style.width = '100%'; pct.textContent = '100%';
-      setTimeout(() => showSuccess(), 700);
+      setTimeout(() => switchCard('step2', 'step3'), 700);
     }, 5500);
   }
 
-  function showSuccess() {
-    switchCard('step2', 'step3');
-    document.getElementById('successMsg').textContent =
-      `Successfully added to ${username}'s account on ${selectedPlatform}.`;
+  // ── TASKS ──
+  function completeTask(n) {
+    const item = document.getElementById('task' + n);
+    const check = document.getElementById('check' + n);
+    if (item.classList.contains('completed')) return;
+
+    item.classList.add('completed');
+    check.innerHTML = '✓';
+    completedTasks++;
+
+    // Update progress bar
+    const pct = (completedTasks / totalTasks) * 100;
+    document.getElementById('revealBar').style.width = pct + '%';
+    document.getElementById('taskCount').textContent = completedTasks + ' / ' + totalTasks;
+
+    // Reveal one code segment per task
+    const segEl = document.getElementById('seg' + completedTasks);
+    if (segEl) {
+      segEl.textContent = codeSegments[completedTasks - 1];
+      segEl.classList.add('revealed');
+    }
+
+    // Check if all done
+    if (completedTasks === totalTasks) {
+      // Unlock reveal button
+      const btn = document.getElementById('revealBtn');
+      btn.disabled = false;
+      btn.classList.add('ready');
+      btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:18px!important">lock_open</span> Reveal Full Code';
+      btn.onclick = revealCode;
+
+      // Unlock icon
+      document.getElementById('lockIcon').textContent = 'lock_open';
+      document.getElementById('lockIcon').classList.add('unlocked');
+    }
   }
 
+  function revealCode() {
+    document.getElementById('copyBtn').classList.add('show');
+    document.getElementById('revealBtn').style.display = 'none';
+    // Optional: go to success after 3s
+    // setTimeout(() => showSuccess(), 3000);
+  }
+
+  function copyCode() {
+    const fullCode = 'GHGG-' + codeSegments.join('-');
+    navigator.clipboard.writeText(fullCode).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:16px!important">check_circle</span> Copied!';
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:16px!important">content_copy</span> Copy Full Code';
+      }, 2000);
+    });
+  }
+
+  // ── RESTART ──
   document.getElementById('restartBtn').addEventListener('click', () => {
-    selectedPlatform = ''; selectedIcon = ''; username = '';
+    selectedPlatform = ''; selectedIcon = ''; username = ''; completedTasks = 0;
     document.getElementById('usernameInput').value = '';
     document.querySelectorAll('.plat').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('#statusSteps li').forEach(li => li.classList.remove('done'));
     document.getElementById('progressBar').style.width = '0%';
     document.getElementById('progressPct').textContent = '0%';
-    switchCard('step3', 'step1');
+    [1,2,3].forEach(n => {
+      document.getElementById('task'+n).classList.remove('completed');
+      document.getElementById('check'+n).innerHTML = '';
+      document.getElementById('seg'+n).textContent = '????';
+      document.getElementById('seg'+n).classList.remove('revealed');
+    });
+    document.getElementById('revealBar').style.width = '0%';
+    document.getElementById('taskCount').textContent = '0 / 3';
+    const btn = document.getElementById('revealBtn');
+    btn.disabled = true; btn.classList.remove('ready'); btn.onclick = null;
+    btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:18px!important">lock</span> Complete Tasks to Reveal Code';
+    btn.style.display = '';
+    document.getElementById('copyBtn').classList.remove('show');
+    document.getElementById('lockIcon').textContent = 'lock';
+    document.getElementById('lockIcon').classList.remove('unlocked');
+    switchCard('step4', 'step1');
   });
 </script>
 </body>
