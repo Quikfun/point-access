@@ -22,7 +22,7 @@
     }
     html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Exo 2', sans-serif; overflow-x: hidden; }
 
-    /* BG */
+    /* BG Layers */
     .bg-layer { position: fixed; inset: 0; z-index: 0; background: linear-gradient(135deg, #0e0e0e 0%, #1c1c1c 40%, #141414 100%); overflow: hidden; }
     .bg-layer::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px); }
     .bg-glow { position: absolute; top: -30%; left: -20%; width: 80%; height: 80%; background: radial-gradient(ellipse, rgba(245,230,66,0.04) 0%, transparent 65%); pointer-events: none; }
@@ -41,86 +41,33 @@
     .loader-bar-wrap { width: 180px; height: 6px; background: #333; border-radius: 3px; overflow: hidden; }
     .loader-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--yellow-dark), var(--yellow)); border-radius: 3px; transition: width 2s ease; box-shadow: 0 0 10px var(--yellow); }
 
-    /* PAGE */
+    /* PAGE STRUCTURE */
     .page { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 16px; opacity: 0; transition: opacity 0.5s ease 0.3s; }
     .page.visible { opacity: 1; }
-
-    /* HEADER */
     .site-header { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
     .site-header img { height: 54px; filter: drop-shadow(0 0 12px rgba(245,230,66,0.4)); }
     .site-header h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(22px, 5vw, 34px); font-weight: 700; color: var(--yellow); letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 20px rgba(245,230,66,0.3); }
 
-    /* CARD */
+    /* CARD DESIGN */
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; width: 100%; max-width: 480px; position: relative; box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,230,66,0.06) inset; }
     .card::before { content: ''; position: absolute; top: 0; left: 20px; right: 20px; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,230,66,0.3), transparent); }
     .step-badge { position: absolute; top: -16px; left: 28px; background: var(--yellow); color: #111; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 15px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 14px rgba(245,230,66,0.5); }
     .card-title { font-size: 13px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px; margin-top: 8px; }
 
-    /* INPUT */
+    /* INPUTS & PLATFORMS */
     .input-wrap { display: flex; align-items: center; gap: 10px; background: #1e1e1e; border: 1px solid var(--border); border-radius: 8px; padding: 0 14px; margin-bottom: 8px; transition: border-color 0.2s, box-shadow 0.2s; }
     .input-wrap:focus-within { border-color: var(--yellow); box-shadow: 0 0 0 3px rgba(245,230,66,0.1); }
     .input-wrap .material-icons-two-tone { color: var(--yellow); font-size: 20px; opacity: 0.8; }
     .input-wrap input { flex: 1; background: none; border: none; outline: none; color: var(--text); font-family: 'Exo 2', sans-serif; font-size: 14px; padding: 13px 0; }
     .input-wrap input::placeholder { color: #555; }
-
-    /* ERROR */
-    .err-msg { display: none; background: rgba(220,50,50,0.12); border: 1px solid rgba(220,50,50,0.3); border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #e57373; margin-bottom: 12px; }
-
-    /* PLATFORMS */
-    .platforms-label { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; margin-top: 6px; }
     .platforms { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
     .plat-item { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 60px; }
     .plat { width: 100%; aspect-ratio: 1; background: #1e1e1e; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: #666; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
-    .plat::after { content: ''; position: absolute; inset: 0; background: var(--yellow); opacity: 0; transition: opacity 0.2s; }
-    .plat i { position: relative; z-index: 1; transition: color 0.2s, transform 0.2s; }
-    .plat:hover { border-color: #555; transform: translateY(-2px); }
-    .plat:hover i { color: #999; transform: scale(1.1); }
-    .plat.active { border-color: var(--yellow); box-shadow: 0 0 16px rgba(245,230,66,0.25), inset 0 0 20px rgba(245,230,66,0.08); }
-    .plat.active::after { opacity: 0.08; }
+    .plat.active { border-color: var(--yellow); box-shadow: 0 0 16px rgba(245,230,66,0.25); }
     .plat.active i { color: var(--yellow); }
-    .plat-label { font-size: 9px; text-align: center; color: var(--text-dim); margin-top: 4px; }
+    .proceed-btn { width: 100%; margin-top: 22px; padding: 14px; background: linear-gradient(135deg, #d4c800, var(--yellow)); color: #111; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 20px rgba(245,230,66,0.3); }
 
-    /* BUTTON */
-    .proceed-btn { width: 100%; margin-top: 22px; padding: 14px; background: linear-gradient(135deg, #d4c800, var(--yellow)); color: #111; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 20px rgba(245,230,66,0.3); position: relative; overflow: hidden; }
-    .proceed-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.4s; }
-    .proceed-btn:hover::before { left: 100%; }
-    .proceed-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,230,66,0.4); }
-
-    /* STEP 2 — VERIFY */
-    #step2 { display: none; }
-    .verify-header { text-align: center; margin-bottom: 24px; }
-    .verify-icon { font-size: 48px !important; color: var(--yellow); animation: spin 1.5s linear infinite; display: block; margin: 0 auto 12px; }
-    .verify-title { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; color: var(--yellow); letter-spacing: 1px; }
-    .verify-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
-    .user-info-row { display: flex; align-items: center; gap: 10px; background: #1e1e1e; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; }
-    .user-info-row .material-icons-two-tone { color: var(--yellow); font-size: 20px; }
-    .user-info-row .u-name { font-size: 14px; color: var(--text); font-weight: 600; }
-    .user-info-row .plat-badge { margin-left: auto; color: var(--yellow); font-size: 18px; }
-    .status-steps { list-style: none; margin-bottom: 20px; }
-    .status-steps li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--text-dim); opacity: 0; transform: translateX(-10px); transition: opacity 0.4s, transform 0.4s, color 0.4s; }
-    .status-steps li.done { opacity: 1; transform: translateX(0); color: var(--text); }
-    .status-steps li.done .step-dot { background: var(--yellow); box-shadow: 0 0 8px rgba(245,230,66,0.5); }
-    .step-dot { width: 8px; height: 8px; border-radius: 50%; background: #444; flex-shrink: 0; transition: background 0.3s; }
-    .progress-bar-wrap { background: #1e1e1e; border-radius: 6px; height: 8px; overflow: hidden; margin-bottom: 8px; }
-    .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--yellow-dark), var(--yellow)); border-radius: 6px; transition: width 0.8s ease; box-shadow: 0 0 10px rgba(245,230,66,0.4); }
-    .progress-pct { font-size: 11px; color: var(--text-dim); text-align: right; margin-bottom: 4px; }
-
-    /* ══════════════════════════════════
-       STEP 3 — GIFT CARD
-    ══════════════════════════════════ */
-    #step3 { display: none; }
-
-    .gift-header { text-align: center; margin-bottom: 24px; }
-    .gift-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(245,230,66,0.1); border: 1px solid rgba(245,230,66,0.3);
-      border-radius: 20px; padding: 6px 16px; margin-bottom: 14px;
-      font-size: 12px; color: var(--yellow); letter-spacing: 1px; text-transform: uppercase;
-    }
-    .gift-title { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .gift-sub { font-size: 12px; color: var(--text-dim); }
-
-    /* Gift Card Visual */
+    /* GIFT CARD - RESPONSIVE FIX */
     .gift-card-visual {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       border: 1px solid rgba(245,230,66,0.2);
@@ -131,437 +78,152 @@
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     }
-    .gift-card-visual::before {
-      content: '';
-      position: absolute; top: -40%; right: -20%;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(245,230,66,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .gift-card-brand {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
-    }
-    .roblox-icon {
-      width: 36px; height: 36px; background: var(--red);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 18px; color: white; font-family: 'Rajdhani', sans-serif;
-    }
-    .gift-card-brand-name { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 1px; }
-    .gift-card-brand-sub { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
-
-    .gift-card-amount { font-family: 'Rajdhani', sans-serif; font-size: 32px; font-weight: 700; color: var(--yellow); margin-bottom: 2px; text-shadow: 0 0 20px rgba(245,230,66,0.3); }
-    .gift-card-amount-label { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
-
-    /* CODE DISPLAY */
+    .gift-card-amount { font-family: 'Rajdhani', sans-serif; font-size: 32px; font-weight: 700; color: var(--yellow); text-shadow: 0 0 20px rgba(245,230,66,0.3); }
+    
     .code-row {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; background: rgba(0,0,0,0.4); 
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 8px; padding: 10px 14px;
     }
-    .code-label { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .code-segment {
+    .code-segment, .code-dash, .code-hidden {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 18px; letter-spacing: 3px; color: #fff; font-weight: 400;
+      font-size: 18px; letter-spacing: 2px; color: #fff;
     }
-    .code-dash { color: rgba(255,255,255,0.3); font-family: 'Share Tech Mono', monospace; font-size: 18px; margin: 0 2px; }
-    .code-hidden {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 18px; letter-spacing: 3px;
-      color: rgba(255,255,255,0.15);
-      position: relative;
-      user-select: none;
+    .code-hidden { color: rgba(255,255,255,0.15); }
+    .code-hidden.revealed { color: var(--yellow); text-shadow: 0 0 10px rgba(245,230,66,0.4); }
+
+    /* MOBILE SPECIFIC CSS */
+    @media (max-width: 480px) {
+      .card { padding: 24px 18px; }
+      .gift-card-visual { padding: 18px 14px; }
+      .code-row { padding: 8px 6px; gap: 3px; }
+      .code-segment, .code-dash, .code-hidden { font-size: 14px; letter-spacing: 1px; }
+      .lock-icon { font-size: 14px !important; }
     }
-    .code-hidden.revealed { color: var(--yellow); text-shadow: 0 0 10px rgba(245,230,66,0.4); animation: revealPop 0.4s ease; }
-    @keyframes revealPop { 0% { transform: scale(0.8); opacity: 0; } 60% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
 
-    .lock-icon { margin-left: auto; color: rgba(255,255,255,0.2); font-size: 16px !important; transition: all 0.3s; }
-    .lock-icon.unlocked { color: var(--yellow); }
+    /* OGAds Frame Fix */
+    #ogadsFrame { width:100%; min-height:550px; border-radius:10px; border:none; background:transparent; overflow:hidden; }
 
-    /* TASK BOX */
-    .task-box {
-      background: rgba(245,230,66,0.05); border: 1px solid rgba(245,230,66,0.15);
-      border-radius: 10px; padding: 18px; margin-bottom: 16px;
-    }
-    .task-box-title {
-      display: flex; align-items: center; gap: 8px;
-      font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
-      color: var(--yellow); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
-    }
-    .task-box-title .material-icons-two-tone { font-size: 18px !important; }
-
-    .task-item {
-      display: flex; align-items: center; gap: 12px;
-      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-      font-size: 13px; color: var(--text-dim); cursor: pointer;
-      transition: color 0.2s;
-    }
-    .task-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .task-item:hover { color: var(--text); }
-    .task-item.completed { color: var(--text); }
-    .task-check {
-      width: 22px; height: 22px; border-radius: 50%;
-      border: 2px solid var(--border); background: #1e1e1e;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: all 0.3s; font-size: 12px;
-    }
-    .task-item.completed .task-check { background: var(--yellow); border-color: var(--yellow); color: #111; }
-    .task-desc { flex: 1; line-height: 1.4; }
-    .task-pts { font-size: 11px; color: var(--yellow); font-weight: 600; white-space: nowrap; }
-
-    /* REVEAL PROGRESS */
-    .reveal-progress { margin-bottom: 16px; }
-    .reveal-progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 6px; }
-    .reveal-progress-bar-wrap { background: #1e1e1e; border-radius: 4px; height: 6px; overflow: hidden; }
-    .reveal-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--yellow-dark), var(--yellow)); border-radius: 4px; transition: width 0.5s ease; box-shadow: 0 0 8px rgba(245,230,66,0.3); }
-
-    /* REVEAL BUTTON */
-    .reveal-btn {
-      width: 100%; padding: 14px; background: #1e1e1e; color: var(--text-dim);
-      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 15px;
-      letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--border);
-      border-radius: 8px; cursor: not-allowed; transition: all 0.3s; display: flex;
-      align-items: center; justify-content: center; gap: 8px;
-    }
-    .reveal-btn.ready {
-      background: linear-gradient(135deg, #d4c800, var(--yellow));
-      color: #111; border-color: transparent; cursor: pointer;
-      box-shadow: 0 4px 20px rgba(245,230,66,0.3); animation: pulse 2s ease infinite;
-    }
-    @keyframes pulse { 0%,100% { box-shadow: 0 4px 20px rgba(245,230,66,0.3); } 50% { box-shadow: 0 4px 30px rgba(245,230,66,0.6); } }
-    .reveal-btn.ready:hover { transform: translateY(-2px); }
-
-    /* LOCKER */
-    .locker-wrap { margin-bottom: 14px; }
-    .locker-label { font-size: 12px; color: var(--text-dim); text-align: center; margin-bottom: 10px; letter-spacing: 0.5px; }
-
-    /* COPY BTN */
-    .copy-btn {
-      width: 100%; padding: 12px; background: rgba(245,230,66,0.1);
-      border: 1px solid rgba(245,230,66,0.3); color: var(--yellow);
-      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px;
-      letter-spacing: 1px; text-transform: uppercase; border-radius: 8px;
-      cursor: pointer; transition: all 0.2s; display: none;
-      align-items: center; justify-content: center; gap: 8px; margin-top: 10px;
-    }
-    .copy-btn:hover { background: rgba(245,230,66,0.18); }
-    .copy-btn.show { display: flex; }
-
-    /* STEP 4 — SUCCESS */
-    #step4 { display: none; text-align: center; }
-    .success-icon-wrap { width: 72px; height: 72px; border-radius: 50%; background: rgba(245,230,66,0.1); border: 2px solid var(--yellow); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 0 30px rgba(245,230,66,0.3); }
-    .check-path { stroke: var(--yellow); stroke-width: 3; fill: none; stroke-dasharray: 50; stroke-dashoffset: 50; animation: drawCheck 0.6s ease 0.2s forwards; }
-    @keyframes drawCheck { to { stroke-dashoffset: 0; } }
-    .success-title { font-family: 'Rajdhani', sans-serif; font-size: 24px; font-weight: 700; color: var(--yellow); letter-spacing: 1px; margin-bottom: 8px; }
-    .success-msg { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 24px; }
-    .restart-btn { background: none; border: 1px solid var(--border); color: var(--text-dim); font-family: 'Exo 2', sans-serif; font-size: 13px; padding: 10px 24px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-    .restart-btn:hover { border-color: var(--yellow); color: var(--yellow); }
-
-    /* ANIMS */
-    @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.75); } 60% { transform: scale(1.04); } 100% { opacity: 1; transform: scale(1); } }
+    /* ANIMATIONS */
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .bounce-in { animation: bounceIn 0.45s ease forwards; }
-    @keyframes bounceOut { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.75); } }
-    .bounce-out { animation: bounceOut 0.35s ease forwards; }
-    @keyframes shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-6px); } 40%,80% { transform: translateX(6px); } }
-    .shake { animation: shake 0.4s ease; }
+    @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.75); } 100% { opacity: 1; transform: scale(1); } }
+    #step2, #step3, #step4 { display: none; }
   </style>
 </head>
 <body>
 
-<div class="bg-layer">
-  <div class="bg-glow"></div><div class="bg-glow2"></div>
-  <div class="bg-lines"><span></span><span></span><span></span></div>
-</div>
+<div class="bg-layer"><div class="bg-glow"></div><div class="bg-lines"><span></span></div></div>
 
-<!-- LOADER -->
 <div id="loader">
   <span class="material-icons-two-tone loader-icon">settings</span>
   <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
 </div>
 
-<!-- PAGE -->
 <div class="page" id="mainPage">
   <header class="site-header">
     <img src="img/logo-removebg-preview.png" alt="Logo" onerror="this.style.display='none'" />
     <h1>Update 2026</h1>
   </header>
 
-  <!-- STEP 1 -->
   <div class="card" id="step1">
     <div class="step-badge">1</div>
-    <p class="card-title">Please enter your username and select your platform.</p>
+    <p class="card-title">Enter username & platform</p>
     <div class="input-wrap">
       <span class="material-icons-two-tone">face</span>
-      <input type="text" id="usernameInput" placeholder="Your Username..." autocomplete="off" />
+      <input type="text" id="usernameInput" placeholder="Your Username..." />
     </div>
-    <div class="err-msg" id="errUser">Please enter your username.</div>
-    <p class="platforms-label">Select Platform</p>
     <div class="platforms">
-      <div class="plat-item">
-        <div class="plat" data-platform="Windows PC" data-icon="fab fa-windows"><i class="fab fa-windows"></i></div>
-        <div class="plat-label">Windows</div>
-      </div>
-      <div class="plat-item">
-        <div class="plat" data-platform="Xbox" data-icon="fab fa-xbox"><i class="fab fa-xbox"></i></div>
-        <div class="plat-label">Xbox</div>
-      </div>
-      <div class="plat-item">
-        <div class="plat" data-platform="Android" data-icon="fab fa-android"><i class="fab fa-android"></i></div>
-        <div class="plat-label">Android</div>
-      </div>
-      <div class="plat-item">
-        <div class="plat" data-platform="iOS" data-icon="fab fa-apple"><i class="fab fa-apple"></i></div>
-        <div class="plat-label">iOS</div>
-      </div>
+      <div class="plat-item"><div class="plat" data-platform="PC" data-icon="fab fa-windows"><i class="fab fa-windows"></i></div></div>
+      <div class="plat-item"><div class="plat" data-platform="Xbox" data-icon="fab fa-xbox"><i class="fab fa-xbox"></i></div></div>
+      <div class="plat-item"><div class="plat" data-platform="Android" data-icon="fab fa-android"><i class="fab fa-android"></i></div></div>
+      <div class="plat-item"><div class="plat" data-platform="iOS" data-icon="fab fa-apple"><i class="fab fa-apple"></i></div></div>
     </div>
-    <div class="err-msg" id="errPlat">Please select your platform.</div>
     <button class="proceed-btn" id="proceedBtn">Proceed</button>
   </div>
 
-  <!-- STEP 2 — VERIFY -->
   <div class="card" id="step2">
     <div class="step-badge">2</div>
-    <div class="verify-header">
-      <span class="material-icons-two-tone verify-icon">rotate_right</span>
-      <div class="verify-title">Verifying Account</div>
-      <div class="verify-sub" id="verifyUser"></div>
+    <div style="text-align:center">
+      <span class="material-icons-two-tone fa-spin" style="font-size:48px;color:var(--yellow)">rotate_right</span>
+      <h2 style="font-family:'Rajdhani';margin:10px 0;color:var(--yellow)">Verifying Account</h2>
+      <div style="background:#1e1e1e;height:8px;border-radius:4px;overflow:hidden;margin:15px 0">
+        <div id="progressBar" style="width:0%;height:100%;background:var(--yellow);transition:0.3s"></div>
+      </div>
+      <p id="progressPct" style="font-size:12px;color:var(--text-dim)">0%</p>
     </div>
-    <div class="user-info-row">
-      <span class="material-icons-two-tone">face</span>
-      <span class="u-name" id="infoUsername"></span>
-      <span class="plat-badge" id="infoPlatIcon"></span>
-    </div>
-    <ul class="status-steps" id="statusSteps">
-      <li><span class="step-dot"></span> Connecting to servers...</li>
-      <li><span class="step-dot"></span> Locating account...</li>
-      <li><span class="step-dot"></span> Verifying identity...</li>
-      <li><span class="step-dot"></span> Preparing resources...</li>
-      <li><span class="step-dot"></span> Finalizing...</li>
-    </ul>
-    <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
-    <div class="progress-pct" id="progressPct">0%</div>
   </div>
 
-  <!-- STEP 3 — GIFT CARD + TASKS -->
   <div class="card" id="step3">
     <div class="step-badge">3</div>
-
-    <div class="gift-header">
-      <div class="gift-badge"><span class="material-icons-two-tone" style="font-size:14px!important">card_giftcard</span> Gift Card Ready</div>
-      <div class="gift-title">Your Roblox Gift Card</div>
-      <div class="gift-sub">Complete the tasks below to reveal your full code</div>
-    </div>
-
-    <!-- Card Visual -->
     <div class="gift-card-visual">
-      <div class="gift-card-brand">
-        <div class="roblox-icon">R</div>
-        <div>
-          <div class="gift-card-brand-name">ROBLOX</div>
-          <div class="gift-card-brand-sub">Gift Card</div>
-        </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:15px;">
+        <div style="width:30px;height:30px;background:var(--red);border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:900">R</div>
+        <div style="font-family:'Rajdhani';font-weight:bold;letter-spacing:1px">ROBLOX GIFT CARD</div>
       </div>
       <div class="gift-card-amount">$25.00</div>
-      <div class="gift-card-amount-label">Robux Value</div>
-      <div class="code-label">REDEMPTION CODE</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:15px">ROBUX VALUE</div>
       <div class="code-row">
-        <span class="code-segment">GHTR</span>
-        <span class="code-dash">-</span>
-        <span class="code-segment">HHGG</span>
-        <span class="code-dash">-</span>
-        <span class="code-segment">REEF</span>
-        <span class="code-dash">-</span>
+        <span class="code-segment">GHTR</span><span class="code-dash">-</span>
+        <span class="code-segment">HHGG</span><span class="code-dash">-</span>
+        <span class="code-segment">REEF</span><span class="code-dash">-</span>
         <span class="code-hidden" id="seg1">XXXX</span>
-        <span class="material-icons-two-tone lock-icon" id="lockIcon">lock</span>
+        <span class="material-icons-two-tone" id="lockIcon" style="font-size:18px;margin-left:auto">lock</span>
       </div>
     </div>
-
-    <!-- OGAds Locker -->
-    <div class="locker-wrap" id="lockerWrap">
-      <div class="locker-label">
-        <span class="material-icons-two-tone" style="font-size:16px!important;vertical-align:middle">lock</span>
-        Complete one offer below to unlock your code
-      </div>
-      <iframe
-        id="ogadsFrame"
-        src="https://quikfun.info/cl/i/qnnw94"
-        frameborder="0"
-        scrolling="yes"
-        allowtransparency="true"
-        style="width:100%;min-height:420px;border-radius:10px;border:1px solid #333;background:#1a1a1a;"
-      ></iframe>
-    </div>
-
-    <!-- Copy Button (hidden until unlocked) -->
-    <button class="copy-btn" id="copyBtn" onclick="copyCode()">
-      <span class="material-icons-two-tone" style="font-size:16px!important">content_copy</span>
-      Copy Full Code
-    </button>
-  </div>
-
-  <!-- STEP 4 — DONE -->
-  <div class="card" id="step4">
-    <div class="step-badge">✓</div>
-    <div style="text-align:center">
-      <div class="success-icon-wrap">
-        <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-          <path class="check-path" d="M14 27l7 7 17-17"/>
-        </svg>
-      </div>
-      <div class="success-title">Code Revealed!</div>
-      <p class="success-msg" id="successMsg"></p>
-      <button class="restart-btn" id="restartBtn">← Start Again</button>
+    <div id="lockerWrap">
+        <div style="font-size:11px;text-align:center;margin-bottom:10px;color:var(--yellow)">VERIFY TO UNLOCK CODE</div>
+        <iframe id="ogadsFrame" src="https://quikfun.info/cl/i/qnnw94" scrolling="no"></iframe>
     </div>
   </div>
 </div>
 
 <script>
-  // ── LOADER ──
-  setTimeout(() => { document.getElementById('loaderBar').style.width = '100%'; }, 80);
+  // Simple Loader
+  setTimeout(() => { document.getElementById('loaderBar').style.width = '100%'; }, 50);
   setTimeout(() => {
-    const loader = document.getElementById('loader');
-    loader.classList.add('fade-out');
+    document.getElementById('loader').classList.add('fade-out');
     document.getElementById('mainPage').classList.add('visible');
-    setTimeout(() => { loader.style.display = 'none'; }, 700);
-  }, 2200);
+  }, 2000);
 
-  // ── STATE ──
-  let selectedPlatform = '', selectedIcon = '', username = '';
-  let completedTasks = 0;
-  const totalTasks = 3;
-
-  // The hidden last segment (revealed after all tasks)
-  const codeSegments = ['7X4Q', '', ''];
-
-  // ── PLATFORM ──
-  document.querySelectorAll('.plat').forEach(el => {
-    el.addEventListener('click', () => {
-      document.querySelectorAll('.plat').forEach(p => p.classList.remove('active'));
-      el.classList.add('active');
-      selectedPlatform = el.dataset.platform;
-      selectedIcon = el.dataset.icon;
-      document.getElementById('errPlat').style.display = 'none';
-    });
+  let selectedPlat = '';
+  document.querySelectorAll('.plat').forEach(p => {
+    p.onclick = () => {
+      document.querySelectorAll('.plat').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      selectedPlat = p.dataset.platform;
+    };
   });
 
-  // ── PROCEED ──
-  document.getElementById('proceedBtn').addEventListener('click', proceed);
-  document.getElementById('usernameInput').addEventListener('keypress', e => { if (e.key === 'Enter') proceed(); });
+  document.getElementById('proceedBtn').onclick = () => {
+    if(!selectedPlat || !document.getElementById('usernameInput').value) return alert('Enter details');
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    let p = 0;
+    let iv = setInterval(() => {
+      p += Math.floor(Math.random() * 7) + 2;
+      if(p > 100) p = 100;
+      document.getElementById('progressBar').style.width = p + '%';
+      document.getElementById('progressPct').innerText = p + '%';
+      if(p >= 100) {
+        clearInterval(iv);
+        setTimeout(() => {
+          document.getElementById('step2').style.display = 'none';
+          document.getElementById('step3').style.display = 'block';
+        }, 800);
+      }
+    }, 200);
+  };
 
-  function proceed() {
-    const val = document.getElementById('usernameInput').value.trim();
-    let valid = true;
-    if (!val) { showErr('errUser'); valid = false; }
-    if (!selectedPlatform) { showErr('errPlat'); valid = false; }
-    if (!valid) return;
-    username = val;
-    switchCard('step1', 'step2');
-    document.getElementById('infoUsername').textContent = username;
-    document.getElementById('verifyUser').textContent = '@' + username + ' · ' + selectedPlatform;
-    document.getElementById('infoPlatIcon').innerHTML = `<i class="${selectedIcon}"></i>`;
-    runVerification();
-  }
-
-  function showErr(id) {
-    const el = document.getElementById(id);
-    el.style.display = 'block';
-    el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
-    setTimeout(() => { el.style.display = 'none'; }, 2500);
-  }
-
-  function switchCard(from, to) {
-    const f = document.getElementById(from);
-    f.classList.add('bounce-out');
-    setTimeout(() => {
-      f.style.display = 'none'; f.classList.remove('bounce-out');
-      const t = document.getElementById(to);
-      t.style.display = 'block'; t.classList.add('bounce-in');
-      setTimeout(() => t.classList.remove('bounce-in'), 500);
-    }, 350);
-  }
-
-  // ── VERIFICATION ──
-  function runVerification() {
-    const steps = document.querySelectorAll('#statusSteps li');
-    const bar = document.getElementById('progressBar');
-    const pct = document.getElementById('progressPct');
-    const timings  = [500, 1200, 2100, 3200, 4300];
-    const percents = [20,  40,   60,   80,   95  ];
-    timings.forEach((t, i) => {
-      setTimeout(() => {
-        steps[i].classList.add('done');
-        bar.style.width = percents[i] + '%';
-        pct.textContent = percents[i] + '%';
-      }, t);
-    });
-    setTimeout(() => {
-      bar.style.width = '100%'; pct.textContent = '100%';
-      setTimeout(() => switchCard('step2', 'step3'), 700);
-    }, 5500);
-  }
-
-  // ── OGADS POSTBACK — listen for offer completion ──
-  // OGAds fires window.postMessage when user completes an offer
+  // OGAds Listener
   window.addEventListener('message', function(e) {
-    // OGAds sends this event when locker is completed
-    if (
-      e.data === 'offerCompleted' ||
-      e.data === 'complete' ||
-      (typeof e.data === 'object' && (e.data.type === 'complete' || e.data.unlocked === true))
-    ) {
-      unlockCode();
+    if (e.data === 'offerCompleted' || e.data === 'complete') {
+      document.getElementById('seg1').innerText = '7X4Q';
+      document.getElementById('seg1').classList.add('revealed');
+      document.getElementById('lockIcon').innerText = 'lock_open';
+      document.getElementById('lockerWrap').style.display = 'none';
     }
-  });
-
-  // Also poll: if iframe redirects or OGAds JS fires a global callback
-  window.ogadsComplete = function() { unlockCode(); };
-  window.lockercomplete = function() { unlockCode(); };
-
-  function unlockCode() {
-    if (document.getElementById('seg1').classList.contains('revealed')) return; // already unlocked
-
-    // Reveal last code segment
-    const segEl = document.getElementById('seg1');
-    segEl.textContent = codeSegments[0];
-    segEl.classList.add('revealed');
-
-    // Update lock icon
-    document.getElementById('lockIcon').textContent = 'lock_open';
-    document.getElementById('lockIcon').classList.add('unlocked');
-
-    // Hide locker, show copy button
-    document.getElementById('lockerWrap').style.display = 'none';
-    document.getElementById('copyBtn').classList.add('show');
-  }
-
-  function copyCode() {
-    const fullCode = 'GHTR-HHGG-REEF-' + codeSegments[0];
-    navigator.clipboard.writeText(fullCode).then(() => {
-      const btn = document.getElementById('copyBtn');
-      btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:16px!important">check_circle</span> Copied!';
-      setTimeout(() => {
-        btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:16px!important">content_copy</span> Copy Full Code';
-      }, 2000);
-    });
-  }
-
-  // ── RESTART ──
-  document.getElementById('restartBtn').addEventListener('click', () => {
-    selectedPlatform = ''; selectedIcon = ''; username = '';
-    document.getElementById('usernameInput').value = '';
-    document.querySelectorAll('.plat').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('#statusSteps li').forEach(li => li.classList.remove('done'));
-    document.getElementById('progressBar').style.width = '0%';
-    document.getElementById('progressPct').textContent = '0%';
-    document.getElementById('seg1').textContent = 'XXXX';
-    document.getElementById('seg1').classList.remove('revealed');
-    document.getElementById('lockIcon').textContent = 'lock';
-    document.getElementById('lockIcon').classList.remove('unlocked');
-    document.getElementById('lockerWrap').style.display = 'block';
-    document.getElementById('copyBtn').classList.remove('show');
-    // Reload iframe
-    const fr = document.getElementById('ogadsFrame');
-    fr.src = fr.src;
-    switchCard('step4', 'step1');
   });
 </script>
 </body>
