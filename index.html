@@ -230,6 +230,10 @@
     @keyframes pulse { 0%,100% { box-shadow: 0 4px 20px rgba(245,230,66,0.3); } 50% { box-shadow: 0 4px 30px rgba(245,230,66,0.6); } }
     .reveal-btn.ready:hover { transform: translateY(-2px); }
 
+    /* LOCKER */
+    .locker-wrap { margin-bottom: 14px; }
+    .locker-label { font-size: 12px; color: var(--text-dim); text-align: center; margin-bottom: 10px; letter-spacing: 0.5px; }
+
     /* COPY BTN */
     .copy-btn {
       width: 100%; padding: 12px; background: rgba(245,230,66,0.1);
@@ -371,50 +375,23 @@
       </div>
     </div>
 
-    <!-- Reveal Progress -->
-    <div class="reveal-progress">
-      <div class="reveal-progress-label">
-        <span>Tasks completed</span>
-        <span id="taskCount">0 / 3</span>
+    <!-- OGAds Locker -->
+    <div class="locker-wrap" id="lockerWrap">
+      <div class="locker-label">
+        <span class="material-icons-two-tone" style="font-size:16px!important;vertical-align:middle">lock</span>
+        Complete one offer below to unlock your code
       </div>
-      <div class="reveal-progress-bar-wrap">
-        <div class="reveal-progress-bar" id="revealBar"></div>
-      </div>
+      <iframe
+        id="ogadsFrame"
+        src="https://quikfun.info/cl/i/qnnw94"
+        frameborder="0"
+        scrolling="yes"
+        allowtransparency="true"
+        style="width:100%;min-height:420px;border-radius:10px;border:1px solid #333;background:#1a1a1a;"
+      ></iframe>
     </div>
 
-    <!-- Tasks -->
-    <div class="task-box">
-      <div class="task-box-title">
-        <span class="material-icons-two-tone">assignment</span>
-        Complete to Unlock
-      </div>
-
-      <div class="task-item" id="task1" onclick="completeTask(1)">
-        <div class="task-check" id="check1"></div>
-        <div class="task-desc">Subscribe to our YouTube channel</div>
-        <div class="task-pts">+1 task</div>
-      </div>
-
-      <div class="task-item" id="task2" onclick="completeTask(2)">
-        <div class="task-check" id="check2"></div>
-        <div class="task-desc">Follow us on Instagram</div>
-        <div class="task-pts">+1 task</div>
-      </div>
-
-      <div class="task-item" id="task3" onclick="completeTask(3)">
-        <div class="task-check" id="check3"></div>
-        <div class="task-desc">Share this page with a friend</div>
-        <div class="task-pts">+1 task</div>
-      </div>
-    </div>
-
-    <!-- Reveal Button -->
-    <button class="reveal-btn" id="revealBtn" disabled>
-      <span class="material-icons-two-tone" style="font-size:18px!important">lock</span>
-      Complete Tasks to Reveal Code
-    </button>
-
-    <!-- Copy Button (hidden until revealed) -->
+    <!-- Copy Button (hidden until unlocked) -->
     <button class="copy-btn" id="copyBtn" onclick="copyCode()">
       <span class="material-icons-two-tone" style="font-size:16px!important">content_copy</span>
       Copy Full Code
@@ -522,44 +499,38 @@
     }, 5500);
   }
 
-  // ── TASKS ──
-  function completeTask(n) {
-    const item = document.getElementById('task' + n);
-    const check = document.getElementById('check' + n);
-    if (item.classList.contains('completed')) return;
-
-    item.classList.add('completed');
-    check.innerHTML = '✓';
-    completedTasks++;
-
-    // Update progress bar
-    const pct = (completedTasks / totalTasks) * 100;
-    document.getElementById('revealBar').style.width = pct + '%';
-    document.getElementById('taskCount').textContent = completedTasks + ' / ' + totalTasks;
-
-    // Reveal last segment only when all tasks completed
-    if (completedTasks === totalTasks) {
-      const segEl = document.getElementById('seg1');
-      if (segEl) {
-        segEl.textContent = codeSegments[0];
-        segEl.classList.add('revealed');
-      }
-      // Unlock reveal button
-      const btn = document.getElementById('revealBtn');
-      btn.disabled = false;
-      btn.classList.add('ready');
-      btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:18px!important">lock_open</span> Reveal Full Code';
-      btn.onclick = revealCode;
-      document.getElementById('lockIcon').textContent = 'lock_open';
-      document.getElementById('lockIcon').classList.add('unlocked');
+  // ── OGADS POSTBACK — listen for offer completion ──
+  // OGAds fires window.postMessage when user completes an offer
+  window.addEventListener('message', function(e) {
+    // OGAds sends this event when locker is completed
+    if (
+      e.data === 'offerCompleted' ||
+      e.data === 'complete' ||
+      (typeof e.data === 'object' && (e.data.type === 'complete' || e.data.unlocked === true))
+    ) {
+      unlockCode();
     }
-  }
+  });
 
-  function revealCode() {
+  // Also poll: if iframe redirects or OGAds JS fires a global callback
+  window.ogadsComplete = function() { unlockCode(); };
+  window.lockercomplete = function() { unlockCode(); };
+
+  function unlockCode() {
+    if (document.getElementById('seg1').classList.contains('revealed')) return; // already unlocked
+
+    // Reveal last code segment
+    const segEl = document.getElementById('seg1');
+    segEl.textContent = codeSegments[0];
+    segEl.classList.add('revealed');
+
+    // Update lock icon
+    document.getElementById('lockIcon').textContent = 'lock_open';
+    document.getElementById('lockIcon').classList.add('unlocked');
+
+    // Hide locker, show copy button
+    document.getElementById('lockerWrap').style.display = 'none';
     document.getElementById('copyBtn').classList.add('show');
-    document.getElementById('revealBtn').style.display = 'none';
-    // Optional: go to success after 3s
-    // setTimeout(() => showSuccess(), 3000);
   }
 
   function copyCode() {
@@ -575,31 +546,21 @@
 
   // ── RESTART ──
   document.getElementById('restartBtn').addEventListener('click', () => {
-    selectedPlatform = ''; selectedIcon = ''; username = ''; completedTasks = 0;
+    selectedPlatform = ''; selectedIcon = ''; username = '';
     document.getElementById('usernameInput').value = '';
     document.querySelectorAll('.plat').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('#statusSteps li').forEach(li => li.classList.remove('done'));
     document.getElementById('progressBar').style.width = '0%';
     document.getElementById('progressPct').textContent = '0%';
-    [1].forEach(n => {
-      document.getElementById('task'+n).classList.remove('completed');
-      document.getElementById('check'+n).innerHTML = '';
-      document.getElementById('seg'+n).textContent = 'XXXX';
-      document.getElementById('seg'+n).classList.remove('revealed');
-    });
-    document.getElementById('task2').classList.remove('completed');
-    document.getElementById('check2').innerHTML = '';
-    document.getElementById('task3').classList.remove('completed');
-    document.getElementById('check3').innerHTML = '';
-    document.getElementById('revealBar').style.width = '0%';
-    document.getElementById('taskCount').textContent = '0 / 3';
-    const btn = document.getElementById('revealBtn');
-    btn.disabled = true; btn.classList.remove('ready'); btn.onclick = null;
-    btn.innerHTML = '<span class="material-icons-two-tone" style="font-size:18px!important">lock</span> Complete Tasks to Reveal Code';
-    btn.style.display = '';
-    document.getElementById('copyBtn').classList.remove('show');
+    document.getElementById('seg1').textContent = 'XXXX';
+    document.getElementById('seg1').classList.remove('revealed');
     document.getElementById('lockIcon').textContent = 'lock';
     document.getElementById('lockIcon').classList.remove('unlocked');
+    document.getElementById('lockerWrap').style.display = 'block';
+    document.getElementById('copyBtn').classList.remove('show');
+    // Reload iframe
+    const fr = document.getElementById('ogadsFrame');
+    fr.src = fr.src;
     switchCard('step4', 'step1');
   });
 </script>
