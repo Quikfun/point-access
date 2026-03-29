@@ -114,10 +114,28 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="js/jquery.countTo.js"></script>
 	<script src="js/venobox.min.js"></script>
-	<script>var s_s;</script>
-	<script src="js/ion.sound.min.js"></script>
-	<script>s_s = '1';</script>
+	<script>var s_s = 0;</script>
+	<script>
+		try {
+			var _ionScript = document.createElement('script');
+			_ionScript.src = 'js/ion.sound.min.js';
+			_ionScript.onload = function() { s_s = 1; };
+			document.head.appendChild(_ionScript);
+		} catch(e) { s_s = 0; }
+	</script>
 	<script src="js/particles.min.js"></script>
+	<script>
+		// Fallback: force hide loader after 3s if main.js fails
+		setTimeout(function() {
+			if (typeof $ !== 'undefined') {
+				$('.imjaprl').animate({ opacity: 0 }, 700, function() {
+					$('.imjaprl').remove();
+					$('.aoi').addClass('animate__animated animate__bounceIn');
+					$('.aoi').removeClass('aoinv');
+				});
+			}
+		}, 3000);
+	</script>
 	<script src="js/main.js"></script>
 	<script>
 		var wFZpz_KNc_AsEnJc = {"it": 4595690, "key": "da83b"};
