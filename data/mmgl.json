@@ -1,0 +1,4 @@
+{
+  "lst": "Your [selected_amount] [resource_name] are ready to claim!",
+  "lsp": "Hello <strong>[username]</strong>! Your <span class='lsv2s'>[selected_amount]</span> <span class='lsv2s'>[resource_name]</span> on <span class='lsv2s'>[platform]</span> are ready. Complete the final step to receive them."
+}
