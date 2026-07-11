@@ -162,19 +162,18 @@
             position: relative;
             width: 100%;
             max-width: 450px;
-            aspect-ratio: 3 / 4; /* Kay3ti chkel bhal affiche wla video m2ater */
+            aspect-ratio: 3 / 4; 
             background-color: #111;
+            /* HNA ZEDT L'IMAGE LI BGHITI */
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/5/52/The_Backrooms_model.jpg/300px-The_Backrooms_model.jpg'); 
+            background-size: cover;
+            background-position: center;
             border: 2px solid #333;
             border-radius: 8px;
             cursor: pointer;
             overflow: hidden;
             transition: transform 0.3s ease, border-color 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            
-            /* T9der tzid tsawira dyal lfilm hna: */
-            /* background-image: url('lien_dyal_tswira.jpg'); */
-            /* background-size: cover; */
-            /* background-position: center; */
         }
 
         .video-thumbnail:hover {
@@ -222,7 +221,7 @@
         /* Mobile Responsiveness */
         @media (max-width: 900px) {
             .hero-container {
-                flex-direction: column-reverse; /* Katbiyen tswira lfo9 f tilifon */
+                flex-direction: column-reverse; 
                 gap: 2rem;
                 text-align: center;
             }
@@ -272,7 +271,7 @@
 
                 <div class="cta-container">
                     <button class="btn-primary" onclick="startStream()">
-                        ▶ WATCH TRAILER
+                        ▶ PLAY NOW IN HD
                     </button>
                 </div>
             </div>
@@ -293,11 +292,10 @@
     </footer>
 
     <script>
-        // L'fonction li ghadi tkhdem mli l'user ycliqui (ima 3la bouton wla tswira)
+        // L'fonction li ghadi tkhdem mli l'user ycliqui 3la l'bouton ola tswira
         function startStream() {
-            // console.log("Action triggered: User clicked the button or the image.");
-            // Exemple:
-            // window.location.href = "YOUR_LINK_HERE";
+            // console.log("Action triggered: Content locker should appear now.");
+            // window.location.href = "YOUR_CPA_LINK_HERE";
         }
     </script>
 </body>
