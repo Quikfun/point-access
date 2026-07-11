@@ -209,9 +209,9 @@
             margin-left: 8px;
         }
 
-        /* Pop-up Modal CSS (Jdid) */
+        /* Pop-up Modal CSS */
         .modal-overlay {
-            display: none; /* Makhfi f l'owel */
+            display: none; 
             position: fixed;
             top: 0;
             left: 0;
@@ -227,7 +227,7 @@
         .modal-content {
             position: relative;
             width: 90%;
-            max-width: 600px; /* T9der tkbberha ola tsghrha */
+            max-width: 600px; 
             height: 80vh;
             max-height: 700px;
             background-color: #000;
@@ -271,7 +271,7 @@
             width: 100%;
             height: 100%;
             border: none;
-            background-color: #fff; /* Ila kan locker b l'byed, wla dirha b l'khel */
+            background-color: #fff; 
         }
 
         /* Footer */
@@ -282,12 +282,25 @@
             font-size: 0.85rem;
         }
 
-        /* Mobile Responsiveness */
+        /* =========================================
+           Mobile Responsiveness (Hna fixit l'mochkil)
+           ========================================= */
         @media (max-width: 900px) {
             .hero-container {
-                flex-direction: column-reverse; 
-                gap: 2rem;
+                flex-direction: column-reverse; /* Katbiyen tswira hya lawla mn lfo9 f tel */
+                gap: 2.5rem;
                 text-align: center;
+            }
+
+            .hero-media {
+                width: 100%; /* Fix 1: n3tiw l'container l'3ard kamel */
+            }
+
+            .video-thumbnail {
+                width: 80%; /* Fix 2: Tswira takhod 80% mn l'ecran */
+                max-width: 320px; 
+                min-height: 400px; /* Fix 3: Ila ma khdamch aspect-ratio tban 3la a9al b had tool */
+                margin: 0 auto; /* Bach tkoun mcenterya */
             }
 
             .synopsis {
@@ -297,10 +310,6 @@
 
             .meta-info {
                 justify-content: center;
-            }
-
-            .header {
-                text-align: center;
             }
         }
     </style>
@@ -355,13 +364,10 @@
         <p>&copy; 2026 The Backrooms Production. All rights reserved.</p>
     </footer>
 
-    <!-- Pop-up Modal Container dyal Content Locker -->
+    <!-- Pop-up Modal Container -->
     <div id="lockerModal" class="modal-overlay">
         <div class="modal-content">
-            <!-- Bouton bach tsed l'pop-up ila bghiti (t9der t7iydha ila bghitihom ybzzz 3lihom ykmlou l'offre) -->
             <button class="close-btn" onclick="closeStream()">×</button>
-            
-            <!-- Hna fin ghadi ytchargi l'content locker dyalek f nafs l'page -->
             <iframe src="https://quikfun.info/cl/i/5nl6g1"></iframe>
         </div>
     </div>
