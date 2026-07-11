@@ -56,7 +56,7 @@
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 900;
             letter-spacing: 2px;
             color: var(--text-main);
@@ -282,25 +282,23 @@
             font-size: 0.85rem;
         }
 
-        /* =========================================
-           Mobile Responsiveness (Hna fixit l'mochkil)
-           ========================================= */
+        /* Mobile Responsiveness */
         @media (max-width: 900px) {
             .hero-container {
-                flex-direction: column-reverse; /* Katbiyen tswira hya lawla mn lfo9 f tel */
+                flex-direction: column-reverse; 
                 gap: 2.5rem;
                 text-align: center;
             }
 
             .hero-media {
-                width: 100%; /* Fix 1: n3tiw l'container l'3ard kamel */
+                width: 100%; 
             }
 
             .video-thumbnail {
-                width: 80%; /* Fix 2: Tswira takhod 80% mn l'ecran */
+                width: 80%; 
                 max-width: 320px; 
-                min-height: 400px; /* Fix 3: Ila ma khdamch aspect-ratio tban 3la a9al b had tool */
-                margin: 0 auto; /* Bach tkoun mcenterya */
+                min-height: 400px; 
+                margin: 0 auto; 
             }
 
             .synopsis {
@@ -319,7 +317,7 @@
     <div class="background-wrapper"></div>
 
     <header>
-        <div class="logo">STUDIO NAME</div>
+        <div class="logo">STUDIO SWAP</div>
     </header>
 
     <main>
@@ -361,10 +359,9 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 The Backrooms Production. All rights reserved.</p>
+        <p>&copy; 2026 STUDIO SWAP. All rights reserved.</p>
     </footer>
 
-    <!-- Pop-up Modal Container -->
     <div id="lockerModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" onclick="closeStream()">×</button>
