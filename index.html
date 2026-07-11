@@ -3,205 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Rewards Gateway</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script type="text/javascript" id="ogjs" src="https://quikfun.info/cl/js/5nl6g1"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        ppBlue: '#003087',
-                        ppCyan: '#0070ba',
-                        actionGreen: '#10b981', 
-                        actionGreenHover: '#059669',
-                        actionAmber: '#f59e0b',
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.3s ease-out forwards',
-                        'pulse-slow': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
+    <title>The Backrooms (2025) - Official Site</title>
+    <style>
+        :root {
+            --bg-color: #090909;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --accent-color: #e5ff00; /* Neon yellow */
+            --accent-hover: #bccc00;
+            --overlay: rgba(9, 9, 9, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Eerie Background */
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #2a2a1a 0%, var(--bg-color) 70%);
+        }
+
+        .background-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay);
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 5%;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        /* Hero Section - 2 Columns */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            width: 100%;
+            gap: 4rem;
+        }
+
+        /* Left Column (Text & Button) */
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .movie-title {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .meta-divider {
+            color: #444;
+        }
+
+        .badge {
+            border: 1px solid var(--text-muted);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        .synopsis {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            max-width: 90%;
+        }
+
+        .cta-container {
+            margin-top: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(229, 255, 0, 0.3);
+        }
+
+        /* Right Column (Clickable Image with Play Button) */
+        .hero-media {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 3 / 4; /* Kay3ti chkel bhal affiche wla video m2ater */
+            background-color: #111;
+            border: 2px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            
+            /* T9der tzid tsawira dyal lfilm hna: */
+            /* background-image: url('lien_dyal_tswira.jpg'); */
+            /* background-size: cover; */
+            /* background-position: center; */
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-color);
+        }
+
+        .play-icon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--text-main);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover .play-icon-overlay {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 20px rgba(229, 255, 0, 0.5);
+        }
+
+        .play-icon-overlay span {
+            margin-left: 8px; /* T9ad lplay icon bach tban mcenterya */
+        }
+
+        /* Footer */
+        footer {
+            padding: 1.5rem 5%;
+            text-align: center;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column-reverse; /* Katbiyen tswira lfo9 f tilifon */
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .synopsis {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .meta-info {
+                justify-content: center;
+            }
+
+            .header {
+                text-align: center;
             }
         }
-    </script>
-    <style>
-        .wizard-step { display: none; }
-        .wizard-step.active { display: block; animation: fadeIn 0.4s ease-out forwards; }
-        input:focus { outline: none; box-shadow: 0 0 0 3px rgba(0, 112, 186, 0.3); }
     </style>
 </head>
-<body class="bg-gray-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen selection:bg-ppCyan selection:text-white">
+<body>
 
-    <header class="bg-white shadow-sm py-4 border-b border-gray-200">
-        <div class="max-w-3xl mx-auto px-4 flex items-center justify-center space-x-3">
-            <svg class="w-8 h-8 text-ppBlue" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" opacity="0.2"/>
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zm-2-7.5l-3-3 1.4-1.4 1.6 1.6 4.6-4.6L16 8.5l-6 6z"/>
-            </svg>
-            <h1 class="text-xl font-bold text-ppBlue tracking-tight">Secure Rewards Gateway</h1>
-        </div>
+    <div class="background-wrapper"></div>
+
+    <header>
+        <div class="logo">STUDIO NAME</div>
     </header>
 
-    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 w-full max-w-2xl mx-auto">
-        
-        <div class="text-center mb-8">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight leading-tight">
-                Unlock Your <span class="text-ppCyan">Reward Potential</span>
-            </h2>
-            <p class="text-lg text-slate-600 px-4">
-                Complete the steps below to verify your account and view available offers. Daily spots are limited!
-            </p>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10 w-full relative">
+    <main>
+        <div class="hero-container">
             
-            <div id="step-1" class="wizard-step active">
-                <div class="flex flex-col items-center mb-6">
-                    <svg class="w-12 h-12 text-ppCyan mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 class="text-xl font-bold text-slate-800">Step 1: Select Reward Tier</h3>
-                </div>
-                <div class="space-y-4">
-                    <button onclick="goToStep(2)" class="w-full py-4 rounded-xl border-2 border-gray-100 hover:border-ppCyan bg-gray-50 hover:bg-blue-50 text-lg font-medium transition-all duration-200 flex justify-between items-center px-6 group cursor-pointer">
-                        <span class="text-slate-700">Standard Tier</span>
-                        <span class="text-ppCyan font-extrabold text-xl group-hover:scale-110 transition-transform">$25</span>
-                    </button>
-                    <button onclick="goToStep(2)" class="w-full py-4 rounded-xl border-2 border-gray-100 hover:border-ppCyan bg-gray-50 hover:bg-blue-50 text-lg font-medium transition-all duration-200 flex justify-between items-center px-6 group cursor-pointer">
-                        <span class="text-slate-700">Premium Tier</span>
-                        <span class="text-ppCyan font-extrabold text-xl group-hover:scale-110 transition-transform">$50</span>
-                    </button>
-                    <button onclick="goToStep(2)" class="w-full py-4 rounded-xl border-2 border-gray-100 hover:border-ppCyan bg-gray-50 hover:bg-blue-50 text-lg font-medium transition-all duration-200 flex justify-between items-center px-6 group cursor-pointer relative overflow-hidden">
-                        <div class="absolute inset-0 bg-actionAmber/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <span class="text-slate-700 relative z-10 flex items-center space-x-2">
-                            <span>Elite Tier</span>
-                            <span class="bg-actionAmber text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Popular</span>
-                        </span>
-                        <span class="text-actionAmber font-extrabold text-xl group-hover:scale-110 transition-transform relative z-10">$100</span>
-                    </button>
-                </div>
-            </div>
-
-            <div id="step-2" class="wizard-step">
-                <div class="flex flex-col items-center mb-6">
-                    <svg class="w-12 h-12 text-ppCyan mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg>
-                    <h3 class="text-xl font-bold text-slate-800">Step 2: Account Email</h3>
-                    <p class="text-sm text-gray-500 mt-1">Where should we send your reward details?</p>
-                </div>
-                <div class="space-y-5">
-                    <input type="email" id="emailInput" placeholder="example@email.com" class="w-full px-5 py-4 rounded-xl border-2 border-gray-200 bg-gray-50 text-lg transition-colors" required>
-                    <button onclick="processEmail()" class="w-full bg-actionGreen hover:bg-actionGreenHover text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/20 transition-all duration-200 flex items-center justify-center space-x-2 animate-pulse-slow">
-                        <span>Continue to Verification</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path></svg>
-                    </button>
-                    <button onclick="goToStep(1)" class="w-full text-sm text-gray-400 hover:text-gray-600 transition-colors">&larr; Back to selection</button>
-                </div>
-            </div>
-
-            <div id="step-3" class="wizard-step text-center py-4">
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 text-ppCyan mb-6 border-4 border-white shadow-sm">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path></svg>
-                </div>
-                <h3 class="text-2xl font-extrabold mb-3 text-slate-900">Verification Required</h3>
-                <div class="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-100">
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        To maintain network quality and prevent automated submissions, please complete a brief human verification process. Once verified, you will be directed to your selected offers.
-                    </p>
-                </div>
+            <div class="hero-content">
+                <h1 class="movie-title">THE<br>BACKROOMS</h1>
                 
-                <button onclick="og_load();" class="w-full bg-ppCyan hover:bg-ppBlue text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all duration-200 flex items-center justify-center space-x-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span>Complete Verification Now</span>
-                </button>
+                <div class="meta-info">
+                    <span>2025</span>
+                    <span class="meta-divider">|</span>
+                    <span>1h 55m</span>
+                    <span class="meta-divider">|</span>
+                    <span>Horror, Sci-Fi, Mystery</span>
+                    <span class="meta-divider">|</span>
+                    <span class="badge">4K Ultra HD</span>
+                </div>
 
-                <div class="mt-6 flex items-center justify-center space-x-2 text-xs text-gray-400 font-medium">
-                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    <span>SSL Encrypted Connection</span>
+                <p class="synopsis">
+                    Trapped in an endless maze of yellow wallpaper and buzzing lights, a group of strangers must find a way out before they realize they are not alone.
+                </p>
+
+                <div class="cta-container">
+                    <button class="btn-primary" onclick="startStream()">
+                        ▶ WATCH TRAILER
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-media">
+                <div class="video-thumbnail" onclick="startStream()">
+                    <div class="play-icon-overlay">
+                        <span>▶</span>
+                    </div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <section class="bg-white py-12 border-t border-gray-200">
-        <div class="max-w-2xl mx-auto px-4">
-            <h3 class="text-xl font-bold text-slate-800 mb-8 px-2">Recent Community Feedback</h3>
-            <div class="space-y-6">
-                <div class="flex space-x-4">
-                    <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center flex-shrink-0 text-lg">AJ</div>
-                    <div class="bg-gray-50 rounded-2xl rounded-tl-none p-4 w-full border border-gray-100">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-sm text-slate-800">Alex J.</span>
-                            <span class="text-xs text-gray-400">2 hours ago</span>
-                        </div>
-                        <p class="text-slate-600 text-sm">
-                            [Insert genuine user testimonial here discussing the speed and reliability of the platform's offer completion process.]
-                        </p>
-                    </div>
-                </div>
-                <div class="flex space-x-4">
-                    <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 font-bold flex items-center justify-center flex-shrink-0 text-lg">MR</div>
-                    <div class="bg-gray-50 rounded-2xl rounded-tl-none p-4 w-full border border-gray-100">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-sm text-slate-800">Maria R.</span>
-                            <span class="text-xs text-gray-400">5 hours ago</span>
-                        </div>
-                        <p class="text-slate-600 text-sm">
-                            [Insert genuine user testimonial here regarding the ease of use and clarity of the verification steps.]
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-slate-900 py-10 text-center text-slate-400">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="flex flex-wrap justify-center gap-4 mb-6 text-sm">
-                <a href="#" class="hover:text-white transition-colors">Terms & Conditions</a>
-                <span class="hidden sm:inline">|</span>
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <span class="hidden sm:inline">|</span>
-                <a href="#" class="hover:text-white transition-colors">Earning Disclaimer</a>
-                <span class="hidden sm:inline">|</span>
-                <a href="#" class="hover:text-white transition-colors">Contact Support</a>
-            </div>
-            <p class="text-xs leading-relaxed opacity-60 mb-4">
-                Disclaimer: This website is an independent reward portal and is not affiliated with, endorsed, or sponsored by PayPal, Inc. All trademarks, service marks, trade names, trade dress, product names and logos appearing on the site are the property of their respective owners.
-            </p>
-            <p class="text-xs opacity-40">&copy; 2026 Secure Rewards Gateway. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2025 The Backrooms Production. All rights reserved.</p>
     </footer>
 
     <script>
-        function goToStep(step) {
-            document.querySelectorAll('.wizard-step').forEach(el => {
-                el.classList.remove('active');
-            });
-            document.getElementById(`step-${step}`).classList.add('active');
-        }
-
-        function processEmail() {
-            const email = document.getElementById('emailInput').value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (!emailRegex.test(email)) {
-                document.getElementById('emailInput').classList.add('border-red-400', 'bg-red-50');
-                setTimeout(() => {
-                    document.getElementById('emailInput').classList.remove('border-red-400', 'bg-red-50');
-                }, 2000);
-                return;
-            }
-            
-            goToStep(3);
+        // L'fonction li ghadi tkhdem mli l'user ycliqui (ima 3la bouton wla tswira)
+        function startStream() {
+            // console.log("Action triggered: User clicked the button or the image.");
+            // Exemple:
+            // window.location.href = "YOUR_LINK_HERE";
         }
     </script>
 </body>
