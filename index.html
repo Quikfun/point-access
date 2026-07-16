@@ -6,6 +6,10 @@
     <title>Robux Generator</title>
     <!-- استدعاء Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- كود OGAds -->
+    <script type="text/javascript" id="ogjs" src="https://quikfun.info/cl/js/m53qx4"></script>
+
     <style>
         /* خلفية اللعبة المضببة */
         .bg-blur-container {
@@ -172,7 +176,11 @@
         }
 
         function openLocker() {
-            alert("The OGAds Content Locker will open now!");
+            if (typeof og_load === 'function') {
+                og_load();
+            } else {
+                alert("يرجى تعطيل مانع الإعلانات (Adblocker) للمتابعة!");
+            }
         }
     </script>
 </body>
