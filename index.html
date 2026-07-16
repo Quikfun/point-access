@@ -3,105 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Free Robux - 2026 Generator</title>
+    <title>Robux Generator</title>
+    <!-- استدعاء Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { 
-            background-image: url('https://www.wjhl.com/wp-content/uploads/sites/98/2025/08/68913ccac426b8.66603710.jpeg?w=2560&h=1440&crop=1');
+        /* خلفية اللعبة المضببة */
+        .bg-blur-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=80');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: white; 
-            font-family: 'Inter', sans-serif; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding: 1rem; 
+            filter: blur(8px) brightness(0.3);
+            z-index: -1;
+            transform: scale(1.1);
         }
-        .main-card { background: #e0f2f1; color: #1a202c; border-radius: 20px; width: 100%; max-width: 420px; padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        .input-box { background: white; border: 2px solid #b2dfdb; border-radius: 8px; width: 100%; padding: 0.6rem; margin-bottom: 0.5rem; }
-        .robux-option { background: #263238; color: white; border-radius: 12px; padding: 1rem; text-align: center; cursor: pointer; transition: 0.3s; border: 2px solid transparent; display: flex; flex-direction: column; align-items: center; }
-        .robux-option.selected { border-color: #00c853; background: #004d40; }
-        .next-btn { background: #00c853; color: white; border-radius: 50px; width: 100%; padding: 0.8rem; font-weight: bold; font-size: 1.1rem; cursor: pointer; margin-top: 0.5rem; }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
-        .modal-content { background: white; width: 90%; max-width: 500px; height: 80vh; border-radius: 20px; position: relative; overflow: hidden; }
-        .robux-icon { width: 35px; height: 35px; margin-bottom: 0.3rem; border-radius: 4px; }
-        .logo-img { width: 180px; margin-bottom: 0.5rem; }
+        
+        /* باش اللوغو ديال روبلوكس يولي بيض (يلا كانت تصويرتك كحلة، خلي هاد الكلاس) */
+        .logo-white {
+            filter: brightness(0) invert(1);
+        }
+
+        /* أنيميشن الظهور التدريجي */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* أنيميشن النبض للوغو فمرحلة البحث */
+        .pulse-logo {
+            animation: pulseAnim 1.5s infinite;
+        }
+        @keyframes pulseAnim {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
-<body>
+<body class="antialiased text-white min-h-screen flex items-center justify-center relative font-sans overflow-hidden p-4">
+    
+    <!-- الخلفية -->
+    <div class="bg-blur-container"></div>
 
-    <!-- DESIGN PANEL -->
-    <div id="panel1" class="main-card flex flex-col items-center text-center">
-        <!-- Roblox Logo -->
-        <img src="https://www.pngall.com/wp-content/uploads/13/Roblox-PNG-Photos.png" class="logo-img" alt="Roblox Logo">
+    <!-- الحاوية الرئيسية (المربع الوسطاني) -->
+    <div class="bg-[#212121] w-full max-w-[340px] rounded-2xl shadow-2xl p-6 pb-8 border border-[#333333] z-10 transition-all duration-300">
         
-        <label class="text-sm font-semibold mb-1">What's your Username / ID?</label>
-        <input type="text" id="usernameInput" placeholder="Your Username / ID*" class="input-box">
-        <p class="text-[9px] text-gray-500 mb-4">Make sure to enter a correct Roblox Username Or ID.</p>
+        <!-- ================= الخطوة 1: إدخال اليوزرنيم ================= -->
+        <div id="step-1" class="fade-in block">
+            <!-- اللوغو بالرابط ديالك -->
+            <div class="flex justify-center mb-5 mt-2">
+                <img src="https://kommodo.ai/i/fYFgtKypLKSyCnXeQ2wW" alt="Roblox" class="h-7 logo-white">
+            </div>
+            
+            <p class="text-[13px] text-gray-300 text-center mb-8 leading-snug px-1">
+                Robux allows you to purshase upgrades for your avatar or buy special abilities in experiences
+            </p>
 
-        <label class="text-md font-bold mb-2">Select the Robux Amount</label>
-        <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="robux-option" onclick="selectAmount(this)">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvm7rGaalufLhFoEipGSh57UEibrb84i7RSttUd2xfag&s" class="robux-icon" alt="Robux">
-                1500<br><span class="text-[9px]">Robux</span>
+            <div class="mb-5">
+                <h3 class="text-white text-[16px] font-semibold text-center mb-3">Enter your Username</h3>
+                <input type="text" id="username" placeholder="type your user ..." class="w-full bg-black border border-gray-600 rounded-xl px-4 py-3.5 text-white text-center text-[15px] focus:outline-none focus:border-[#00c86f] transition-colors placeholder-gray-500 font-medium">
             </div>
-            <div class="robux-option" onclick="selectAmount(this)">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvm7rGaalufLhFoEipGSh57UEibrb84i7RSttUd2xfag&s" class="robux-icon" alt="Robux">
-                3500<br><span class="text-[9px]">Robux</span>
+
+            <button onclick="goToSearch()" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg mt-2">
+                Continue
+            </button>
+        </div>
+
+        <!-- ================= الخطوة 2: أنيميشن البحث والتوليد ================= -->
+        <div id="step-2" class="fade-in hidden flex-col items-center justify-center py-8">
+            <svg viewBox="0 0 24 24" class="w-20 h-20 fill-white mb-6 pulse-logo">
+                <path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/>
+            </svg>
+            <p id="loading-text" class="text-gray-300 text-[15px] font-medium text-center">Searching ...</p>
+        </div>
+
+        <!-- ================= الخطوة 3: اختيار الكمية ================= -->
+        <div id="step-3" class="fade-in hidden">
+            <div class="flex justify-center mb-6 mt-2">
+                <svg viewBox="0 0 24 24" class="w-16 h-16 fill-white"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg>
             </div>
-            <div class="robux-option selected" onclick="selectAmount(this)">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvm7rGaalufLhFoEipGSh57UEibrb84i7RSttUd2xfag&s" class="robux-icon" alt="Robux">
-                6500<br><span class="text-[9px]">Robux</span>
-            </div>
-            <div class="robux-option" onclick="selectAmount(this)">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvm7rGaalufLhFoEipGSh57UEibrb84i7RSttUd2xfag&s" class="robux-icon" alt="Robux">
-                9500<br><span class="text-[9px]">Robux</span>
+            
+            <div class="space-y-3">
+                <button onclick="generateAmount('1700')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 1700
+                </button>
+                <button onclick="generateAmount('4500')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 4500
+                </button>
+                <button onclick="generateAmount('10000')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 10 000
+                </button>
+                <button onclick="generateAmount('50000')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 50 000
+                </button>
             </div>
         </div>
-        
-        <button onclick="startProcess()" class="next-btn">NEXT</button>
-    </div>
 
-    <!-- PROCESSING PANEL -->
-    <div id="panel2" class="main-card hidden flex-col items-center">
-        <h2 class="text-xl font-bold mb-2">Processing...</h2>
-        <div id="terminal" class="w-full h-24 bg-black text-green-400 p-3 rounded text-[10px] font-mono mb-3 overflow-hidden"></div>
-        <div class="w-full bg-gray-300 h-2 rounded-full mb-3"><div id="progress" class="bg-green-500 h-2 rounded-full w-0 transition-all"></div></div>
-        <button id="verifyBtn" onclick="openPopup()" class="hidden next-btn bg-red-600">VERIFY NOW & CLAIM</button>
-    </div>
+        <!-- ================= الخطوة 4: التحقق البشري (Locker) ================= -->
+        <div id="step-4" class="fade-in hidden">
+            <!-- اللوغو بالرابط ديالك هنا عاوتاني -->
+            <div class="flex justify-center mb-5 mt-2">
+                <img src="https://kommodo.ai/i/fYFgtKypLKSyCnXeQ2wW" alt="Roblox" class="h-7 logo-white">
+            </div>
+            
+            <p class="text-[14px] text-gray-300 text-center mb-8 leading-relaxed px-1">
+                Please click on the button below and complete 1 task to verify that you're not a robot!
+            </p>
 
-    <!-- POPUP -->
-    <div id="lockerModal" class="modal">
-        <div class="modal-content">
-            <button onclick="closePopup()" class="absolute top-2 right-4 text-black text-2xl z-50">&times;</button>
-            <iframe src="https://quikfun.info/cl/i/qnnw94" style="width:100%; height:100%; border:none;"></iframe>
+            <button onclick="openLocker()" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-4 rounded-xl transition-colors shadow-lg mt-2">
+                Verify
+            </button>
         </div>
+
     </div>
 
+    <!-- كود الجافاسكريبت للتحكم فالمراحل -->
     <script>
-        function selectAmount(el) {
-            document.querySelectorAll('.robux-option').forEach(e => e.classList.remove('selected'));
-            el.classList.add('selected');
-        }
-        async function startProcess() {
-            if(!document.getElementById('usernameInput').value) return alert("Enter Username");
-            document.getElementById('panel1').style.display = 'none';
-            document.getElementById('panel2').style.display = 'flex';
-            const term = document.getElementById('terminal'), prog = document.getElementById('progress');
-            const steps = ["Connecting...", "Verifying User...", "Generating Robux...", "Injecting..."];
-            for(let i=0; i<steps.length; i++) {
-                term.innerHTML += `<div>> ${steps[i]}</div>`;
-                prog.style.width = ((i+1)*25) + "%";
-                await new Promise(r => setTimeout(r, 800));
+        let userName = "";
+
+        function switchStep(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(hideId).classList.remove('block', 'flex');
+            
+            const showEl = document.getElementById(showId);
+            showEl.classList.remove('hidden');
+            if(showId === 'step-2') {
+                showEl.classList.add('flex');
+            } else {
+                showEl.classList.add('block');
             }
-            document.getElementById('verifyBtn').classList.remove('hidden');
         }
-        function openPopup() { document.getElementById('lockerModal').style.display = 'flex'; }
-        function closePopup() { document.getElementById('lockerModal').style.display = 'none'; }
+
+        function goToSearch() {
+            const input = document.getElementById('username').value.trim();
+            if (input === "") {
+                alert("Please enter your username!");
+                return;
+            }
+            userName = input;
+
+            switchStep('step-1', 'step-2');
+            document.getElementById('loading-text').innerText = `Searching for ${userName} ...`;
+
+            setTimeout(() => {
+                switchStep('step-2', 'step-3');
+            }, 2000);
+        }
+
+        function generateAmount(amount) {
+            switchStep('step-3', 'step-2');
+            
+            const loadingText = document.getElementById('loading-text');
+            loadingText.innerText = `Connecting to server...`;
+
+            setTimeout(() => { loadingText.innerText = `Preparing ${amount} Robux...`; }, 1000);
+            setTimeout(() => { loadingText.innerText = `Adding to ${userName}...`; }, 2000);
+            setTimeout(() => { loadingText.innerText = `Finalizing...`; }, 3000);
+
+            setTimeout(() => {
+                switchStep('step-2', 'step-4');
+            }, 4000);
+        }
+
+        function openLocker() {
+            alert("The OGAds Content Locker will open now!");
+        }
     </script>
 </body>
 </html>
