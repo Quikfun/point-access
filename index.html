@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robux Generator</title>
-    <!-- استدعاء Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* خلفية اللعبة المضببة */
@@ -21,11 +20,6 @@
             z-index: -1;
             transform: scale(1.1);
         }
-        
-        /* باش اللوغو ديال روبلوكس يولي بيض (يلا كانت تصويرتك كحلة، خلي هاد الكلاس) */
-        .logo-white {
-            filter: brightness(0) invert(1);
-        }
 
         /* أنيميشن الظهور التدريجي */
         .fade-in {
@@ -36,7 +30,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* أنيميشن النبض للوغو فمرحلة البحث */
+        /* أنيميشن النبض فمرحلة البحث */
         .pulse-logo {
             animation: pulseAnim 1.5s infinite;
         }
@@ -49,17 +43,14 @@
 </head>
 <body class="antialiased text-white min-h-screen flex items-center justify-center relative font-sans overflow-hidden p-4">
     
-    <!-- الخلفية -->
     <div class="bg-blur-container"></div>
 
-    <!-- الحاوية الرئيسية (المربع الوسطاني) -->
     <div class="bg-[#212121] w-full max-w-[340px] rounded-2xl shadow-2xl p-6 pb-8 border border-[#333333] z-10 transition-all duration-300">
         
-        <!-- ================= الخطوة 1: إدخال اليوزرنيم ================= -->
         <div id="step-1" class="fade-in block">
-            <!-- اللوغو بالرابط ديالك -->
-            <div class="flex justify-center mb-5 mt-2">
-                <img src="https://kommodo.ai/i/fYFgtKypLKSyCnXeQ2wW" alt="Roblox" class="h-7 logo-white">
+            
+            <div class="flex justify-center mb-5 mt-2 relative w-full h-10 overflow-hidden">
+                <img src="https://i.ytimg.com/vi/n8Hpsy7xOLs/maxresdefault.jpg" alt="Roblox" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] mix-blend-screen pointer-events-none">
             </div>
             
             <p class="text-[13px] text-gray-300 text-center mb-8 leading-snug px-1">
@@ -76,41 +67,40 @@
             </button>
         </div>
 
-        <!-- ================= الخطوة 2: أنيميشن البحث والتوليد ================= -->
         <div id="step-2" class="fade-in hidden flex-col items-center justify-center py-8">
-            <svg viewBox="0 0 24 24" class="w-20 h-20 fill-white mb-6 pulse-logo">
-                <path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/>
+            <svg viewBox="0 0 512 512" class="w-20 h-20 fill-white mb-6 pulse-logo">
+                 <path d="M103.5 0L0 408.5 408.5 512 512 103.5 103.5 0zm190 326c-38.6 9.8-77.8-13.6-87.6-52.2-9.8-38.6 13.6-77.8 52.2-87.6 38.6-9.8 77.8 13.6 87.6 52.2 9.8 38.6-13.6 77.8-52.2 87.6z"/>
             </svg>
             <p id="loading-text" class="text-gray-300 text-[15px] font-medium text-center">Searching ...</p>
         </div>
 
-        <!-- ================= الخطوة 3: اختيار الكمية ================= -->
         <div id="step-3" class="fade-in hidden">
-            <div class="flex justify-center mb-6 mt-2">
-                <svg viewBox="0 0 24 24" class="w-16 h-16 fill-white"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg>
+             <div class="flex justify-center mb-6 mt-2">
+                 <svg viewBox="0 0 512 512" class="w-16 h-16 fill-white">
+                    <path d="M103.5 0L0 408.5 408.5 512 512 103.5 103.5 0zm190 326c-38.6 9.8-77.8-13.6-87.6-52.2-9.8-38.6 13.6-77.8 52.2-87.6 38.6-9.8 77.8 13.6 87.6 52.2 9.8 38.6-13.6 77.8-52.2 87.6z"/>
+                </svg>
             </div>
             
             <div class="space-y-3">
                 <button onclick="generateAmount('1700')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 1700
+                    <svg viewBox="0 0 512 512" class="w-5 h-5 fill-white mr-2"><path d="M103.5 0L0 408.5 408.5 512 512 103.5 103.5 0zm190 326c-38.6 9.8-77.8-13.6-87.6-52.2-9.8-38.6 13.6-77.8 52.2-87.6 38.6-9.8 77.8 13.6 87.6 52.2 9.8 38.6-13.6 77.8-52.2 87.6z"/></svg> 1700
                 </button>
                 <button onclick="generateAmount('4500')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 4500
+                    <svg viewBox="0 0 512 512" class="w-5 h-5 fill-white mr-2"><path d="M103.5 0L0 408.5 408.5 512 512 103.5 103.5 0zm190 326c-38.6 9.8-77.8-13.6-87.6-52.2-9.8-38.6 13.6-77.8 52.2-87.6 38.6-9.8 77.8 13.6 87.6 52.2 9.8 38.6-13.6 77.8-52.2 87.6z"/></svg> 4500
                 </button>
                 <button onclick="generateAmount('10000')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 10 000
+                    <svg viewBox="0 0 512 512" class="w-5 h-5 fill-white mr-2"><path d="M103.5 0L0 408.5 408.5 512 512 103.5 103.5 0zm190 326c-38.6 9.8-77.8-13.6-87.6-52.2-9.8-38.6 13.6-77.8 52.2-87.6 38.6-9.8 77.8 13.6 87.6 52.2 9.8 38.6-13.6 77.8-52.2 87.6z"/></svg> 10 000
                 </button>
                 <button onclick="generateAmount('50000')" class="w-full bg-[#00c86f] hover:bg-[#00b060] text-white font-bold text-[16px] py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mr-2"><path d="M4.6 2l17.4 4.6-4.6 17.4-17.4-4.6L4.6 2zm6.9 10.4l-2.4-.6-.6 2.4 2.4.6.6-2.4z"/></svg> 50 000
+                    <svg viewBox="0 0 512 512" class="w-5 h-5 fill-white mr-2"><path d="M103.5 0L0 408.5 408.5 512 512 103.5 103.5 0zm190 326c-38.6 9.8-77.8-13.6-87.6-52.2-9.8-38.6 13.6-77.8 52.2-87.6 38.6-9.8 77.8 13.6 87.6 52.2 9.8 38.6-13.6 77.8-52.2 87.6z"/></svg> 50 000
                 </button>
             </div>
         </div>
 
-        <!-- ================= الخطوة 4: التحقق البشري (Locker) ================= -->
         <div id="step-4" class="fade-in hidden">
-            <!-- اللوغو بالرابط ديالك هنا عاوتاني -->
-            <div class="flex justify-center mb-5 mt-2">
-                <img src="https://kommodo.ai/i/fYFgtKypLKSyCnXeQ2wW" alt="Roblox" class="h-7 logo-white">
+            
+            <div class="flex justify-center mb-5 mt-2 relative w-full h-10 overflow-hidden">
+                <img src="https://i.ytimg.com/vi/n8Hpsy7xOLs/maxresdefault.jpg" alt="Roblox" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] mix-blend-screen pointer-events-none">
             </div>
             
             <p class="text-[14px] text-gray-300 text-center mb-8 leading-relaxed px-1">
@@ -124,7 +114,6 @@
 
     </div>
 
-    <!-- كود الجافاسكريبت للتحكم فالمراحل -->
     <script>
         let userName = "";
 
